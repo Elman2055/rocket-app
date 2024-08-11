@@ -41,8 +41,10 @@ const RunningLine = () => {
         <Typography component="span" sx={{ display: "inline-block" }}>
           <>
             <div style={{ display: "flex" }}>
-              {longText.map((el) => (
-                <p style={{ marginRight: "10%" }}>{el}</p>
+              {longText.map((el, index) => (
+                <p key={index} style={{ marginRight: "10%" }}>
+                  {el}
+                </p>
               ))}
             </div>
           </>

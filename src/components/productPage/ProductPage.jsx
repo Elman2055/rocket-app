@@ -5,13 +5,30 @@ import journey from "../../../public/journeyApp.png";
 import arrow from "../../../public/arrow.png";
 import rightOwnImage from "../../../public/rightOwnImage.png";
 import Carousel from "../ui/carousel/Carousel";
+import likeBtn from "../../../public/likeBtn.png";
 import { useAppSelector } from "../../store";
+import { useParams } from "react-router-dom";
 import "./ProductPage.css";
+import { useEffect, useState } from "react";
 
 const ProductPage = ({ items }) => {
+  const [addProduct, setAddProduct] = useState();
+
+  const { id } = useParams();
+
   const {
     products: { products },
   } = useAppSelector((state) => state);
+
+  const getFilteredProduct = () => {
+    const filteredProduct = products.filter((el) => el.id === Number(id));
+    setAddProduct(filteredProduct);
+  };
+
+  useEffect(() => {
+    getFilteredProduct();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [id]);
 
   return (
     <div className="productContainer">
@@ -23,21 +40,51 @@ const ProductPage = ({ items }) => {
             <img src={fitnes} alt="fitnes" />
             <img src={journey} alt="journey" />
           </div>
-          <img src={calendar} alt="product" className="productImage" />
+          {addProduct &&
+            addProduct.map((el) => (
+              <img
+                key={el.id}
+                src={el.image}
+                alt="product"
+                className="productImage"
+              />
+            ))}
         </div>
         <div className="productTitleContainer">
-          <h2 style={{ marginBottom: "20px" }}>
-            Элитный Планировщик: ваш персональный <br /> ассистент для
-            идеального порядка
-          </h2>
-          <p style={{ marginBottom: "50px" }}>123 909 T</p>
-
+          {addProduct &&
+            addProduct
+              .filter((el) => el.beforePrice)
+              .map((el) => (
+                <div key={el.id} className="saleProductNow">
+                  <p className="saleDetalid">распродажа</p>
+                  <p className="saleDetalid saleDetalidPrice">-20%</p>
+                </div>
+              ))}
+          {addProduct &&
+            addProduct.map((el) => (
+              <div key={el.id} style={{ marginBottom: "50px" }}>
+                <h2 style={{ marginBottom: "20px" }}>{el.title}</h2>
+                <div style={el.beforePrice && { display: "flex" }}>
+                  <p
+                    style={{
+                      marginRight: "10px",
+                      color: "gray",
+                      textDecoration: "line-through",
+                    }}
+                  >
+                    {el.beforePrice}
+                  </p>
+                  <p>{el.price}</p>
+                </div>
+              </div>
+            ))}
           <button className="buyNow">Купить сейчас</button>
           <div className="downProductBtns">
             <button className="productBtn">Добавить в корзину</button>
-            <button className="productBtn likeProduct">Like</button>
+            <button className="productBtn likeProduct">
+              <img src={likeBtn} alt="like" />
+            </button>
           </div>
-
           <p className="downTitleText">
             Lorem ipsum dolor sit amet consectetur. Eget nec nam eleifend lectus
             luctus eu aenean in. Tincidunt vulputate porta tristique lectus
@@ -45,15 +92,13 @@ const ProductPage = ({ items }) => {
             curabitur in amet imperdiet. Viverra potenti massa est id auctor
             dui. Arcu convallis velit consectetur lectus. ...Читать далее
           </p>
-
           <hr />
-
           <div className="questionInfo">
             <h3>Как это работает?</h3>
             <img
               src={arrow}
               alt="arrow"
-              style={{ height: "7px", width: "15px" }}
+              style={{ height: "8px", width: "15px", cursor: "pointer" }}
             />
           </div>
         </div>

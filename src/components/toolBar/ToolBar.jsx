@@ -25,7 +25,7 @@ const ToolBar = () => {
           </NavLink>
         </div>
 
-        <img src={centerImage} alt="centerImage" />
+        <img src={centerImage} alt="logo" />
 
         <div className="rightBlock">
           <div className="imageRightBlock">

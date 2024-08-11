@@ -59,7 +59,9 @@ export const FooterBar = () => {
             <p>Telegram</p>
             <p>Instagram</p>
           </div>
-          <p>Вернуться наверх</p>
+          <p onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+            Вернуться наверх
+          </p>
         </div>
       </div>
 

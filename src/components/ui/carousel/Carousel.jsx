@@ -93,6 +93,7 @@ const Carousel = ({ items, title }) => {
               src={item.image}
               alt={item.title}
               style={{ height: "80%", width: "25vw", cursor: "pointer" }}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             />
             <h3>{item.title}</h3>
             <p>{item.price}</p>

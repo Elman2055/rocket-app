@@ -1,0 +1,82 @@
+.backgroundProfile {
+  height: 320px;
+  background: no-repeat center/100% 100% url(../../../public/promoProfile.png);
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.backgroundProfile > h2 {
+  margin-left: 11%;
+}
+
+.historyImage {
+  height: 202px;
+  width: 230px;
+  margin-right: 10px;
+}
+
+.profileContainer {
+  width: 80%;
+  margin: 30px auto;
+  display: flex;
+}
+
+.profileNavigation {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 18%;
+}
+
+.profileNavigation > h3 {
+  color: gray;
+  cursor: pointer;
+}
+
+.profileNavigation > .activeNav {
+  color: black;
+}
+
+.historyContainer {
+  display: flex;
+}
+
+.historyTitleContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.textStyle {
+  width: 420px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.historyInfoTitle {
+  width: 370px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0px 10px 0px;
+}
+
+.profileHistoryBtns {
+  width: 54%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.downloadBtn {
+  cursor: pointer;
+  padding: 10px 15px;
+  border: none;
+  background-color: #1a1a1a;
+  color: #efefef;
+  margin-bottom: 20px;
+}
+
+.downloadBtnApk {
+  background-color: #efefef;
+  color: #1a1a1a;
+}

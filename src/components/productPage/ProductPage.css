@@ -33,6 +33,24 @@
   margin-left: 20px;
 }
 
+.saleProductNow {
+  width: 33%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.saleDetalid {
+  padding: 6px 15px;
+  background-color: #1a1a1a;
+  color: #efefef;
+}
+
+.saleDetalidPrice {
+  background-color: #efefef;
+  color: #1a1a1a;
+}
+
 .buyNow {
   cursor: pointer;
   width: 100%;
