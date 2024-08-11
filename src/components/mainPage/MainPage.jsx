@@ -1,11 +1,17 @@
+import RunningLine from "../ui/runningLine/RunningLine";
 import "./MainPage.css";
 
 const MainPage = () => {
   return (
     <div>
       <div className="background">
-        <h3>efwefew</h3>
+        <p>Ваши любимые приложения здесь</p>
+        <div className="mainBackgroundBtns">
+          <button>Утилиты</button>
+          <button className="playBtnBackground">Игры</button>
+        </div>
       </div>
+      <RunningLine />
     </div>
   );
 };

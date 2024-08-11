@@ -3,5 +3,28 @@
   background: no-repeat center/100% 100% url(../../../public/mainImage.png);
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
+}
+
+.background > p {
+  font-size: 37px;
+  color: white;
+}
+
+.mainBackgroundBtns {
+  width: 13.5%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mainBackgroundBtns > button {
+  padding: 7px 30px;
+  background-color: #efefef;
+  border: none;
+}
+
+.mainBackgroundBtns > .playBtnBackground {
+  background-color: #bdbdbd;
 }
