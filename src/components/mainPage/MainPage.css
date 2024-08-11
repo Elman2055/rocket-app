@@ -137,3 +137,49 @@
   height: 80%;
   width: 25.5vw;
 }
+
+.titleWeAdd {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+.weAddPromoText {
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+.weAddPromoText > p {
+  margin: 20px 0px 20px 0px;
+}
+
+.ownBlock {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.ownImage {
+  height: 80%;
+  width: 39.6vw;
+}
+
+.ownTitle {
+  height: 20vh;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ownBtn {
+  cursor: pointer;
+  border: none;
+  padding: 8px 15px;
+  background-color: #1a1a1a;
+  color: #efefef;
+}
