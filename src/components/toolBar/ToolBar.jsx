@@ -39,10 +39,10 @@ const ToolBar = () => {
               <img src={shopImage} alt="shopImage" />
             </NavLink>
           </div>
-          <NavLink to={"/"}>
+          <NavLink to={"/profile"}>
             <button className="layotBtn">Войти</button>
           </NavLink>
-          <NavLink to={"/"}>
+          <NavLink to={"/profile"}>
             <button className="layotBtn rightLayotBtn">Регистрация</button>
           </NavLink>
         </div>
