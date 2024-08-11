@@ -1,0 +1,56 @@
+.toolBar {
+  height: 60px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.container {
+  height: 78px;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftBlock {
+  width: 28%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rightBlock {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.imageRightBlock {
+  width: 40%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.imageRightBlock > img {
+  height: 24px;
+  width: 24px;
+}
+
+.layotBtn {
+  cursor: pointer;
+  padding: 9px 15px;
+  border: none;
+  background-color: #efefef;
+}
+
+.rightLayotBtn {
+  background-color: #1a1a1a;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}

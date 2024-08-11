@@ -1,0 +1,7 @@
+.background {
+  height: 500px;
+  background: no-repeat center/100% 100% url(../../../public/mainImage.png);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
