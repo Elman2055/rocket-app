@@ -1,22 +1,11 @@
 import RunningLine from "../ui/runningLine/RunningLine";
-import bancking from "../../../public/banckingApp.png";
 import choiceLike from "../../../public/choiceLike.png";
-import firstHint from "../../../public/firstHint.png";
 import leftOwnImage from "../../../public/leftOwnImage.png";
 import rightOwnImage from "../../../public/rightOwnImage.png";
 import Carousel from "../ui/carousel/Carousel";
 import "./MainPage.css";
 
-const MainPage = () => {
-  const carousel = [
-    { image: bancking, title: "Путешественник Элит", price: "500 200 ₸" },
-    { image: bancking, title: "Путешественник Элит", price: "500 200 ₸" },
-    { image: bancking, title: "Путешественник Элит", price: "500 200 ₸" },
-    { image: bancking, title: "Путешественник Элит", price: "500 200 ₸" },
-    { image: bancking, title: "Путешественник Элит", price: "500 200 ₸" },
-    { image: bancking, title: "Путешественник Элит", price: "500 200 ₸" },
-  ];
-
+const MainPage = ({ choiceItems, carouseItems, hintItems }) => {
   return (
     <div>
       <div className="background">
@@ -39,34 +28,26 @@ const MainPage = () => {
         </div>
         <p className="choiceTitle">Отличный выбор для всех</p>
         <div className="choiceApp">
-          <div className="definiteApp">
-            <img src={bancking} alt="bancking" className="appBackground" />
-            <img src={choiceLike} alt="choiceLike" className="choiceLike" />
-            <button className="basketBtn">Добавить в корзину</button>
-            <h4>Элитный планировщик</h4>
-            <p>300 500 ₸</p>
-          </div>
-          <div className="definiteApp">
-            <img src={bancking} alt="bancking" className="appBackground" />
-            <img src={choiceLike} alt="choiceLike" className="choiceLike" />
-            <button className="basketBtn">Добавить в корзину</button>
-            <h4>Элитный планировщик</h4>
-            <p>300 500 ₸</p>
-          </div>
-          <div className="definiteApp">
-            <img src={bancking} alt="bancking" className="appBackground" />
-            <img src={choiceLike} alt="choiceLike" className="choiceLike" />
-            <button className="basketBtn">Добавить в корзину</button>
-            <h4>Элитный планировщик</h4>
-            <p>300 500 ₸</p>
-          </div>
-          <div className="definiteApp">
-            <img src={bancking} alt="bancking" className="appBackground" />
-            <img src={choiceLike} alt="choiceLike" className="choiceLike" />
-            <button className="basketBtn">Добавить в корзину</button>
-            <h4>Элитный планировщик</h4>
-            <p>300 500 ₸</p>
-          </div>
+          {choiceItems.map((el, index) => (
+            <div key={index} className="definiteApp">
+              <img src={el.image} alt="App" className="appBackground" />
+              <img src={choiceLike} alt="choiceLike" className="choiceLike" />
+              <button className="basketBtn">Добавить в корзину</button>
+              <h4>{el.title}</h4>
+              <div style={el.beforePrice && { display: "flex" }}>
+                <p
+                  style={{
+                    marginRight: "10px",
+                    color: "gray",
+                    textDecoration: "line-through",
+                  }}
+                >
+                  {el.beforePrice}
+                </p>
+                <p>{el.price}</p>
+              </div>
+            </div>
+          ))}
         </div>
         <div className="searchAll">
           <button className="searchAppBtn">Смотреть все</button>
@@ -82,20 +63,14 @@ const MainPage = () => {
       <div className="mainPageContainer">
         <h2>Приложение, которое стоит попробовать</h2>
         <div className="hint">
-          <div>
-            <img src={firstHint} alt="" className="hintImage" />
-            <p>Образование &#8594;</p>
-          </div>
-          <div>
-            <img src={firstHint} alt="" className="hintImage" />
-            <p>Образование &#8594;</p>
-          </div>
-          <div>
-            <img src={firstHint} alt="" className="hintImage" />
-            <p>Образование &#8594;</p>
-          </div>
+          {hintItems.map((el, index) => (
+            <div key={index} style={{ cursor: "pointer" }}>
+              <img src={el.image} alt="Hint" className="hintImage" />
+              <p>{el.title} &#8594;</p>
+            </div>
+          ))}
         </div>
-        <Carousel items={carousel} />
+        <Carousel items={carouseItems} />
         <h2 style={{ textAlign: "center", marginTop: "20px" }}>
           Нас выбирают потому что
         </h2>

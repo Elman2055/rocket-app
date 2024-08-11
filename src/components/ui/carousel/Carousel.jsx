@@ -5,22 +5,20 @@ import "./Carousel.css";
 
 const Carousel = ({ items }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const itemsPerPage = 3; // Количество элементов на странице
-  const totalSlides = Math.ceil(items.length / itemsPerPage); // Количество пачек
-  const sliderRef = useRef(null); // Создаем реф для слайдера
-
+  const itemsPerPage = 3;
+  const totalSlides = Math.ceil(items.length / itemsPerPage);
+  const sliderRef = useRef(null);
   const settings = {
     dots: false,
-    infinite: false, // Не зацикливаем карусель
-    slidesToShow: itemsPerPage, // Количество элементов на странице
-    slidesToScroll: itemsPerPage, // Прокручиваем столько же элементов
+    infinite: false,
+    slidesToShow: itemsPerPage,
+    slidesToScroll: itemsPerPage,
     arrows: false,
     beforeChange: (current, next) => {
-      setCurrentSlide(Math.floor(next / itemsPerPage)); // Обновляем номер текущего слайда
+      setCurrentSlide(Math.floor(next / itemsPerPage));
     },
   };
 
-  // Функции для управления слайдером
   const handleNext = () => {
     sliderRef.current.slickNext();
   };
@@ -31,7 +29,6 @@ const Carousel = ({ items }) => {
 
   return (
     <Box sx={{ width: "100%", position: "relative", textAlign: "center" }}>
-      {/* Кнопки и число страниц справа над слайдером */}
       <Box
         sx={{
           display: "flex",
@@ -48,12 +45,12 @@ const Carousel = ({ items }) => {
             onClick={handlePrev}
             variant="outlined"
             sx={{
-              backgroundColor: "#1A1A1A", // Фон кнопки
-              color: "#EFEFEF", // Цвет текста
-              fontSize: "14px", // Уменьшаем размер шрифта
-              padding: "2px 10px", // Уменьшаем отступы
+              backgroundColor: "#1A1A1A",
+              color: "#EFEFEF",
+              fontSize: "14px",
+              padding: "2px 10px",
               "&:hover": {
-                backgroundColor: "#333333", // Цвет при наведении
+                backgroundColor: "#333333",
               },
             }}
           >
@@ -66,12 +63,12 @@ const Carousel = ({ items }) => {
             onClick={handleNext}
             variant="outlined"
             sx={{
-              backgroundColor: "#1A1A1A", // Фон кнопки
-              color: "#EFEFEF", // Цвет текста
-              fontSize: "14px", // Уменьшаем размер шрифта
-              padding: "2px 10px", // Уменьшаем отступы
+              backgroundColor: "#1A1A1A",
+              color: "#EFEFEF",
+              fontSize: "14px",
+              padding: "2px 10px",
               "&:hover": {
-                backgroundColor: "#333333", // Цвет при наведении
+                backgroundColor: "#333333",
               },
             }}
           >
@@ -86,7 +83,7 @@ const Carousel = ({ items }) => {
             <img
               src={item.image}
               alt={item.title}
-              style={{ height: "80%", width: "25vw" }}
+              style={{ height: "80%", width: "25vw", cursor: "pointer" }}
             />
             <h3>{item.title}</h3>
             <p>{item.price}</p>
