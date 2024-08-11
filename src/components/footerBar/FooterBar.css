@@ -1,0 +1,46 @@
+.footerContainer {
+  height: 180px;
+  width: 80%;
+  margin: 30px auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footerColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.fourColumn {
+  height: 87%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footerTitle {
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.fourColumn > p {
+  cursor: pointer;
+  margin-bottom: 7px;
+}
+
+.footerColumn > P {
+  cursor: pointer;
+}
+
+.footerTitle > p {
+  cursor: pointer;
+}
