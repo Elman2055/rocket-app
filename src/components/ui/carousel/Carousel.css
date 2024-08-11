@@ -1,0 +1,31 @@
+/* Carousel.css */
+.slick-list {
+  overflow: hidden; /* Скрываем полосу прокрутки */
+}
+
+.slick-track {
+  display: flex; /* Обеспечиваем горизонтальное выравнивание */
+}
+
+.slick-slide {
+  width: calc(100% / 3); /* Задаем ширину слайдов */
+  padding: 0 10px; /* Отступы для слайдов */
+  box-sizing: border-box; /* Включаем отступы в ширину */
+  margin: 0 -5px; /* Отрицательные внешние отступы для создания эффекта выхода за рамки */
+}
+
+.carousel-title {
+  /* Стили для заголовка */
+  margin: 0; /* Убираем отступы */
+}
+
+.carousel-button {
+  background-color: #1a1a1a; /* Фон кнопки */
+  color: #efefef; /* Цвет текста */
+  font-size: 14px; /* Уменьшаем размер шрифта */
+  padding: 2px 10px; /* Уменьшаем отступы */
+}
+
+.carousel-button:hover {
+  background-color: #333333; /* Цвет при наведении */
+}

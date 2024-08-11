@@ -57,17 +57,9 @@
   justify-content: space-between;
 }
 
-.definiteApp {
-  line-height: 22px;
-  position: relative;
-}
-
-.definiteApp > img {
-  height: 80%;
-  width: 19vw;
-}
-
 .basketBtn {
+  cursor: pointer;
+  display: none;
   width: 94%;
   position: absolute;
   left: 3%;
@@ -77,5 +69,71 @@
   border: none;
   padding: 10px;
   color: #1a1a1a;
+}
+
+.choiceLike {
+  display: none;
   cursor: pointer;
+  position: absolute;
+  top: 1%;
+  left: 90%;
+  height: 24px;
+  width: 24px;
+}
+
+.definiteApp {
+  line-height: 22px;
+  position: relative;
+}
+
+.appBackground {
+  height: 80%;
+  width: 19vw;
+}
+
+.appBackground:hover ~ .basketBtn {
+  display: block;
+}
+
+.appBackground:hover ~ .choiceLike {
+  display: block;
+}
+
+.searchAll {
+  display: flex;
+  justify-content: center;
+  margin: 40px;
+}
+
+.searchAppBtn {
+  cursor: pointer;
+  padding: 7px 15px;
+  border: none;
+  background-color: #1a1a1a;
+  color: #efefef;
+}
+
+.centeredText {
+  height: 90px;
+  background-color: #efefef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.centeredText > h4 {
+  width: 44%;
+  text-align: center;
+}
+
+.hint {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.hintImage {
+  height: 80%;
+  width: 25.5vw;
 }
