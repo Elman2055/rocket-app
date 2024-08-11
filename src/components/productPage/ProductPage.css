@@ -1,0 +1,104 @@
+.productContainer {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+
+.productInfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productImageContainer {
+  height: 490px;
+  display: flex;
+}
+
+.productImage {
+  width: 33vw;
+}
+
+.smallimages {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 10px;
+}
+
+.smallimages > img {
+  height: 115px;
+}
+
+.productTitleContainer {
+  margin-left: 20px;
+}
+
+.buyNow {
+  cursor: pointer;
+  width: 100%;
+  padding: 12px;
+  background-color: black;
+  color: white;
+  border: none;
+  margin-bottom: 10px;
+}
+
+.downProductBtns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.productBtn {
+  cursor: pointer;
+  width: 80%;
+  padding: 12px;
+  background-color: #efefef;
+  color: black;
+  border: none;
+  margin-bottom: 30px;
+}
+
+.likeProduct {
+  width: 18%;
+}
+
+.downTitleText {
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.questionInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.ownProduct {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ownImage {
+  height: 80%;
+  width: 45.5%;
+  margin-top: 40px;
+}
+
+.ownTitle {
+  height: 20vh;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 10%;
+}
+
+.ownBtn {
+  cursor: pointer;
+  border: none;
+  padding: 8px 15px;
+  background-color: #1a1a1a;
+  color: #efefef;
+}

@@ -1,9 +1,10 @@
 import React, { useState, useRef } from "react";
 import Slider from "react-slick";
 import { Box, Button, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import "./Carousel.css";
 
-const Carousel = ({ items }) => {
+const Carousel = ({ items, title }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const itemsPerPage = 3;
   const totalSlides = Math.ceil(items.length / itemsPerPage);
@@ -38,7 +39,7 @@ const Carousel = ({ items }) => {
         }}
       >
         <Typography variant="h4" className="carousel-title">
-          Самая востребованная утилита
+          {title}
         </Typography>
         <div style={{ display: "flex" }}>
           <Button
@@ -78,8 +79,16 @@ const Carousel = ({ items }) => {
       </Box>
 
       <Slider ref={sliderRef} {...settings}>
-        {items.map((item, index) => (
-          <div key={index} style={{ padding: "10px", boxSizing: "border-box" }}>
+        {items.map((item) => (
+          <Link
+            key={item.id}
+            to={`/product/${item.id}`}
+            style={{
+              textDecoration: "none",
+              padding: "10px",
+              boxSizing: "border-box",
+            }}
+          >
             <img
               src={item.image}
               alt={item.title}
@@ -87,7 +96,7 @@ const Carousel = ({ items }) => {
             />
             <h3>{item.title}</h3>
             <p>{item.price}</p>
-          </div>
+          </Link>
         ))}
       </Slider>
     </Box>

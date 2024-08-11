@@ -5,19 +5,31 @@ import journey from "../../../public/journeyApp.png";
 import firstHint from "../../../public/firstHint.png";
 import secondHint from "../../../public/secondHint.png";
 import thirdHint from "../../../public/thirdHint.png";
+import { useAppSelector } from "../../store";
 import MainPage from "../../components/mainPage/mainPage";
 
 const MainPageContainer = () => {
+  const {
+    products: { carousel },
+  } = useAppSelector((state) => state);
+
   const choiceItems = [
-    { image: bancking, title: "Элитный Планировщик", price: "300 500 ₸" },
     {
+      id: 1,
+      image: bancking,
+      title: "Элитный Планировщик",
+      price: "300 500 ₸",
+    },
+    {
+      id: 2,
       image: calendar,
       title: "Премиум Календарь",
       price: "250 500 ₸",
       beforePrice: "350 500 ₸",
     },
-    { image: fitnes, title: "Фитнес Профи", price: "400 500 ₸" },
+    { id: 3, image: fitnes, title: "Фитнес Профи", price: "400 500 ₸" },
     {
+      id: 4,
       image: journey,
       title: "Путешественник Элит",
       price: "500 200 ₸",
@@ -25,25 +37,10 @@ const MainPageContainer = () => {
     },
   ];
 
-  const carousel = [
-    { image: journey, title: "Путешественник Элит", price: "500 200 ₸" },
-    { image: calendar, title: "Премиум Календарь", price: "250 500 ₸" },
-    { image: bancking, title: "Элитный Планировщик", price: "300 500 ₸" },
-    { image: fitnes, title: "Фитнес Профи", price: "400 500 ₸" },
-    { image: journey, title: "Путешественник Элит", price: "500 200 ₸" },
-    { image: calendar, title: "Премиум Календарь", price: "250 500 ₸" },
-    { image: bancking, title: "Элитный Планировщик", price: "300 500 ₸" },
-    { image: fitnes, title: "Фитнес Профи", price: "400 500 ₸" },
-    { image: journey, title: "Путешественник Элит", price: "500 200 ₸" },
-    { image: calendar, title: "Премиум Календарь", price: "250 500 ₸" },
-    { image: bancking, title: "Элитный Планировщик", price: "300 500 ₸" },
-    { image: fitnes, title: "Фитнес Профи", price: "400 500 ₸" },
-  ];
-
   const hintItems = [
-    { image: firstHint, title: "Образование" },
-    { image: secondHint, title: "Здоровье и Фитнес" },
-    { image: thirdHint, title: "Финансы" },
+    { id: 5, image: firstHint, title: "Образование" },
+    { id: 6, image: secondHint, title: "Здоровье и Фитнес" },
+    { id: 7, image: thirdHint, title: "Финансы" },
   ];
 
   return (

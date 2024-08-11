@@ -2,7 +2,9 @@ import RunningLine from "../ui/runningLine/RunningLine";
 import choiceLike from "../../../public/choiceLike.png";
 import leftOwnImage from "../../../public/leftOwnImage.png";
 import rightOwnImage from "../../../public/rightOwnImage.png";
+import saleMainImage from "../../../public/saleMainImage.png";
 import Carousel from "../ui/carousel/Carousel";
+import { Link } from "react-router-dom";
 import "./MainPage.css";
 
 const MainPage = ({ choiceItems, carouseItems, hintItems }) => {
@@ -28,8 +30,13 @@ const MainPage = ({ choiceItems, carouseItems, hintItems }) => {
         </div>
         <p className="choiceTitle">Отличный выбор для всех</p>
         <div className="choiceApp">
-          {choiceItems.map((el, index) => (
-            <div key={index} className="definiteApp">
+          {choiceItems.map((el) => (
+            <Link
+              key={el.id}
+              to={`/product/${el.id}`}
+              className="definiteApp"
+              style={{ textDecoration: "none", cursor: "pointer" }}
+            >
               <img src={el.image} alt="App" className="appBackground" />
               <img src={choiceLike} alt="choiceLike" className="choiceLike" />
               <button className="basketBtn">Добавить в корзину</button>
@@ -46,7 +53,7 @@ const MainPage = ({ choiceItems, carouseItems, hintItems }) => {
                 </p>
                 <p>{el.price}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         <div className="searchAll">
@@ -63,14 +70,23 @@ const MainPage = ({ choiceItems, carouseItems, hintItems }) => {
       <div className="mainPageContainer">
         <h2>Приложение, которое стоит попробовать</h2>
         <div className="hint">
-          {hintItems.map((el, index) => (
-            <div key={index} style={{ cursor: "pointer" }}>
+          {hintItems.map((el) => (
+            <Link
+              key={el.id}
+              to={`/product/${el.id}`}
+              style={{ textDecoration: "none", cursor: "pointer" }}
+            >
               <img src={el.image} alt="Hint" className="hintImage" />
               <p>{el.title} &#8594;</p>
-            </div>
+            </Link>
           ))}
         </div>
-        <Carousel items={carouseItems} />
+        <Carousel items={carouseItems} title="Самая востребованная утилита" />
+      </div>
+
+      <img src={saleMainImage} alt="Sale" className="saleImage" />
+
+      <div className="mainPageContainer">
         <h2 style={{ textAlign: "center", marginTop: "20px" }}>
           Нас выбирают потому что
         </h2>
