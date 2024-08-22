@@ -50,14 +50,15 @@
   margin-bottom: 40px;
 }
 
+.helpAnswersTitle {
+  margin: 5px 0px 20px 0px;
+}
+
 .contactAnswersBtn {
   cursor: pointer;
   border: none;
   background-color: #1a1a1a;
   color: #efefef;
   padding: 8px 15px;
-}
-
-.helpAnswersTitle {
-  margin: 5px 0px 20px 0px;
+  margin-bottom: 20px;
 }

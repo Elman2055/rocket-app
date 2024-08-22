@@ -1,0 +1,100 @@
+.aboutBg {
+  height: 600px;
+  background: no-repeat center/100% 100%
+    url(../../../public/aboutBackground.png);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutBg > p {
+  width: 500px;
+  text-align: center;
+  color: #efefef;
+  font-size: 30px;
+}
+
+.aboutContainer {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.infoAbout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 0px 50px 0px;
+}
+
+.aboutInfoBlock {
+  width: 38%;
+}
+
+.aboutTitle {
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+.aboutcategoryTitle {
+  margin: 10px 0px 10px 0px;
+}
+
+.aboutImage {
+  width: 50%;
+}
+
+.aboutDownBg {
+  height: 600px;
+  background: no-repeat center/100% 100%
+    url(../../../public/aboutDownBackground.png);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.aboutDownBg > p {
+  width: 500px;
+  font-size: 30px;
+  color: #efefef;
+  text-align: center;
+}
+
+.aboutDownBlock {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+}
+
+.kidsProductsAbout {
+  height: 400px;
+  width: 49%;
+  background: no-repeat center/100% 100% url(../../../public/marketProducts.png);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-top: 20px;
+  color: #efefef;
+  padding: 0px 0px 15px 15px;
+}
+
+.kidsProductsAbout > p {
+  width: 94%;
+  margin: 10px 0px 10px 0px;
+}
+
+.kidsProductsAbout:nth-child(4) {
+  margin-bottom: 50px;
+}
+
+.allProducts {
+  background: no-repeat center/100% 100% url(../../../public/kidsProducts.png);
+}
+
+.aboutProductsbtn {
+  cursor: pointer;
+  border: none;
+  padding: 9px 15px;
+  background-color: #efefef;
+  color: #1a1a1a;
+}

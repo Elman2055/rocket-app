@@ -7,6 +7,8 @@ import ProfilePageContainer from "./containers/profilePageContainer/ProfilePageC
 import CategoriesContainer from "./containers/categoriesContainer/CategoriesContainer";
 import CatalogContainer from "./containers/catalogContainer/CatalogContainer";
 import AnswersContainer from "./containers/answersContainer/AnswersContainer";
+import ContactsContainer from "./containers/contactsContainer/ContactsContainer";
+import AboutContainer from "./containers/aboutContainer/AboutContainer";
 import { Provider } from "react-redux";
 import { store } from "./store";
 
@@ -22,6 +24,8 @@ const App = () => {
             <Route path="categories" element={<CategoriesContainer />} />
             <Route path="catalog/:id" element={<CatalogContainer />} />
             <Route path="answers" element={<AnswersContainer />} />
+            <Route path="contacts" element={<ContactsContainer />} />
+            <Route path="about" element={<AboutContainer />} />
           </Route>
         </Routes>
       </BrowserRouter>

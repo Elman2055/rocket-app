@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import arrow from "../../../public/arrow.png";
 import "./Answers.css";
 
@@ -79,7 +80,9 @@ const Answers = () => {
             <p className="helpAnswersTitle">
               Lorem ipsum dolor sit amet consectetur
             </p>
-            <button className="contactAnswersBtn">Связаться с нами</button>
+            <Link to={"/contacts"}>
+              <button className="contactAnswersBtn">Связаться с нами</button>
+            </Link>
           </div>
         </div>
       </div>

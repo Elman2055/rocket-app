@@ -14,13 +14,13 @@ const ToolBar = () => {
           <NavLink to={"/categories"}>
             <h3>Каталог</h3>
           </NavLink>
-          <NavLink to={"/"}>
+          <NavLink to={"/answers"}>
             <h3>FAQ</h3>
           </NavLink>
-          <NavLink to={"/"}>
+          <NavLink to={"/about"}>
             <h3>О нас</h3>
           </NavLink>
-          <NavLink to={"/"}>
+          <NavLink to={"/contacts"}>
             <h3>Контакты</h3>
           </NavLink>
         </div>

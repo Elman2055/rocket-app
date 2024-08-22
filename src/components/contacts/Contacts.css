@@ -1,0 +1,69 @@
+.contactsContainer {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.contactTitle {
+  margin: 50px 0px 50px 0px;
+}
+
+.contactsBlock {
+  width: 93%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.firstContactBlock,
+.secondContactBlock {
+  line-height: 30px;
+}
+
+.social {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.infoIndent {
+  margin: 30px 0px 30px 0px;
+}
+
+.contactInpBlock {
+  width: 40vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.contactInpBlock > input {
+  padding-left: 15px;
+}
+
+.contactInp {
+  height: 40px;
+  width: 48%;
+  padding-left: 15px;
+}
+
+.phoneInp {
+  height: 45px;
+  margin: 15px 0px 15px 0px;
+}
+
+.commitInp {
+  height: 130px;
+  padding-bottom: 16%;
+}
+
+.sendBtnContainer {
+  width: 40vw;
+  display: flex;
+  justify-content: center;
+}
+
+.sendMessageContact {
+  cursor: pointer;
+  border: none;
+  background-color: #1a1a1a;
+  color: #efefef;
+  padding: 8px 15px;
+  margin: 30px;
+}

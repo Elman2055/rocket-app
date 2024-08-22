@@ -1,7 +1,6 @@
 import Catalog from "../../components/catalog/Catalog";
 import { useAppSelector } from "../../store";
 import { useParams } from "react-router-dom";
-import "./CatalogContainer.css";
 import { useEffect, useState } from "react";
 
 const CatalogContainer = () => {
