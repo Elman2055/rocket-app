@@ -1,0 +1,63 @@
+.favouritesContainer {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.favouritesTitle {
+  margin: 70px 0px 10px 0px;
+}
+
+.favouritesAppWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2%;
+}
+
+.favouritesApps {
+  position: relative;
+  width: 24%;
+  margin-top: 30px;
+}
+
+.favouritesImage {
+  height: 260px;
+  width: 100%;
+}
+
+.favouritesLike {
+  cursor: pointer;
+  position: absolute;
+  top: 1%;
+  left: 90%;
+  height: 24px;
+  width: 24px;
+}
+
+.favouritesBtn {
+  cursor: pointer;
+  border: none;
+  background-color: #efefef;
+  color: #1a1a1a;
+  padding: 8px 24px;
+  margin-top: 10px;
+}
+
+.favouriteBasketBtn {
+  background-color: #1a1a1a;
+  color: #efefef;
+  margin-left: 10px;
+}
+
+.favouriteBtnWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.favouriteBtnWrap > button {
+  cursor: pointer;
+  border: none;
+  background-color: #1a1a1a;
+  color: #efefef;
+  padding: 8px 17px;
+  margin: 80px 0px 30px 0px;
+}

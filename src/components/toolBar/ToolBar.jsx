@@ -29,7 +29,7 @@ const ToolBar = () => {
 
         <div className="rightBlock">
           <div className="imageRightBlock">
-            <NavLink to={"/"}>
+            <NavLink to={"/favourites"}>
               <img src={likeImage} alt="likeImage" />
             </NavLink>
             <NavLink to={"/"}>
