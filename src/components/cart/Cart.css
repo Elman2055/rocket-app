@@ -1,0 +1,65 @@
+.cartContainer {
+  height: 100%;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.cartTitle {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.closeImage {
+  cursor: pointer;
+  height: 20px;
+  width: 20px;
+  margin-top: 10px;
+}
+
+.cartInfoContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.cartImages {
+  height: 142px;
+  width: 152px;
+}
+
+.priceDeleteContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.deleteCartProduct {
+  cursor: pointer;
+  color: #6b6b6b;
+  text-decoration: underline;
+}
+
+.buyContainer {
+  height: 130px;
+  background-color: #1a1a1a;
+}
+
+.priceWrap {
+  width: 90%;
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-between;
+  color: #efefef;
+}
+
+.buyBtnWrap {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.buyBtnWrap > button {
+  cursor: pointer;
+  width: 100%;
+  padding: 7px 15px;
+}

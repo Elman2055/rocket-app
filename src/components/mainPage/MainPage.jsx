@@ -4,6 +4,7 @@ import leftOwnImage from "../../../public/leftOwnImage.png";
 import rightOwnImage from "../../../public/rightOwnImage.png";
 import saleMainImage from "../../../public/saleMainImage.png";
 import Carousel from "../ui/carousel/Carousel";
+import Cart from "../cart/Cart";
 import { Link } from "react-router-dom";
 import "./MainPage.css";
 
@@ -187,6 +188,7 @@ const MainPage = ({ choiceItems, carouseItems, hintItems }) => {
           <img src={rightOwnImage} alt="rightOwnImage" className="ownImage" />
         </div>
       </div>
+      <Cart />
     </div>
   );
 };
