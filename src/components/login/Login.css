@@ -1,0 +1,65 @@
+.loginContainer {
+  width: 80%;
+  margin: 60px auto;
+}
+
+.loginImage {
+  width: 52%;
+}
+
+.loginBlock {
+  width: 93%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.loginUserInfo {
+  display: flex;
+  flex-direction: column;
+  margin-right: 6%;
+}
+
+.loginUserInfo > p {
+  margin: 10px 0px 0px 0px;
+}
+
+.loginUserInfo > input {
+  border: none;
+  border-bottom: 2px solid #8f8f8f;
+  margin-top: 30px;
+  font-size: 17px;
+  outline: none;
+  padding-left: 10px;
+}
+
+.loginUserInfo > input:focus {
+  border-bottom: 2px solid #1a1a1a;
+}
+
+.forgotPasswordLink {
+  cursor: pointer;
+  color: #8f8f8f;
+  text-align: right;
+  margin-top: 5px;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.loginBtn {
+  cursor: pointer;
+  border: none;
+  padding: 10px 15px;
+  background-color: #1a1a1a;
+  color: #efefef;
+  margin: 50px 0px 50px 0px;
+}
+
+.canRegisterBtn {
+  cursor: pointer;
+  border: none;
+  background-color: #efefef;
+  color: #1a1a1a;
+  padding: 8px 15px;
+  margin-top: 10px;
+}

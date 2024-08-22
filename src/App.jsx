@@ -9,6 +9,9 @@ import CatalogContainer from "./containers/catalogContainer/CatalogContainer";
 import AnswersContainer from "./containers/answersContainer/AnswersContainer";
 import ContactsContainer from "./containers/contactsContainer/ContactsContainer";
 import AboutContainer from "./containers/aboutContainer/AboutContainer";
+import LoginContainer from "./containers/loginContainer/LoginContainer";
+import RegisterContainer from "./containers/registerContainer/RegisterContainer";
+import ForgotPasswordContainer from "./containers/forgotPasswordContainer/ForgotPasswordContainer";
 import { Provider } from "react-redux";
 import { store } from "./store";
 
@@ -26,6 +29,9 @@ const App = () => {
             <Route path="answers" element={<AnswersContainer />} />
             <Route path="contacts" element={<ContactsContainer />} />
             <Route path="about" element={<AboutContainer />} />
+            <Route path="login" element={<LoginContainer />} />
+            <Route path="register" element={<RegisterContainer />} />
+            <Route path="password" element={<ForgotPasswordContainer />} />
           </Route>
         </Routes>
       </BrowserRouter>
