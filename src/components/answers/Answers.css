@@ -1,0 +1,63 @@
+.answersContainer {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.answersTitle {
+  margin: 50px 0px 50px 0px;
+}
+
+.answersBlockContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftBlockTitle {
+  margin: 5px 0px 20px 0px;
+}
+
+.answersNavigation {
+  height: 200px;
+  width: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 18%;
+}
+
+.answersNavigation > h3 {
+  color: gray;
+  cursor: pointer;
+}
+
+.answersNavigation > .activeNav {
+  color: black;
+}
+
+.answersLeftBlock {
+  width: 60%;
+}
+
+.answersCards {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid gray;
+  padding: 15px 0px 15px 0px;
+}
+
+.answersCards:nth-child(8) {
+  margin-bottom: 40px;
+}
+
+.contactAnswersBtn {
+  cursor: pointer;
+  border: none;
+  background-color: #1a1a1a;
+  color: #efefef;
+  padding: 8px 15px;
+}
+
+.helpAnswersTitle {
+  margin: 5px 0px 20px 0px;
+}

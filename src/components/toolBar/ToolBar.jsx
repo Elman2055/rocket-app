@@ -11,7 +11,7 @@ const ToolBar = () => {
     <div className="toolBar">
       <div className="container">
         <div className="leftBlock">
-          <NavLink to={"/"}>
+          <NavLink to={"/categories"}>
             <h3>Каталог</h3>
           </NavLink>
           <NavLink to={"/"}>

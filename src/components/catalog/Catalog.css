@@ -1,0 +1,33 @@
+.catlogContainer {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.catalogInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.catalogCards {
+  width: 24.2%;
+  margin-top: 30px;
+}
+
+.catalogImage {
+  width: 100%;
+}
+
+.lazyLoadBtn {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0px 30px 0px;
+}
+
+.lazyLoadBtn > button {
+  cursor: pointer;
+  border: none;
+  background-color: #1a1a1a;
+  color: #efefef;
+  padding: 9px 15px;
+}

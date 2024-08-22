@@ -29,7 +29,14 @@ const Carousel = ({ items, title }) => {
   };
 
   return (
-    <Box sx={{ width: "100%", position: "relative", textAlign: "center" }}>
+    <Box
+      sx={{
+        width: "100%",
+        position: "relative",
+        textAlign: "center",
+        marginBottom: "40px",
+      }}
+    >
       <Box
         sx={{
           display: "flex",
