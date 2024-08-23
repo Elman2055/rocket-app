@@ -80,3 +80,52 @@
   background-color: #efefef;
   color: #1a1a1a;
 }
+
+.formcontainer {
+  width: 43vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.blockForm {
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.blockForm > input {
+  width: 20vw;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #808080;
+  padding-left: 10px;
+  font-size: 15px;
+}
+
+.blockForm > input:focus {
+  border-bottom: 2px solid #000000;
+}
+
+.changePasswordBtn {
+  cursor: pointer;
+  border: none;
+  background-color: #efefef;
+  color: #1a1a1a;
+  padding: 8px 15px;
+}
+
+.saveChangesContainer {
+  width: 43vw;
+  display: flex;
+  justify-content: center;
+  margin: 10% 0 12% 0;
+}
+
+.saveChangesBtn {
+  cursor: pointer;
+  border: none;
+  background-color: #1a1a1a;
+  color: #efefef;
+  padding: 9px 15px;
+}

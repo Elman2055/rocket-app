@@ -224,10 +224,17 @@ const initialState = {
       price: "250 500 ₸",
     },
   ],
+  isOpenCart: false,
 };
 
 export const productsSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    setIsOpenCart(state, action) {
+      state.isOpenCart = action.payload;
+    },
+  },
 });
+
+export const { setIsOpenCart } = productsSlice.actions;
