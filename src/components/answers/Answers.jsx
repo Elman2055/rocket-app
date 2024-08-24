@@ -1,8 +1,15 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import arrow from "../../../public/arrow.png";
 import "./Answers.css";
 
 const Answers = () => {
+  const [expandedCard, setExpandedCard] = useState(null);
+
+  const toggleCard = (index) => {
+    setExpandedCard(expandedCard === index ? null : index);
+  };
+
   return (
     <div className="answersContainer">
       <h2 className="answersTitle">Темы часто задаваемых вопросов</h2>
@@ -19,61 +26,46 @@ const Answers = () => {
           <p className="leftBlockTitle">
             Lorem ipsum dolor sit amet consectetur
           </p>
-          <div className="answersCards">
-            <h3>Как скачать и установить приложение?</h3>
-            <img
-              src={arrow}
-              alt="arrow"
-              style={{ height: "8px", width: "15px", cursor: "pointer" }}
-            />
-          </div>
-
-          <div className="answersCards">
-            <h3>Какие операционные системы поддерживаются?</h3>
-            <img
-              src={arrow}
-              alt="arrow"
-              style={{ height: "8px", width: "15px", cursor: "pointer" }}
-            />
-          </div>
-
-          <div className="answersCards">
-            <h3>Какова стоимость подписки на премиум-версию?</h3>
-            <img
-              src={arrow}
-              alt="arrow"
-              style={{ height: "8px", width: "15px", cursor: "pointer" }}
-            />
-          </div>
-
-          <div className="answersCards">
-            <h3>Есть ли пробный период для платных приложений?</h3>
-            <img
-              src={arrow}
-              alt="arrow"
-              style={{ height: "8px", width: "15px", cursor: "pointer" }}
-            />
-          </div>
-
-          <div className="answersCards">
-            <h3>Как я могу получить техническую поддержку?</h3>
-            <img
-              src={arrow}
-              alt="arrow"
-              style={{ height: "8px", width: "15px", cursor: "pointer" }}
-            />
-          </div>
-
-          <div className="answersCards">
-            <h3>
-              Можно ли вернуть деньги за приложение, если оно мне не подошло?
-            </h3>
-            <img
-              src={arrow}
-              alt="arrow"
-              style={{ height: "8px", width: "15px", cursor: "pointer" }}
-            />
-          </div>
+          {[
+            "Как скачать и установить приложение?",
+            "Какие операционные системы поддерживаются?",
+            "Какова стоимость подписки на премиум-версию?",
+            "Есть ли пробный период для платных приложений?",
+            "Как я могу получить техническую поддержку?",
+            "Можно ли вернуть деньги за приложение, если оно мне не подошло?",
+          ].map((question, index) => (
+            <div
+              key={index}
+              className={`answersCards ${
+                expandedCard === index ? "expanded" : ""
+              }`}
+            >
+              <div
+                className="answersCardsHeader"
+                onClick={() => toggleCard(index)}
+              >
+                <h3>{question}</h3>
+                <img
+                  src={arrow}
+                  alt="arrow"
+                  className={expandedCard === index ? "arrow rotated" : "arrow"}
+                />
+              </div>
+              {expandedCard === index && (
+                <>
+                  <div className="mar"></div>
+                  <div className="answersContent">
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Iste dolorem libero sint nostrum exercitationem porro,
+                      nulla natus sequi quaerat. Quam omnis tenetur aspernatur
+                      excepturi facere! Unde at fuga est ad.
+                    </p>
+                  </div>
+                </>
+              )}
+            </div>
+          ))}
 
           <div className="helpBlock">
             <h2>Нужна дополнительная помощь?</h2>

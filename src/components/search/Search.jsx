@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
@@ -126,22 +126,31 @@ export default function SearchWithProductList({
 }) {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState("");
+  const [open, setOpen] = useState(true);
 
   const {
     products: { products },
   } = useAppSelector((state) => state);
 
+  useEffect(() => {
+    if (isOpenSearch) {
+      setOpen(true);
+    }
+  }, [isOpenSearch]);
+
   return (
     <>
       {isOpenSearch && (
         <>
-          {" "}
           <Overlay onClick={() => setIsOpenSearch(false)} />
           <Container>
             <CloseButton onClick={() => setIsOpenSearch(false)}>
               &times;
             </CloseButton>
             <StyledAutocomplete
+              open={open}
+              onOpen={() => setOpen(true)}
+              onClose={() => setOpen(false)}
               options={products}
               getOptionLabel={(option) => option.title}
               inputValue={inputValue}

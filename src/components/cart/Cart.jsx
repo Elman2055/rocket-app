@@ -2,12 +2,10 @@ import closeImage from "../../../public/closeImage.png";
 import bancking from "../../../public/banckingApp.png";
 import calendar from "../../../public/calendarApp.png";
 import fitnes from "../../../public/fitnesApp.png";
-import { useAppSelector, useAppDispatch } from "../../store";
-import { setIsOpenCart } from "../../store/products.slice";
 import { Drawer, CssBaseline, AppBar } from "@mui/material";
 import "./Cart.css";
 
-const Cart = () => {
+const Cart = ({ isOpenCart, setIsOpenCart }) => {
   const choiceItems = [
     {
       id: 1,
@@ -25,19 +23,13 @@ const Cart = () => {
     { id: 3, image: fitnes, title: "Фитнес Профи", price: "400 500 ₸" },
   ];
 
-  const dispatch = useAppDispatch();
-
-  const {
-    products: { isOpenCart },
-  } = useAppSelector((state) => state);
-
   return (
     <>
       {isOpenCart && (
         <>
           <div
             className="cartWrapper"
-            onClick={() => dispatch(setIsOpenCart(false))}
+            onClick={() => setIsOpenCart(false)}
           ></div>
           <div>
             <CssBaseline />
@@ -64,7 +56,7 @@ const Cart = () => {
                     src={closeImage}
                     alt="close"
                     className="closeImage"
-                    onClick={() => dispatch(setIsOpenCart(false))}
+                    onClick={() => setIsOpenCart(false)}
                   />
                 </div>
 

@@ -1,0 +1,76 @@
+.lgAdminContainer {
+  display: flex;
+  align-items: center;
+}
+
+.leftBlockAdmin {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+}
+
+.leftBlockBg {
+  height: 50vh;
+  background-color: #1a1a1a;
+  font-size: 25px;
+  color: #efeefe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20%;
+}
+
+.amdinLoginImage {
+  height: 50vh;
+}
+
+.inputsLgAdmin > h4 {
+  margin-bottom: 10px;
+}
+
+.inputsLgAdmin > input {
+  height: 40px;
+  width: 100%;
+  border: none;
+  background-color: rgb(233, 233, 233);
+  padding-left: 10px;
+}
+
+.lgLogoAdmin {
+  width: 150px;
+  height: 80px;
+  margin-bottom: 15%;
+}
+
+.rightBlock {
+  width: 24%;
+  height: 63vh;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+}
+
+.logoBlockAdmin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lgAdminBtn {
+  cursor: pointer;
+  border: none;
+  padding: 13px 15px;
+  background-color: #1a1a1a;
+  color: #efeefe;
+  margin-top: 20px;
+}
+
+@media (min-width: 1024px) and (max-width: 1286px) {
+  .leftBlockAdmin {
+    width: 32%;
+  }
+
+  .rightBlock {
+    width: 31%;
+  }
+}

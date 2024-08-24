@@ -39,11 +39,37 @@
 }
 
 .answersCards {
+  border-top: 1px solid gray;
+  padding: 15px 0px 15px 0px;
+  position: relative;
+}
+
+.answersCardsHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid gray;
-  padding: 15px 0px 15px 0px;
+  cursor: pointer;
+}
+
+.answersContent {
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transform: translateY(100%);
+  color: rgb(92, 92, 92);
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  padding-bottom: 20px;
+}
+
+.answersCards.expanded .answersContent {
+  max-height: 100px;
+  transform: translateY(0);
+}
+
+.answersCards .answersContent p {
+  margin: 0;
 }
 
 .answersCards:nth-child(8) {
@@ -61,4 +87,18 @@
   color: #efefef;
   padding: 8px 15px;
   margin-bottom: 20px;
+}
+
+.arrow {
+  height: 8px;
+  width: 15px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.rotated {
+  transform: rotate(180deg);
+}
+
+.mar {
+  margin-bottom: 7%;
 }

@@ -6,7 +6,7 @@ import firstHint from "../../../public/firstHint.png";
 import secondHint from "../../../public/secondHint.png";
 import thirdHint from "../../../public/thirdHint.png";
 import { useAppSelector } from "../../store";
-import MainPage from "../../components/mainPage/mainPage";
+import MainPage from "../../components/mainPage/MainPage";
 
 const MainPageContainer = () => {
   const {

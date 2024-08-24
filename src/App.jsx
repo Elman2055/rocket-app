@@ -13,6 +13,7 @@ import LoginContainer from "./containers/loginContainer/LoginContainer";
 import RegisterContainer from "./containers/registerContainer/RegisterContainer";
 import ForgotPasswordContainer from "./containers/forgotPasswordContainer/ForgotPasswordContainer";
 import FavouritesContainer from "./containers/favouritesContainer/FavouritesContainer";
+import AdminLoginContainer from "./containers/adminLoginContainer/AdminLoginContainer";
 import { Provider } from "react-redux";
 import { store } from "./store";
 
@@ -35,6 +36,8 @@ const App = () => {
             <Route path="password" element={<ForgotPasswordContainer />} />
             <Route path="favourites" element={<FavouritesContainer />} />
           </Route>
+
+          <Route path="lg-admin" element={<AdminLoginContainer />} />
         </Routes>
       </BrowserRouter>
     </Provider>

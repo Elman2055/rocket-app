@@ -4,17 +4,27 @@ import leftOwnImage from "../../../public/leftOwnImage.png";
 import rightOwnImage from "../../../public/rightOwnImage.png";
 import saleMainImage from "../../../public/saleMainImage.png";
 import Carousel from "../ui/carousel/Carousel";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./MainPage.css";
 
 const MainPage = ({ choiceItems, carouseItems, hintItems }) => {
+  const navigate = useNavigate();
+
   return (
     <div>
       <div className="background">
         <p>Ваши любимые приложения здесь</p>
         <div className="mainBackgroundBtns">
-          <button>Утилиты</button>
-          <button className="playBtnBackground">Игры</button>
+          <button onClick={() => navigate({ pathname: "/catalog/4" })}>
+            Утилиты
+          </button>
+          <button
+            className="playBtnBackground"
+            onClick={() => navigate({ pathname: "/catalog/3" })}
+          >
+            Игры
+          </button>
         </div>
       </div>
       <RunningLine />

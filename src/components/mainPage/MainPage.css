@@ -20,6 +20,7 @@
 }
 
 .mainBackgroundBtns > button {
+  cursor: pointer;
   padding: 7px 30px;
   background-color: #efefef;
   border: none;

@@ -224,17 +224,21 @@ const initialState = {
       price: "250 500 ₸",
     },
   ],
-  isOpenCart: false,
+  isAuthUser: false,
+  isEdit: false,
 };
 
 export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    setIsOpenCart(state, action) {
-      state.isOpenCart = action.payload;
+    setIsAuthUser(state, action) {
+      state.isAuthUser = action.payload;
+    },
+    setIsEdit(state, action) {
+      state.isEdit = action.payload;
     },
   },
 });
 
-export const { setIsOpenCart } = productsSlice.actions;
+export const { setIsAuthUser, setIsEdit } = productsSlice.actions;

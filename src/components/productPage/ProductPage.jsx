@@ -105,7 +105,7 @@ const ProductPage = ({ items }) => {
       </div>
 
       <div className="ownBlock ownProduct">
-        <img src={rightOwnImage} alt="rightOwnImage" className="ownImage" />
+        <img src={rightOwnImage} alt="rightOwnImage" className="ownImageProduct" />
         <div
           style={{ width: "50%", display: "flex", justifyContent: "center" }}
         >

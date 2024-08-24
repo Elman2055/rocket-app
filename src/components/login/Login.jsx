@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
 import rightOwnImage from "../../../public/rightOwnImage.png";
+import { useAppDispatch } from "../../store";
+import { useNavigate } from "react-router-dom";
+import { setIsAuthUser } from "../../store/products.slice";
 import "./Login.css";
 
 const Login = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   return (
     <div className="loginContainer">
       <div className="loginBlock">
@@ -15,7 +21,15 @@ const Login = () => {
           <Link to={"/password"} className="forgotPasswordLink">
             <span>Забыли пароль?</span>
           </Link>
-          <button className="loginBtn">Войти</button>
+          <button
+            className="loginBtn"
+            onClick={() => {
+              dispatch(setIsAuthUser(true));
+              navigate({ pathname: "/profile" });
+            }}
+          >
+            Войти
+          </button>
           <div>
             <h2>Еще не зарегистрировались?</h2>
             <Link to={"/register"}>
