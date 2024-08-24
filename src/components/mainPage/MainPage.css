@@ -189,3 +189,129 @@
   background-color: #1a1a1a;
   color: #efefef;
 }
+
+.addBasketMobile {
+  cursor: pointer;
+  border: none;
+  background-color: #1a1a1a;
+  color: #efefef;
+  padding: 8px 15px;
+  margin-top: 10px;
+}
+
+@media (min-width: 1024px) and (max-width: 1286px) {
+  .ownImage {
+    width: 39.3vw;
+  }
+
+  .playBtnBackground {
+    margin-left: 10px;
+  }
+}
+
+@media (min-width: 260px) and (max-width: 1024px) {
+  .background {
+    background: no-repeat center/100% 100% url(../../../public/mobileMainBg.png);
+  }
+
+  .background > p {
+    text-align: center;
+  }
+
+  .mainBackgroundBtns {
+    width: auto;
+  }
+
+  .mainBackgroundBtns > .playBtnBackground {
+    margin-left: 10px;
+  }
+
+  .mainText {
+    width: auto;
+  }
+
+  .mainText > h2 {
+    font-size: 17px;
+  }
+
+  .choiceTitle {
+    font-size: 22px;
+  }
+
+  .choiceApp {
+    overflow-x: auto;
+  }
+
+  .choiceApp::-webkit-scrollbar {
+    display: none;
+  }
+
+  .appBackground {
+    height: 216px;
+    width: 210px;
+    margin-right: 10px;
+  }
+
+  .appBackground:hover ~ .basketBtn {
+    display: none;
+  }
+
+  .appBackground:hover ~ .choiceLike {
+    display: none;
+  }
+
+  .centeredText {
+    margin-top: 50px;
+  }
+
+  .centeredText > h4 {
+    width: 95%;
+    font-size: 14px;
+  }
+
+  .hint {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hintImage {
+    width: 100%;
+  }
+
+  .saleImage {
+    height: 140px;
+  }
+
+  .titleWeAdd {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .weAddPromoText {
+    width: 100%;
+  }
+
+  .ownBlock {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ownTitle {
+    height: auto;
+    width: auto;
+    margin: 0;
+  }
+
+  .ownImage {
+    width: 100%;
+  }
+
+  .ownBtn {
+    margin: 10px 0px 30px 0px;
+  }
+
+  .ownBlockReverse {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}

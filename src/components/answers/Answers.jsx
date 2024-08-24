@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import arrow from "../../../public/arrow.png";
+import useDesktop from "../hooks/useDesktop";
 import "./Answers.css";
 
 const Answers = () => {
+  const isDesktop = useDesktop();
+
   const [expandedCard, setExpandedCard] = useState(null);
 
   const toggleCard = (index) => {
@@ -14,12 +17,16 @@ const Answers = () => {
     <div className="answersContainer">
       <h2 className="answersTitle">Темы часто задаваемых вопросов</h2>
       <div className="answersBlockContainer">
-        <div className="answersNavigation">
-          <h3 className="activeNav">Популярные вопросы &#8594;</h3>
-          <h3>Проблемы с заказом</h3>
-          <h3>Оплата, акции и подарочные сертификаты</h3>
-          <h3>Возврат, возмещение</h3>
-        </div>
+        {isDesktop ? (
+          <div className="answersNavigation">
+            <h3 className="activeNav">Популярные вопросы &#8594;</h3>
+            <h3>Проблемы с заказом</h3>
+            <h3>Оплата, акции и подарочные сертификаты</h3>
+            <h3>Возврат, возмещение</h3>
+          </div>
+        ) : (
+          <></>
+        )}
 
         <div className="answersLeftBlock">
           <h2>Популярные вопросы</h2>

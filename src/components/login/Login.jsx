@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import rightOwnImage from "../../../public/rightOwnImage.png";
+import useDesktop from "../hooks/useDesktop";
 import { useAppDispatch } from "../../store";
 import { useNavigate } from "react-router-dom";
 import { setIsAuthUser } from "../../store/products.slice";
@@ -8,11 +9,16 @@ import "./Login.css";
 const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const isDesktop = useDesktop();
 
   return (
     <div className="loginContainer">
       <div className="loginBlock">
-        <img src={rightOwnImage} alt="app" className="loginImage" />
+        {isDesktop ? (
+          <img src={rightOwnImage} alt="app" className="loginImage" />
+        ) : (
+          <></>
+        )}
         <div className="loginUserInfo">
           <h2>Вход</h2>
           <p>Введите, пожалуйста, ваш адрес электронной почты и пароль</p>

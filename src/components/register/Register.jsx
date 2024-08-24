@@ -1,12 +1,19 @@
 import { Link } from "react-router-dom";
 import rightOwnImage from "../../../public/rightOwnImage.png";
+import useDesktop from "../hooks/useDesktop";
 import "./Register.css";
 
 const Register = () => {
+  const isDesktop = useDesktop();
+
   return (
     <div className="registerContainer">
       <div className="registerBlock">
-        <img src={rightOwnImage} alt="app" className="registerImage" />
+        {isDesktop ? (
+          <img src={rightOwnImage} alt="app" className="registerImage" />
+        ) : (
+          <></>
+        )}
         <div className="registerUserInfo">
           <h2>Зарегистрироваться</h2>
           <p>Введите свои данные для создания учетной записи</p>
@@ -18,7 +25,7 @@ const Register = () => {
           <button className="registerBtn">Зарегистрироваться</button>
           <div>
             <h2>У вас уже есть аккаунт?</h2>
-            <Link to={'/login'}>
+            <Link to={"/login"}>
               <button className="canLoginBtn">Авторизоваться</button>
             </Link>
           </div>

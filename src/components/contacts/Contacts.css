@@ -37,6 +37,11 @@
   padding-left: 15px;
 }
 
+.contactsBlockElem {
+  display: flex;
+  justify-content: space-between;
+}
+
 .contactInp {
   height: 40px;
   width: 48%;
@@ -66,4 +71,74 @@
   color: #efefef;
   padding: 8px 15px;
   margin: 30px;
+}
+
+@media (min-width: 1024px) and (max-width: 1286px) {
+  .secondContactBlock {
+    margin-left: 30px;
+    margin-right: 25px;
+  }
+}
+
+.conectionsColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 488px) and (max-width: 1024px) {
+  .allBlocks {
+    display: flex;
+  }
+
+  .contactsBlock {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .secondContactBlock {
+    margin-left: 30px;
+    margin-right: 25px;
+  }
+}
+
+@media (min-width: 260px) and (max-width: 488px) {
+  .allBlocks {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contactsBlock {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .secondContactBlock {
+    margin-right: 25px;
+  }
+
+  .contactsBlockElem {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contactInpBlock {
+    width: 100%;
+  }
+
+  .contactInp {
+    width: 100%;
+  }
+
+  .contactInp:first-child {
+    margin-bottom: 15px;
+  }
+
+  .sendBtnContainer {
+    width: auto;
+  }
+
+  .sendMessageContact {
+    width: 100%;
+    margin: 15px 0px 15px 0px;
+  }
 }

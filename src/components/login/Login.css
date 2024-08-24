@@ -63,3 +63,10 @@
   padding: 8px 15px;
   margin-top: 10px;
 }
+
+@media (min-width: 1024px) and (max-width: 1286px) {
+  .loginUserInfo {
+    margin-right: 3%;
+    margin-left: 2%;
+  }
+}

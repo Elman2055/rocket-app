@@ -1,16 +1,20 @@
 import { useState } from "react";
 import rightOwnImage from "../../../public/rightOwnImage.png";
 import ReactCodeInput from "react-verification-code-input";
-import "./ForgotPassword.css";
+import useDesktop from "../hooks/useDesktop";
 import { Link } from "react-router-dom";
+import "./ForgotPassword.css";
 
 const ForgotPassword = () => {
+  const isDesktop = useDesktop();
   const [sendLink, setSendLink] = useState(false);
 
   return (
     <div className="passwordContainer">
       <div className="passwordBlock">
-        <img src={rightOwnImage} alt="app" className="passwordImage" />
+        {isDesktop && (
+          <img src={rightOwnImage} alt="app" className="passwordImage" />
+        )}
         <div className="passwordUserInfo">
           <h2>{sendLink ? "Введите код" : "Забыли пароль?"}</h2>
           <p>
@@ -21,14 +25,9 @@ const ForgotPassword = () => {
             <>
               <ReactCodeInput
                 fields={4}
-                fieldWidth={105}
-                fieldHeight={40}
-                placeholder={[
-                  `_________`,
-                  "_________",
-                  "_________",
-                  "_________",
-                ]}
+                fieldWidth={isDesktop ? 105 : 50} // Ширина поля на десктопе и мобильных
+                fieldHeight={isDesktop ? 40 : 40} // Высота поля
+                placeholder={Array(4).fill("_________")} // Используем одинаковые placeholder для мобильных и десктопа
                 className="codeInput"
               />
 
@@ -39,7 +38,7 @@ const ForgotPassword = () => {
               <input type="text" placeholder="Адрес электронной почты*" />
 
               <button className="passwordBtn" onClick={() => setSendLink(true)}>
-                Отравить ссылку для сброса пароля
+                Отправить ссылку для сброса пароля
               </button>
             </>
           )}

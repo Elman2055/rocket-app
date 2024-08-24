@@ -71,3 +71,42 @@
   color: #1a1a1a;
   padding: 8px 15px;
 }
+
+@media (min-width: 1024px) and (max-width: 1286px) {
+  .categoryWrap {
+    gap: 8px;
+  }
+}
+
+@media (min-width: 717px) and (max-width: 1030px) {
+  .categoryList {
+    width: 32%;
+  }
+}
+
+@media (min-width: 498px) and (max-width: 717px) {
+  .categoryList {
+    width: 48%;
+  }
+}
+
+@media (min-width: 250px) and (max-width: 498px) {
+  .categoryList {
+    width: 90%;
+  }
+}
+
+@media (min-width: 260px) and (max-width: 1024px) {
+  .infoProductsCat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .kidProduct {
+    height: 350px;
+  }
+
+  .marketProduct {
+    height: 350px;
+  }
+}

@@ -1,8 +1,11 @@
 import rightOwnImage from "../../../public/rightOwnImage.png";
 import logo from "../../../public/logoFooter.png";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./AdminLogin.css";
 
 const AdminLogin = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="lgAdminContainer">
       <div className="leftBlockAdmin">
@@ -13,7 +16,7 @@ const AdminLogin = () => {
         </div>
         <img src={rightOwnImage} alt="app" className="amdinLoginImage" />
       </div>
-      <div className="rightBlock">
+      <div className="rightBlockProdAdmin">
         <div className="logoBlockAdmin">
           <img src={logo} alt="logo" className="lgLogoAdmin" />
           <h2>Вход</h2>
@@ -27,7 +30,12 @@ const AdminLogin = () => {
           <h4>Пароль</h4>
           <input type="text" />
         </div>
-        <button className="lgAdminBtn">Войти</button>
+        <button
+          className="lgAdminBtn"
+          onClick={() => navigate({ pathname: "/admin/categories" })}
+        >
+          Войти
+        </button>
       </div>
     </div>
   );

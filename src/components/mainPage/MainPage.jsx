@@ -3,13 +3,16 @@ import choiceLike from "../../../public/choiceLike.png";
 import leftOwnImage from "../../../public/leftOwnImage.png";
 import rightOwnImage from "../../../public/rightOwnImage.png";
 import saleMainImage from "../../../public/saleMainImage.png";
+import saleImageMobile from "../../../public/saleImageMobile.png";
 import Carousel from "../ui/carousel/Carousel";
+import useDesktop from "../hooks/useDesktop";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./MainPage.css";
 
 const MainPage = ({ choiceItems, carouseItems, hintItems }) => {
   const navigate = useNavigate();
+  const isDesktop = useDesktop();
 
   return (
     <div>
@@ -27,7 +30,7 @@ const MainPage = ({ choiceItems, carouseItems, hintItems }) => {
           </button>
         </div>
       </div>
-      <RunningLine />
+      <RunningLine position={"0"} />
       <div className="mainPageContainer">
         <div className="mainText">
           <h2>Lorem ipsum dolor sit amet consectetur</h2>
@@ -45,7 +48,10 @@ const MainPage = ({ choiceItems, carouseItems, hintItems }) => {
               key={el.id}
               to={`/product/${el.id}`}
               className="definiteApp"
-              style={{ textDecoration: "none", cursor: "pointer" }}
+              style={{
+                textDecoration: "none",
+                cursor: "pointer",
+              }}
             >
               <img src={el.image} alt="App" className="appBackground" />
               <img src={choiceLike} alt="choiceLike" className="choiceLike" />
@@ -63,12 +69,21 @@ const MainPage = ({ choiceItems, carouseItems, hintItems }) => {
                 </p>
                 <p>{el.price}</p>
               </div>
+              {!isDesktop && (
+                <>
+                  <button className="addBasketMobile">
+                    Добавить в корзину
+                  </button>
+                </>
+              )}
             </Link>
           ))}
         </div>
-        <div className="searchAll">
-          <button className="searchAppBtn">Смотреть все</button>
-        </div>
+        {isDesktop && (
+          <div className="searchAll">
+            <button className="searchAppBtn">Смотреть все</button>
+          </div>
+        )}
       </div>
       <div className="centeredText">
         <h4>
@@ -84,20 +99,81 @@ const MainPage = ({ choiceItems, carouseItems, hintItems }) => {
             <Link
               key={el.id}
               to={`/product/${el.id}`}
-              style={{ textDecoration: "none", cursor: "pointer" }}
+              style={{
+                textDecoration: "none",
+                cursor: "pointer",
+                marginBottom: "20px",
+              }}
             >
               <img src={el.image} alt="Hint" className="hintImage" />
               <p>{el.title} &#8594;</p>
             </Link>
           ))}
         </div>
-        <Carousel items={carouseItems} title="Самая востребованная утилита" />
+        {isDesktop ? (
+          <Carousel items={carouseItems} title="Самая востребованная утилита" />
+        ) : (
+          <>
+            <h2 style={{ fontSize: "19px" }}>Самая востребованная утилита</h2>
+            <div className="choiceApp">
+              {choiceItems.map((el) => (
+                <Link
+                  key={el.id}
+                  to={`/product/${el.id}`}
+                  className="definiteApp"
+                  style={{
+                    textDecoration: "none",
+                    cursor: "pointer",
+                  }}
+                >
+                  <img src={el.image} alt="App" className="appBackground" />
+                  <img
+                    src={choiceLike}
+                    alt="choiceLike"
+                    className="choiceLike"
+                  />
+                  <button className="basketBtn">Добавить в корзину</button>
+                  <h4>{el.title}</h4>
+                  <div style={el.beforePrice && { display: "flex" }}>
+                    <p
+                      style={{
+                        marginRight: "10px",
+                        color: "gray",
+                        textDecoration: "line-through",
+                      }}
+                    >
+                      {el.beforePrice}
+                    </p>
+                    <p>{el.price}</p>
+                  </div>
+                  {!isDesktop && (
+                    <>
+                      <button className="addBasketMobile">
+                        Добавить в корзину
+                      </button>
+                    </>
+                  )}
+                </Link>
+              ))}
+            </div>
+          </>
+        )}
       </div>
 
-      <img src={saleMainImage} alt="Sale" className="saleImage" />
+      <img
+        src={isDesktop ? saleMainImage : saleImageMobile}
+        alt="Sale"
+        className="saleImage"
+      />
 
       <div className="mainPageContainer">
-        <h2 style={{ textAlign: "center", marginTop: "20px" }}>
+        <h2
+          style={{
+            textAlign: "center",
+            marginTop: "20px",
+            fontSize: `${isDesktop ? "revert-layer" : "20px"}`,
+          }}
+        >
           Нас выбирают потому что
         </h2>
         <div className="titleWeAdd">
@@ -165,7 +241,11 @@ const MainPage = ({ choiceItems, carouseItems, hintItems }) => {
         <div className="ownBlock">
           <img src={leftOwnImage} alt="leftOwnImage" className="ownImage" />
           <div
-            style={{ width: "50%", display: "flex", justifyContent: "center" }}
+            style={{
+              width: `${isDesktop ? "50%" : "100%"}`,
+              display: "flex",
+              justifyContent: "center",
+            }}
           >
             <div className="ownTitle">
               <h2>Lorem ipsum dolor sit amet</h2>
@@ -179,9 +259,13 @@ const MainPage = ({ choiceItems, carouseItems, hintItems }) => {
             </div>
           </div>
         </div>
-        <div className="ownBlock">
+        <div className="ownBlock ownBlockReverse">
           <div
-            style={{ width: "50%", display: "flex", justifyContent: "center" }}
+            style={{
+              width: `${isDesktop ? "50%" : "100%"}`,
+              display: "flex",
+              justifyContent: "center",
+            }}
           >
             <div className="ownTitle">
               <h2>Lorem ipsum dolor sit amet</h2>

@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 const Layout = () => {
   return (
     <>
-      <RunningLine />
+      <RunningLine position={"1001"} />
       <ToolBar />
       <main>
         <Outlet />

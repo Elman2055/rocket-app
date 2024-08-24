@@ -6,13 +6,19 @@ import arrow from "../../../public/arrow.png";
 import rightOwnImage from "../../../public/rightOwnImage.png";
 import Carousel from "../ui/carousel/Carousel";
 import likeBtn from "../../../public/likeBtn.png";
+import SliderComponent from "../mobileSlider/MobileSlider";
+import useDesktop from "../hooks/useDesktop";
+import { Link } from "react-router-dom";
 import { useAppSelector } from "../../store";
 import { useParams } from "react-router-dom";
-import "./ProductPage.css";
 import { useEffect, useState } from "react";
+import "./ProductPage.css";
 
 const ProductPage = ({ items }) => {
   const [addProduct, setAddProduct] = useState();
+  const isDesktop = useDesktop();
+
+  const images = [bancking, calendar, fitnes, journey];
 
   const { id } = useParams();
 
@@ -34,21 +40,27 @@ const ProductPage = ({ items }) => {
     <div className="productContainer">
       <div className="productInfo">
         <div className="productImageContainer">
-          <div className="smallimages">
-            <img src={bancking} alt="bancking" />
-            <img src={calendar} alt="calendar" />
-            <img src={fitnes} alt="fitnes" />
-            <img src={journey} alt="journey" />
-          </div>
-          {addProduct &&
-            addProduct.map((el) => (
-              <img
-                key={el.id}
-                src={el.image}
-                alt="product"
-                className="productImage"
-              />
-            ))}
+          {isDesktop ? (
+            <>
+              <div className="smallimages">
+                <img src={bancking} alt="bancking" />
+                <img src={calendar} alt="calendar" />
+                <img src={fitnes} alt="fitnes" />
+                <img src={journey} alt="journey" />
+              </div>
+              {addProduct &&
+                addProduct.map((el) => (
+                  <img
+                    key={el.id}
+                    src={el.image}
+                    alt="product"
+                    className="productImage"
+                  />
+                ))}
+            </>
+          ) : (
+            <SliderComponent images={images} />
+          )}
         </div>
         <div className="productTitleContainer">
           {addProduct &&
@@ -105,11 +117,19 @@ const ProductPage = ({ items }) => {
       </div>
 
       <div className="ownBlock ownProduct">
-        <img src={rightOwnImage} alt="rightOwnImage" className="ownImageProduct" />
+        <img
+          src={rightOwnImage}
+          alt="rightOwnImage"
+          className="ownImageProduct"
+        />
         <div
-          style={{ width: "50%", display: "flex", justifyContent: "center" }}
+          style={{
+            width: `${isDesktop ? "50%" : "auto"}`,
+            display: "flex",
+            justifyContent: "center",
+          }}
         >
-          <div className="ownTitle">
+          <div className="ownTitleProduct">
             <h2>Lorem ipsum dolor sit amet</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur. Quis ridiculus fringilla
@@ -122,9 +142,48 @@ const ProductPage = ({ items }) => {
         </div>
       </div>
 
-      <div style={{ margin: "50px 0px 50px 0px" }}>
-        <Carousel items={items} title="Похожее что вы искали" />
-      </div>
+      {isDesktop ? (
+        <>
+          {" "}
+          <div style={{ margin: "50px 0px 50px 0px" }}>
+            <Carousel items={items} title="Похожее что вы искали" />
+          </div>
+        </>
+      ) : (
+        <>
+          {" "}
+          <h2 style={{ fontSize: "19px" }}>Похожее что вы искали</h2>
+          <div className="choiceApp" style={{ margin: "20px 0px 50px 10px" }}>
+            {items.map((el) => (
+              <Link
+                key={el.id}
+                to={`/product/${el.id}`}
+                className="definiteApp"
+                style={{
+                  textDecoration: "none",
+                  cursor: "pointer",
+                }}
+              >
+                <img src={el.image} alt="App" className="appBackground" />
+                <h4>{el.title}</h4>
+                <div style={el.beforePrice && { display: "flex" }}>
+                  <p
+                    style={{
+                      marginRight: "10px",
+                      color: "gray",
+                      textDecoration: "line-through",
+                    }}
+                  >
+                    {el.beforePrice}
+                  </p>
+                  <p>{el.price}</p>
+                </div>
+                <button className="addBasketMobile">Добавить в корзину</button>
+              </Link>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };

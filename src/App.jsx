@@ -46,7 +46,7 @@ const App = () => {
           <Route path="/admin" element={<AdminLayot />}>
             <Route path="categories" element={<AdminCategoriesContainer />} />
             <Route path="products" element={<AdminProductsContainer />} />
-            <Route path="password"element={<ChangePasswordAdminContainer/>}/>
+            <Route path="password" element={<ChangePasswordAdminContainer />} />
           </Route>
         </Routes>
       </BrowserRouter>

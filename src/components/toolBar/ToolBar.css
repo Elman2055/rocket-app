@@ -42,14 +42,14 @@
   margin-left: 40%;
 }
 
-.layotBtn {
+.layotBtnProd {
   cursor: pointer;
   padding: 9px 15px;
   border: none;
   background-color: #efefef;
 }
 
-.rightLayotBtn {
+.rightLayotBtnReg {
   background-color: #1a1a1a;
   color: white;
 }
@@ -132,4 +132,93 @@ a {
 
 .profileOptions li:hover {
   color: #a4a4a4;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 250px;
+  height: 100%;
+  width: 100%;
+  background-color: #f4f4f4;
+  transition: left 0.3s ease;
+  padding: 20px 0 0 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 50px;
+}
+
+.nav-list li {
+  cursor: pointer;
+  padding: 25px 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  top: 16px;
+  left: 1px;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.menu-btn.hide {
+  display: none;
+}
+
+@media (min-width: 1024px) and (max-width: 1286px) {
+  .leftBlock {
+    width: 35%;
+  }
+
+  .rightBlock {
+    width: 40%;
+  }
+}
+
+@media (min-width: 250px) and (max-width: 1024px) {
+  .toolBar {
+    height: 60px;
+    margin: 0;
+  }
+}
+
+.headerMobile {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+  z-index: 1001;
+}
+
+.blockHeaerMobile {
+  width: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-btn.hide {
+  display: none;
 }

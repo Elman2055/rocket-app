@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import "./RunningLine.css";
 
-const RunningLine = () => {
+const RunningLine = ({ position }) => {
   const longText = [
     "lorem ipsum 100%",
     "lorem ipsum 100%",
@@ -29,6 +29,8 @@ const RunningLine = () => {
         display: "flex",
         alignItems: "center",
         backgroundColor: "#EFEFEF",
+        position: "relative",
+        zIndex: `${position}`,
       }}
     >
       <Box

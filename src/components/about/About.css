@@ -98,3 +98,48 @@
   background-color: #efefef;
   color: #1a1a1a;
 }
+
+@media (min-width: 260px) and (max-width: 1024px) {
+  .aboutBg {
+    height: 400px;
+  }
+
+  .aboutContainer {
+    width: 90%;
+  }
+
+  .aboutBg > p {
+    font-size: 26px;
+  }
+
+  .infoAbout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .aboutTitle {
+    font-size: 20px;
+  }
+
+  .aboutInfoBlock {
+    width: 100%;
+  }
+
+  .aboutImage {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .aboutDownBg {
+    height: 400px;
+  }
+
+  .aboutDownBlock {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .kidsProductsAbout {
+    width: 100%;
+  }
+}

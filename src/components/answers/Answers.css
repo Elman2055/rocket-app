@@ -102,3 +102,46 @@
 .mar {
   margin-bottom: 7%;
 }
+
+@media (min-width: 660px) and (max-width: 864px) {
+  .answersContent {
+    top: 40%;
+  }
+  .mar {
+    margin-bottom: 13%;
+  }
+}
+
+@media (min-width: 460px) and (max-width: 660px) {
+  .answersContent {
+    top: 30%;
+  }
+  .mar {
+    margin-bottom: 20%;
+  }
+}
+
+@media (min-width: 260px) and (max-width: 460px) {
+  .answersContent {
+    top: 45%;
+  }
+  .mar {
+    margin-bottom: 44%;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1286px) {
+  .answersContent {
+    top: 40%;
+  }
+
+  .mar {
+    margin-bottom: 20%;
+  }
+}
+
+@media (min-width: 260px) and (max-width: 1024px) {
+  .answersLeftBlock {
+    width: 100%;
+  }
+}

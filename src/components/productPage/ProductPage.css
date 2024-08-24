@@ -103,7 +103,7 @@
   margin-top: 40px;
 }
 
-.ownTitle {
+.ownTitleProduct {
   height: 20vh;
   width: 90%;
   display: flex;
@@ -119,4 +119,29 @@
   padding: 8px 15px;
   background-color: #1a1a1a;
   color: #efefef;
+}
+
+@media (min-width: 260px) and (max-width: 1024px) {
+  .productInfo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .productContainer {
+    width: 100%;
+    margin: 0;
+  }
+
+  .productTitleContainer {
+    margin-right: 20px;
+  }
+
+  .ownImageProduct {
+    width: 90%;
+  }
+
+  .ownTitleProduct {
+    height: auto;
+    margin: 0;
+  }
 }
