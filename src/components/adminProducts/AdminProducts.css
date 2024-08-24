@@ -37,6 +37,7 @@ h2 {
 }
 
 .product-card {
+  cursor: pointer;
   width: 18%;
   overflow: hidden;
   text-align: left;
@@ -70,6 +71,18 @@ h2 {
   font-size: 16px;
   font-weight: bold;
   color: #000;
+}
+
+.addProductAdmin {
+  position: fixed;
+  top: 90%;
+  left: 37%;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #1a1a1a;
+  color: #efefef;
+  padding: 15px 10%;
 }
 
 @media (min-width: 1024px) and (max-width: 1286px) {

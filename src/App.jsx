@@ -17,6 +17,7 @@ import AdminLoginContainer from "./containers/adminLoginContainer/AdminLoginCont
 import AdminLayot from "./components/adminLayot/AdminLayot";
 import AdminCategoriesContainer from "./containers/adminCategoriesContainer/AdminCategoriesContainer";
 import AdminProductsContainer from "./containers/adminProductsContainer/AdminProductsContainer";
+import ChangePasswordAdminContainer from "./containers/changePasswordAdminConainer/ChangePasswordAdminContainer";
 import { Provider } from "react-redux";
 import { store } from "./store";
 
@@ -44,7 +45,8 @@ const App = () => {
 
           <Route path="/admin" element={<AdminLayot />}>
             <Route path="categories" element={<AdminCategoriesContainer />} />
-            <Route path="products" element={<AdminProductsContainer/>}/>
+            <Route path="products" element={<AdminProductsContainer />} />
+            <Route path="password"element={<ChangePasswordAdminContainer/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

@@ -27,11 +27,17 @@
   text-decoration: none;
   color: black;
   font-weight: normal;
+  position: relative;
 }
 
-.navigationAdmin .activeLink {
-  border-bottom: 2px solid black;
-  font-weight: bold;
+.navigationAdmin .activeLink::after {
+  content: "";
+  position: absolute;
+  bottom: -103%;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background-color: black;
 }
 
 @media (min-width: 1024px) and (max-width: 1286px) {
