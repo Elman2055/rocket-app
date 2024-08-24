@@ -1,0 +1,86 @@
+.categoriesContainerAdmin {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h2 {
+  margin: 20px 0;
+}
+
+.categoriesAdminProd {
+  margin: 0 auto;
+  width: 56%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.category-btn {
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-btn.active {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.product-card {
+  width: 18%;
+  overflow: hidden;
+  text-align: left;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+}
+
+.product-info {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-title h4 {
+  margin: 0 0 5px 0;
+  font-size: 16px;
+  color: #000;
+}
+
+.product-title p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
+
+@media (min-width: 1024px) and (max-width: 1286px) {
+  .categoriesAdminProd {
+    width: 740px;
+  }
+
+  .product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+}
