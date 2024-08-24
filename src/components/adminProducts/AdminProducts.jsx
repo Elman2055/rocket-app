@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useAppSelector } from "../../store";
+import banckingApp from "../../../public/banckingApp.png";
+import calendarApp from "../../../public/calendarApp.png";
 import "./AdminProducts.css";
 
 const AdminProducts = () => {
@@ -21,6 +23,18 @@ const AdminProducts = () => {
 
   const handleCategoryClick = (category) => {
     setActiveCategory(category);
+  };
+
+  const [selectedDiscount, setSelectedDiscount] = useState(null);
+  const [images, setImages] = useState([banckingApp, calendarApp]);
+
+  const handleFileChange = (event) => {
+    const files = Array.from(event.target.files);
+    setImages(files.map((file) => URL.createObjectURL(file)));
+  };
+
+  const handleDiscountClick = (value) => {
+    setSelectedDiscount(value);
   };
 
   return (
@@ -61,3 +75,82 @@ const AdminProducts = () => {
 };
 
 export default AdminProducts;
+
+/*
+
+
+
+
+
+
+
+
+
+        <div className="containerAddProduct">
+      <div className="column">
+        <p className="titleAdmin">Изображение</p>
+        <div className="image-upload">
+          <input
+            type="file"
+            id="file-input"
+            className="file-input"
+            onChange={handleFileChange}
+            multiple
+          />
+          <label htmlFor="file-input" className="upload-btn">
+            Загрузить
+          </label>
+        </div>
+        <div className="image-preview">
+          {images.map((src, index) => (
+            <img
+              key={index}
+              src={src}
+              alt={`Preview ${index + 1}`}
+              className="preview-image"
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="column">
+        <div className="input-group">
+          <p className="titleAdmin">Заголовок</p>
+          <input type="text" id="title" className="input-field" />
+        </div>
+        <div className="input-group">
+          <label htmlFor="price" className="titleAdmin">
+            Цена
+          </label>
+          <input type="text" id="price" className="input-field" />
+        </div>
+        <div className="discount-group">
+          <p className="titleAdmin">Скидка</p>
+          <div className="discount-buttons">
+            {[10, 15, 20, 25, 30, 35, 40, 45].map((discount) => (
+              <button
+                key={discount}
+                className={`discount-btn ${
+                  selectedDiscount === discount ? "active" : ""
+                }`}
+                onClick={() => handleDiscountClick(discount)}
+              >
+                {discount}%
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="input-group">
+          <label htmlFor="description" className="titleAdmin">
+            Описание
+          </label>
+          <textarea
+            id="description"
+            className="input-field description-field"
+            rows={13}
+          />
+        </div>
+        <button className="save-btn">Сохранить</button>
+      </div>
+    </div>
+*/
