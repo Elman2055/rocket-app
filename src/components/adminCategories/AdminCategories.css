@@ -1,0 +1,82 @@
+.adminCategoryContainer {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.addCategoryBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.addCategoryBlock > h2 {
+  margin: 5% 0 4% 0;
+}
+
+.addCategoryBlock > div {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.addCategoryBlock > div > input {
+  height: 40px;
+  border: none;
+  background-color: rgb(233, 233, 233);
+  margin: 2% 0 7% 0;
+  padding-left: 2%;
+}
+
+.addCategoryBlock > div > button {
+  cursor: pointer;
+  border: none;
+  background-color: #1a1a1a;
+  color: #efefef;
+  padding: 12px 15px;
+}
+
+.categoriesContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4%;
+  margin-top: 30px;
+}
+
+.categoriesCards {
+  width: 48%;
+  background-color: #efefef;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 15px;
+  margin-top: 10px;
+}
+
+.categoriesAdminBtn {
+  width: 38%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.categoriesAdminBtn > p {
+  cursor: pointer;
+}
+
+.categoriesAdminBtn > p:first-child {
+  text-decoration: underline;
+}
+
+.categoriesAdminBtn > p:last-child {
+  color: #d32323;
+}
+
+@media (min-width: 1024px) and (max-width: 1286px) {
+  .adminCategoryContainer {
+    width: 90%;
+  }
+
+  .categoriesAdminBtn {
+    width: 170px;
+  }
+}

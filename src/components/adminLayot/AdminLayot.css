@@ -1,0 +1,45 @@
+.headerContainer {
+  height: 70px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.adminLayotBlock {
+  height: 70px;
+  width: 65%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 5%;
+}
+
+.logoLayot {
+  height: 55px;
+}
+
+.navigationAdmin {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navigationAdmin a {
+  text-decoration: none;
+  color: black;
+  font-weight: normal;
+}
+
+.navigationAdmin .activeLink {
+  border-bottom: 2px solid black;
+  font-weight: bold;
+}
+
+@media (min-width: 1024px) and (max-width: 1286px) {
+  .adminLayotBlock {
+    width: 78%;
+  }
+
+  .navigationAdmin {
+    width: 72%;
+  }
+}
