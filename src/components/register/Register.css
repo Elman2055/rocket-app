@@ -68,9 +68,11 @@
 @media (min-width: 260px) and (max-width: 1024px) {
   .registerBlock {
     width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   .registerUserInfo {
-    width: 100%;
+    width: auto;
   }
 }

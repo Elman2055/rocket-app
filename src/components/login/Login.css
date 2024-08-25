@@ -65,8 +65,22 @@
 }
 
 @media (min-width: 1024px) and (max-width: 1286px) {
+  .loginBlock {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
   .loginUserInfo {
     margin-right: 3%;
     margin-left: 2%;
+  }
+}
+
+@media (min-width: 260px) and (max-width: 1024px) {
+  .loginBlock {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }

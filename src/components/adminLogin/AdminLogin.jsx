@@ -1,6 +1,6 @@
 import rightOwnImage from "../../../public/rightOwnImage.png";
 import logo from "../../../public/logoFooter.png";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./AdminLogin.css";
 
 const AdminLogin = () => {

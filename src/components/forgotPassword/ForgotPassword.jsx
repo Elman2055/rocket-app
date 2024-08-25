@@ -25,9 +25,9 @@ const ForgotPassword = () => {
             <>
               <ReactCodeInput
                 fields={4}
-                fieldWidth={isDesktop ? 105 : 50} // Ширина поля на десктопе и мобильных
-                fieldHeight={isDesktop ? 40 : 40} // Высота поля
-                placeholder={Array(4).fill("_________")} // Используем одинаковые placeholder для мобильных и десктопа
+                fieldWidth={isDesktop ? 105 : 50}  
+                fieldHeight={isDesktop ? 40 : 40}  
+                placeholder={Array(4).fill("_________")}  
                 className="codeInput"
               />
 

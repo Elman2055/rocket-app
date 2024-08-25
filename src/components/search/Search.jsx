@@ -5,7 +5,9 @@ import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 import { useAppSelector } from "../../store";
+import useDesktop from "../hooks/useDesktop";
 import searchImage from "../../../public/search.png";
+import closeImage from "../../../public/closeImage.png";
 import { Box, InputAdornment } from "@mui/material";
 
 const Overlay = styled("div")({
@@ -18,16 +20,28 @@ const Overlay = styled("div")({
   zIndex: 1,
 });
 
-const Container = styled(Box)({
+const Container = styled(Box)(({ theme }) => ({
   width: "80%",
   margin: "0 auto",
   position: "relative",
   zIndex: 2,
   backgroundColor: "#fff",
   borderRadius: "8px",
-});
+  [theme.breakpoints.down("md")]: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    height: "100%",
+    width: "90%",
+    borderRadius: "0",
+    transform: "translateX(-100%)",
+    transition: "transform 0.3s ease-in-out",
+    zIndex: "1007",
+    paddingTop: "80px",
+  },
+}));
 
-const CloseButton = styled(IconButton)({
+const CloseButton = styled(IconButton)(({ theme }) => ({
   position: "absolute",
   height: "30px",
   top: "22%",
@@ -37,14 +51,38 @@ const CloseButton = styled(IconButton)({
   "&:hover": {
     backgroundColor: "#bdbdbd",
   },
-});
+  [theme.breakpoints.down("md")]: {
+    top: "13%",
+    right: "7%",
+  },
+}));
 
-const StyledAutocomplete = styled(Autocomplete)({
+const MobileCloseButton = styled(IconButton)(({ theme }) => ({
+  position: "absolute",
+  top: "2%",
+  right: "5%",
+  zIndex: "300",
+  backgroundColor: "#e0e0e0",
+  display: "none",
+  "&:hover": {
+    backgroundColor: "transparent",
+  },
+  [theme.breakpoints.down("md")]: {
+    display: "block",
+    backgroundColor: "transparent",
+  },
+}));
+
+const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
   width: "100%",
+  margin: "0 auto",
   "& .MuiAutocomplete-listbox": {
     padding: "0",
   },
-});
+  [theme.breakpoints.down("md")]: {
+    width: "90%",
+  },
+}));
 
 const StyledTextField = styled(TextField)({
   width: "100%",
@@ -124,6 +162,7 @@ export default function SearchWithProductList({
   setIsOpenSearch,
   isOpenSearch,
 }) {
+  const isDesktop = useDesktop();
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState("");
   const [open, setOpen] = useState(true);
@@ -143,7 +182,15 @@ export default function SearchWithProductList({
       {isOpenSearch && (
         <>
           <Overlay onClick={() => setIsOpenSearch(false)} />
-          <Container>
+          <Container
+            style={
+              isOpenSearch && !isDesktop ? { transform: "translateX(0)" } : {}
+            }
+          >
+            <MobileCloseButton onClick={() => setIsOpenSearch(false)}>
+              <img src={closeImage} alt="close" />
+            </MobileCloseButton>
+
             <CloseButton onClick={() => setIsOpenSearch(false)}>
               &times;
             </CloseButton>

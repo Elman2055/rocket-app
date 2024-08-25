@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import Contacts from "../../components/contacts/Contacts";
-import "./ContactsContainer.css";
 
 const ContactsContainer = () => {
   useEffect(() => {

@@ -1,6 +1,5 @@
 import Favourites from "../../components/favourites/Favourites";
 import { useAppSelector } from "../../store";
-import "./FavouritesContainer.css";
 
 const FavouritesContainer = () => {
   const {

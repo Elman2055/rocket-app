@@ -198,7 +198,10 @@ const ToolBar = () => {
               </NavLink>
 
               <div className="blockHeaerMobile">
-                <NavLink to={"/profile"} onClick={() => setIsOpen(false)}>
+                <NavLink
+                  to={`${isAuthUser ? "/profile" : "/login"}`}
+                  onClick={() => setIsOpen(false)}
+                >
                   <img src={user} alt="user" className="userImage" />
                 </NavLink>
 

@@ -29,10 +29,12 @@ const Favourites = ({ items }) => {
               </p>
               <p>{el.price}</p>
             </div>
-            <button className="favouritesBtn">Удалить</button>
-            <button className="favouritesBtn favouriteBasketBtn">
-              В коризну
-            </button>
+            <div className="favouritesBtnContainer">
+              <button className="favouritesBtn">Удалить</button>
+              <button className="favouritesBtn favouriteBasketBtn">
+                В коризну
+              </button>
+            </div>
           </div>
         ))}
       </div>

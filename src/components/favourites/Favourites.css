@@ -33,6 +33,10 @@
   width: 24px;
 }
 
+.favouritesBtnContainer {
+  display: flex;
+}
+
 .favouritesBtn {
   cursor: pointer;
   border: none;
@@ -60,4 +64,45 @@
   color: #efefef;
   padding: 8px 17px;
   margin: 80px 0px 30px 0px;
+}
+
+@media (min-width: 260px) and (max-width: 1100px) {
+  .favouritesContainer {
+    width: 90%;
+  }
+
+  .favouritesBtnContainer {
+    flex-direction: column;
+  }
+
+  .favouriteBasketBtn {
+    margin: 0;
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: 750px) and (max-width: 1100px) {
+  .favouritesApps {
+    width: 32%;
+  }
+}
+
+@media (min-width: 450px) and (max-width: 750px) {
+  .favouritesAppWrap {
+    gap: 2.2%;
+  }
+
+  .favouritesApps {
+    width: 48%;
+  }
+
+  .favouritesLike {
+    left: 86%;
+  }
+}
+
+@media (min-width: 250px) and (max-width: 450px) {
+  .favouritesApps {
+    width: 100%;
+  }
 }

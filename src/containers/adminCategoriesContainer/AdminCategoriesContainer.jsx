@@ -1,8 +1,7 @@
 import AdminCategories from "../../components/adminCategories/AdminCategories";
-import "./adminCategoriesContainer.css";
 
-const adminCategoriesContainer = () => {
+const AdminCategoriesContainer = () => {
   return <AdminCategories />;
 };
 
-export default adminCategoriesContainer;
+export default AdminCategoriesContainer;

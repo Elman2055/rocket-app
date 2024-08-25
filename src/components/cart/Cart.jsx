@@ -1,11 +1,17 @@
+import React from "react";
+import Drawer from "@mui/material/Drawer";
+import CssBaseline from "@mui/material/CssBaseline";
+import AppBar from "@mui/material/AppBar";
+import useDesktop from "../hooks/useDesktop";
 import closeImage from "../../../public/closeImage.png";
 import bancking from "../../../public/banckingApp.png";
 import calendar from "../../../public/calendarApp.png";
 import fitnes from "../../../public/fitnesApp.png";
-import { Drawer, CssBaseline, AppBar } from "@mui/material";
 import "./Cart.css";
 
 const Cart = ({ isOpenCart, setIsOpenCart }) => {
+  const isDesktop = useDesktop();
+
   const choiceItems = [
     {
       id: 1,
@@ -36,15 +42,24 @@ const Cart = ({ isOpenCart, setIsOpenCart }) => {
             <AppBar
               position="fixed"
               style={{
-                width: `calc(100% - ${600}px)`,
-                marginLeft: 600,
+                width: `calc(100% - ${isDesktop ? 600 : 0}px)`,
+                marginLeft: isDesktop ? 600 : 0,
               }}
             ></AppBar>
             <Drawer
-              variant="permanent"
-              style={{ width: 600, flexShrink: 0 }}
-              PaperProps={{ style: { width: 600 } }}
-              anchor="right"
+              variant={isDesktop ? "permanent" : "temporary"}
+              anchor={isDesktop ? "right" : "bottom"}
+              open={isOpenCart}
+              onClose={() => setIsOpenCart(false)}
+              PaperProps={{
+                style: {
+                  width: isDesktop ? 600 : "100%",
+                  height: isDesktop ? "auto" : "88%",
+                  display: "flex",
+                  flexDirection: "column",
+                  overflowY: "auto",
+                },
+              }}
             >
               <div className="cartContainer">
                 <div className="cartTitle">
@@ -64,7 +79,7 @@ const Cart = ({ isOpenCart, setIsOpenCart }) => {
                   {choiceItems.map((el) => (
                     <div key={el.id} className="cartInfoContainer">
                       <img src={el.image} alt="app" className="cartImages" />
-                      <div style={{ width: "370px" }}>
+                      <div className="cartCardsContent">
                         <h3>Lorem ipsum dolor sit amet consectetur.</h3>
                         <p style={{ fontSize: "14px" }}>
                           Lorem ipsum dolor sit amet consectetur. Eget nec nam

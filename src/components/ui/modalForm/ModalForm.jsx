@@ -46,6 +46,27 @@ const DialogStyled = styled(Dialog)({
   },
 });
 
+const DialogTitleStyled = styled(DialogTitle)(({ theme }) => ({
+  padding: "16px 24px",
+  "& h2": {
+    margin: "0",
+  },
+  "& p": {
+    fontSize: "15px",
+    margin: "0",
+  },
+  [theme.breakpoints.between("xs", "sm")]: {
+    padding: "0",
+  },
+}));
+
+const DialogContentStyled = styled(DialogContent)(({ theme }) => ({
+  padding: "20px 24px",
+  [theme.breakpoints.between("xs", "sm")]: {
+    padding: "0",
+  },
+}));
+
 const buttonStyled = {
   cursor: "pointer",
   width: "94%",
@@ -79,9 +100,9 @@ export default function ModalForm({ open, setOpen }) {
     <div>
       <DialogStyled open={open} onClose={handleClose}>
         <Container>
-          <DialogTitle>
+          <DialogTitleStyled>
             <h2>Смена пароля</h2>
-            <p style={{ fontSize: "15px" }}>
+            <p>
               Lorem ipsum dolor sit amet consectetur. Aliquam odio elementum
               gravida orci ipsum dolor
             </p>
@@ -96,8 +117,8 @@ export default function ModalForm({ open, setOpen }) {
                 top: 8,
               }}
             ></IconButton>
-          </DialogTitle>
-          <DialogContent>
+          </DialogTitleStyled>
+          <DialogContentStyled>
             <CustomTextField
               name="input1"
               label="Старый пароль"
@@ -122,7 +143,7 @@ export default function ModalForm({ open, setOpen }) {
               value={inputValues.input3}
               onChange={handleChange}
             />
-          </DialogContent>
+          </DialogContentStyled>
           <DialogActions>
             <button style={buttonStyled} onClick={handleClose}>
               Сохранить
