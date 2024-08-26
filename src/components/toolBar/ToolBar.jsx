@@ -117,7 +117,9 @@ const ToolBar = () => {
                 <li
                   style={{ paddingTop: "14%" }}
                   onClick={() => {
-                    navigate({ pathname: "/profile" });
+                    navigate({
+                      pathname: `${isAuthUser ? "/profile" : "/login"}`,
+                    });
                     setIsOpen(false);
                   }}
                 >
@@ -159,60 +161,66 @@ const ToolBar = () => {
             </div>
 
             <div className="headerMobile">
-              <div className="blockHeaerMobile">
+              <div className="navigationMobileHeader">
                 <div className="blockHeaerMobile">
-                  {isOpen ? (
-                    <button className="close-btn" onClick={toggleSidebar}>
-                      <img src={closeImage} alt="close" />
-                    </button>
-                  ) : (
-                    <button
-                      className="menu-btn"
-                      id="menu-btn"
-                      onClick={toggleSidebar}
-                    >
-                      ☰
-                    </button>
-                  )}
+                  <div className="blockHeaerMobile">
+                    {isOpen ? (
+                      <h3
+                        className="close-btn"
+                        onClick={toggleSidebar}
+                        style={{ marginTop: "8px" }}
+                      >
+                        <img src={closeImage} alt="close" />
+                      </h3>
+                    ) : (
+                      <h3
+                        className="menu-btn"
+                        id="menu-btn"
+                        onClick={toggleSidebar}
+                      >
+                        ☰
+                      </h3>
+                    )}
+                  </div>
+                  <NavLink
+                    onClick={() => {
+                      setIsOpenSearch(true);
+                      setIsOpen(false);
+                    }}
+                  >
+                    <img
+                      src={searchImage}
+                      alt="searchImage"
+                      style={{ marginTop: "10px" }}
+                    />
+                  </NavLink>
                 </div>
-                <NavLink
-                  onClick={() => {
-                    setIsOpenSearch(true);
-                    setIsOpen(false);
-                  }}
-                >
-                  <img
-                    src={searchImage}
-                    alt="searchImage"
-                    style={{ marginTop: "5px" }}
-                  />
-                </NavLink>
-              </div>
 
-              <NavLink
-                to={"/"}
-                style={{ marginTop: "5px" }}
-                onClick={() => setIsOpen(false)}
-              >
-                <img src={centerImage} alt="logo" style={{ width: "60px" }} />
-              </NavLink>
-
-              <div className="blockHeaerMobile">
                 <NavLink
-                  to={`${isAuthUser ? "/profile" : "/login"}`}
+                  to={"/"}
+                  style={{ marginTop: "5px" }}
                   onClick={() => setIsOpen(false)}
                 >
-                  <img src={user} alt="user" className="userImage" />
+                  <img src={centerImage} alt="logo" style={{ width: "60px" }} />
                 </NavLink>
 
-                <NavLink
-                  onClick={() => {
-                    setIsOpenCart(true);
-                    setIsOpen(false);
-                  }}
-                >
-                  <img src={shopImage} alt="shopImage" />
-                </NavLink>
+                <div className="blockHeaerMobile">
+                  <NavLink
+                    to={`${isAuthUser ? "/profile" : "/login"}`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <img src={user} alt="user" className="userImage" />
+                  </NavLink>
+
+                  <NavLink
+                    onClick={() => {
+                      setIsOpenCart(true);
+                      setIsOpen(false);
+                    }}
+                  >
+                    <img src={shopImage} alt="shopImage" />
+                  </NavLink>
+                </div>
               </div>
             </div>
           </>

@@ -48,7 +48,9 @@ const ProfilePage = ({ items }) => {
               <img
                 src={arrow}
                 alt="arrow"
-                className={`arrow ${mobileActiveIndex === 0 ? "rotate" : ""}`}
+                className={`${
+                  mobileActiveIndex === 0 ? "rotate" : ""
+                } transition`}
               />
             )}
           </h3>
@@ -99,7 +101,9 @@ const ProfilePage = ({ items }) => {
               <img
                 src={arrow}
                 alt="arrow"
-                className={`arrow ${mobileActiveIndex === 1 ? "rotate" : ""}`}
+                className={`${
+                  mobileActiveIndex === 1 ? "rotate" : ""
+                } transition`}
               />
             )}
           </h3>

@@ -151,36 +151,39 @@ const ProductPage = ({ items }) => {
         </>
       ) : (
         <>
-          {" "}
-          <h2 style={{ fontSize: "19px" }}>Похожее что вы искали</h2>
-          <div className="choiceApp" style={{ margin: "20px 0px 50px 10px" }}>
-            {items.map((el) => (
-              <Link
-                key={el.id}
-                to={`/product/${el.id}`}
-                className="definiteApp"
-                style={{
-                  textDecoration: "none",
-                  cursor: "pointer",
-                }}
-              >
-                <img src={el.image} alt="App" className="appBackground" />
-                <h4>{el.title}</h4>
-                <div style={el.beforePrice && { display: "flex" }}>
-                  <p
-                    style={{
-                      marginRight: "10px",
-                      color: "gray",
-                      textDecoration: "line-through",
-                    }}
-                  >
-                    {el.beforePrice}
-                  </p>
-                  <p>{el.price}</p>
-                </div>
-                <button className="addBasketMobile">Добавить в корзину</button>
-              </Link>
-            ))}
+          <div style={{ width: "90%", margin: "0 auto" }}>
+            <h2 style={{ fontSize: "19px" }}>Похожее что вы искали</h2>
+            <div className="choiceApp" style={{ margin: "20px 0px 50px 0px" }}>
+              {items.map((el) => (
+                <Link
+                  key={el.id}
+                  to={`/product/${el.id}`}
+                  className="definiteApp"
+                  style={{
+                    textDecoration: "none",
+                    cursor: "pointer",
+                  }}
+                >
+                  <img src={el.image} alt="App" className="appBackground" />
+                  <h4>{el.title}</h4>
+                  <div style={el.beforePrice && { display: "flex" }}>
+                    <p
+                      style={{
+                        marginRight: "10px",
+                        color: "gray",
+                        textDecoration: "line-through",
+                      }}
+                    >
+                      {el.beforePrice}
+                    </p>
+                    <p>{el.price}</p>
+                  </div>
+                  <button className="addBasketMobile">
+                    Добавить в корзину
+                  </button>
+                </Link>
+              ))}
+            </div>
           </div>
         </>
       )}

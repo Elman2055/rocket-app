@@ -182,7 +182,6 @@ export const FooterBar = () => {
                     src={arrow}
                     alt="arrow"
                     style={{
-                      marginLeft: "8px",
                       transform: openSections.main ? "rotate(180deg)" : "none",
                       transition: "transform 0.3s ease",
                     }}
@@ -209,7 +208,6 @@ export const FooterBar = () => {
                     src={arrow}
                     alt="arrow"
                     style={{
-                      marginLeft: "8px",
                       transform: openSections.categories
                         ? "rotate(180deg)"
                         : "none",
@@ -238,7 +236,6 @@ export const FooterBar = () => {
                     src={arrow}
                     alt="arrow"
                     style={{
-                      marginLeft: "8px",
                       transform: openSections.contacts
                         ? "rotate(180deg)"
                         : "none",

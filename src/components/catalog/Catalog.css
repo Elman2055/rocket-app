@@ -52,10 +52,18 @@
 }
 
 @media (min-width: 260px) and (max-width: 607px) {
+  .catlogContainer {
+    width: 90%;
+  }
+
+  .catalogInfo {
+    gap: 3%;
+  }
+
   .catalogCards {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 49.3%;
+    width: 48%;
   }
 }

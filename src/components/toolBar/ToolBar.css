@@ -169,15 +169,13 @@ a {
   border: none;
   font-size: 24px;
   cursor: pointer;
-  position: absolute;
-  top: 16px;
-  left: 1px;
 }
 
 .menu-btn {
   background: none;
   border: none;
-  font-size: 25px;
+  font-size: 30px;
+  color: rgb(60, 60, 60);
   cursor: pointer;
 }
 
@@ -204,12 +202,18 @@ a {
 
 .headerMobile {
   height: 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border-bottom: 1px solid #ccc;
   position: relative;
   z-index: 1001;
+}
+
+.navigationMobileHeader {
+  width: 90%;
+  height: 60px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .blockHeaerMobile {

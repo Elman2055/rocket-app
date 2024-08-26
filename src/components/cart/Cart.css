@@ -76,6 +76,8 @@
   cursor: pointer;
   width: 100%;
   padding: 7px 15px;
+  background-color: #efefef;
+  color: #1a1a1a;
 }
 
 @media (min-width: 500px) and (max-width: 1024px) {
@@ -108,7 +110,7 @@
   .cartContainer::after {
     content: "";
     display: block;
-    height: 130px;
+    height: 150px;
   }
 
   .cartTitle {
@@ -147,6 +149,7 @@
   .buyContainer {
     position: fixed;
     bottom: 0;
+    height: 150px;
     width: 100%;
     display: flex;
     flex-direction: column;
