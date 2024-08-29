@@ -1,7 +1,10 @@
+import { useState } from "react";
 import AdminCategories from "../../components/adminCategories/AdminCategories";
 
 const AdminCategoriesContainer = () => {
-  return <AdminCategories />;
+  const [category, setCategory] = useState("");
+
+  return <AdminCategories category={category} setCategory={setCategory} />;
 };
 
 export default AdminCategoriesContainer;

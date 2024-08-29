@@ -10,18 +10,23 @@ const Categories = ({ items, carouselItems }) => {
     <div className="categoriesContainer">
       <h2>Категории приложений</h2>
       <div className="categoryWrap">
-        {items.map((el) => (
-          <Link
-            key={el.id}
-            to={`/catalog/${el.id}`}
-            style={{ textDecoration: "none", cursor: "pointer" }}
-            className="categoryList"
-          >
-            <img src={el.image} alt="categoties" className="categoryImage" />
-            <h3 className="categoryTitle">{el.category}</h3>
-            <button className="infoProductBtn">Посмотреть товары</button>
-          </Link>
-        ))}
+        {items.length > 0 &&
+          items.map((el) => (
+            <Link
+              key={el.product_id}
+              to={`/catalog/${el.category}`}
+              style={{ textDecoration: "none", cursor: "pointer" }}
+              className="categoryList"
+            >
+              <img
+                src={`https://approcket.kz/api/products/previewImage/${el.image_preview_one}`}
+                alt="categoties"
+                className="categoryImage"
+              />
+              <h3 className="categoryTitle">{el.category}</h3>
+              <button className="infoProductBtn">Посмотреть товары</button>
+            </Link>
+          ))}
       </div>
       <div className="infoProductsCat">
         <div className="kidProduct">
@@ -48,39 +53,52 @@ const Categories = ({ items, carouselItems }) => {
       </div>
 
       {isDesktop ? (
-        <Carousel title={"Рекомендуемое для вас"} items={carouselItems} />
+        <>
+          {carouselItems.length > 0 && (
+            <Carousel title={"Рекомендуемое для вас"} items={carouselItems} />
+          )}
+        </>
       ) : (
         <>
           {" "}
           <h2 style={{ fontSize: "19px" }}>Рекомендуемое для вас</h2>
-          <div className="choiceApp" style={{marginBottom: "50px"}}>
-            {carouselItems.map((el) => (
-              <Link
-                key={el.id}
-                to={`/product/${el.id}`}
-                className="definiteApp"
-                style={{
-                  textDecoration: "none",
-                  cursor: "pointer",
-                }}
-              >
-                <img src={el.image} alt="App" className="appBackground" />
-                <h4>{el.title}</h4>
-                <div style={el.beforePrice && { display: "flex" }}>
-                  <p
-                    style={{
-                      marginRight: "10px",
-                      color: "gray",
-                      textDecoration: "line-through",
-                    }}
-                  >
-                    {el.beforePrice}
-                  </p>
-                  <p>{el.price}</p>
-                </div>
-                <button className="addBasketMobile">Добавить в корзину</button>
-              </Link>
-            ))}
+          <div className="choiceApp" style={{ marginBottom: "50px" }}>
+            {carouselItems.length > 0 &&
+              carouselItems.map((el) => (
+                <Link
+                  key={el.product_id}
+                  to={`/product/${el.product_id}`}
+                  className="definiteApp"
+                  style={{
+                    textDecoration: "none",
+                    cursor: "pointer",
+                  }}
+                >
+                  <img
+                    src={`https://approcket.kz/api/products/previewImage/${el.image_preview_one}`}
+                    alt="App"
+                    className="appBackground"
+                  />
+                  <h4>{el.title}</h4>
+                  <div style={el.old_price && { display: "flex" }}>
+                    {el.old_price && (
+                      <p
+                        style={{
+                          marginRight: "10px",
+                          color: "gray",
+                          textDecoration: "line-through",
+                        }}
+                      >
+                        {`${el.old_price} ₸`}
+                      </p>
+                    )}
+                    <p>{el.price} ₸</p>
+                  </div>
+                  <button className="addBasketMobile">
+                    Добавить в корзину
+                  </button>
+                </Link>
+              ))}
           </div>
         </>
       )}

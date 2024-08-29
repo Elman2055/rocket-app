@@ -1,5 +1,5 @@
 .background {
-  height: 500px;
+  height: 64vh;
   background: no-repeat center/100% 100% url(../../../public/mainImage.png);
   display: flex;
   flex-direction: column;
@@ -13,7 +13,7 @@
 }
 
 .mainBackgroundBtns {
-  width: 13.5%;
+  width: 14.5%;
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
@@ -84,6 +84,7 @@
 }
 
 .definiteApp {
+  height: 50vh;
   line-height: 22px;
   position: relative;
 }
@@ -141,7 +142,7 @@
 }
 
 .hintImage {
-  height: 80%;
+  height: 65%;
   width: 25.5vw;
 }
 
@@ -170,7 +171,8 @@
 }
 
 .ownImage {
-  height: 80%;
+  cursor: pointer;
+  height: 64vh;
   width: 39.6vw;
 }
 
@@ -237,6 +239,10 @@
 
   .choiceTitle {
     font-size: 22px;
+  }
+
+  .definiteApp > h4 {
+    font-size: 14px;
   }
 
   .choiceApp {
@@ -314,5 +320,16 @@
   .ownBlockReverse {
     display: flex;
     flex-direction: column-reverse;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 1024px) {
+  .hint {
+    align-items: center;
+  }
+
+  .hintImage {
+    height: 400px;
+    width: 300px;
   }
 }

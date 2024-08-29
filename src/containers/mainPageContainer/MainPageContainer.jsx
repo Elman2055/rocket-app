@@ -1,54 +1,40 @@
-import bancking from "../../../public/banckingApp.png";
-import calendar from "../../../public/calendarApp.png";
-import fitnes from "../../../public/fitnesApp.png";
-import journey from "../../../public/journeyApp.png";
-import firstHint from "../../../public/firstHint.png";
-import secondHint from "../../../public/secondHint.png";
-import thirdHint from "../../../public/thirdHint.png";
-import { useAppSelector } from "../../store";
+import RocketApi from "../../services/rocketApi";
 import MainPage from "../../components/mainPage/MainPage";
+import Loader from "../../components/loader/Loader";
+import { useEffect, useState } from "react";
 
 const MainPageContainer = () => {
-  const {
-    products: { carousel },
-  } = useAppSelector((state) => state);
+  const [excellent, setExcellent] = useState([]);
+  const [recommendation, setRecommendation] = useState([]);
+  const [carousel, setCarousel] = useState([]);
+  const [firstInfoBlock, setFirstInfoBlock] = useState([]);
+  const [secondInfoBlock, setSecondInfodBlock] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const choiceItems = [
-    {
-      id: 1,
-      image: bancking,
-      title: "Элитный Планировщик",
-      price: "300 500 ₸",
-    },
-    {
-      id: 2,
-      image: calendar,
-      title: "Премиум Календарь",
-      price: "250 500 ₸",
-      beforePrice: "350 500 ₸",
-    },
-    { id: 3, image: fitnes, title: "Фитнес Профи", price: "400 500 ₸" },
-    {
-      id: 4,
-      image: journey,
-      title: "Путешественник Элит",
-      price: "500 200 ₸",
-      beforePrice: "620 500 ₸",
-    },
-  ];
+  const getProducts = async () => {
+    setLoading(true);
+    const response = await RocketApi.getProducts("");
+    setExcellent(response.slice(-4));
+    setRecommendation(response.slice(0, 3));
+    setCarousel(response);
+    setFirstInfoBlock(response.slice(3, 4));
+    setSecondInfodBlock(response.slice(4, 5));
+    setLoading(false);
+  };
 
-  const hintItems = [
-    { id: 5, image: firstHint, title: "Образование" },
-    { id: 6, image: secondHint, title: "Здоровье и Фитнес" },
-    { id: 7, image: thirdHint, title: "Финансы" },
-  ];
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   return (
     <div>
+      <Loader isOpen={loading} />
       <MainPage
-        choiceItems={choiceItems}
+        choiceItems={excellent}
         carouseItems={carousel}
-        hintItems={hintItems}
+        hintItems={recommendation}
+        firstInfoBlock={firstInfoBlock}
+        secondInfoBlock={secondInfoBlock}
       />
     </div>
   );

@@ -1,6 +1,6 @@
 import "./AdminCategories.css";
 
-const AdminCategories = () => {
+const AdminCategories = ({ category, setCategory }) => {
   const categories = [
     "Социальные сети",
     "Социальные сети",
@@ -16,7 +16,11 @@ const AdminCategories = () => {
         <h2>Добавить категорию</h2>
         <div>
           <h4>Впишите категорию</h4>
-          <input type="text" />
+          <input
+            type="text"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          />
           <button>Сохранить</button>
         </div>
         <h2 style={{ margin: "5% 0 0 0" }}>Доступные категории</h2>

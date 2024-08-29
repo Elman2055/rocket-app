@@ -1,7 +1,16 @@
 import useDesktop from "../hooks/useDesktop";
 import "./Contacts.css";
 
-const Contacts = () => {
+const Contacts = ({
+  name,
+  email,
+  telephone,
+  commit,
+  setName,
+  setEmail,
+  setTelephone,
+  setCommit,
+}) => {
   const isDesktop = useDesktop();
 
   return (
@@ -91,15 +100,49 @@ const Contacts = () => {
           </p>
           <div className="contactInpBlock">
             <div className="contactsBlockElem">
-              <input type="text" placeholder="Имя" className="contactInp" />
-              <input type="text" placeholder="Почта" className="contactInp" />
+              <div className="formItem">
+                <input
+                  type="text"
+                  className="contactInp"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <label className="contactLabel">Имя</label>
+              </div>
+              <div className="formItem">
+                <input
+                  type="text"
+                  className="contactInp"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <label className="contactLabel">Почта</label>
+              </div>
             </div>
-            <input type="text" placeholder="Телефон" className="phoneInp" />
-            <input
-              type="text"
-              placeholder="Комментарий"
-              className="commitInp"
-            />
+            <div className="formItem formItemDown">
+              <input
+                type="text"
+                className="phoneInp"
+                required
+                value={telephone}
+                onChange={(e) => setTelephone(e.target.value)}
+              />
+              <label className="contactLabel contactLabelCall">Телефон</label>
+            </div>
+            <div className="formItem formItemDown">
+              <input
+                type="text"
+                className="commitInp"
+                required
+                value={commit}
+                onChange={(e) => setCommit(e.target.value)}
+              />
+              <label className="contactLabel contactLabelCommit">
+                Комментарий
+              </label>
+            </div>
           </div>
           <div className="sendBtnContainer">
             <button className="sendMessageContact">Отправить сообщение</button>

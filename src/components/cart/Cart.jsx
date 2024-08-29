@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
@@ -8,9 +8,14 @@ import bancking from "../../../public/banckingApp.png";
 import calendar from "../../../public/calendarApp.png";
 import fitnes from "../../../public/fitnesApp.png";
 import "./Cart.css";
+import RocketApi from "../../services/rocketApi";
 
 const Cart = ({ isOpenCart, setIsOpenCart }) => {
   const isDesktop = useDesktop();
+
+  const getCartProducts = async () => {
+    const response = await RocketApi.getCartProducts();
+  };
 
   const choiceItems = [
     {
@@ -29,6 +34,10 @@ const Cart = ({ isOpenCart, setIsOpenCart }) => {
     { id: 3, image: fitnes, title: "Фитнес Профи", price: "400 500 ₸" },
   ];
 
+  // useEffect(() => {
+  //   getCartProducts();
+  // }, []);
+
   return (
     <>
       {isOpenCart && (
@@ -37,7 +46,7 @@ const Cart = ({ isOpenCart, setIsOpenCart }) => {
             className="cartWrapper"
             onClick={() => setIsOpenCart(false)}
           ></div>
-          <div>
+          <div style={{ position: "relative" }}>
             <CssBaseline />
             <AppBar
               position="fixed"
@@ -54,7 +63,7 @@ const Cart = ({ isOpenCart, setIsOpenCart }) => {
               PaperProps={{
                 style: {
                   width: isDesktop ? 600 : "100%",
-                  height: isDesktop ? "auto" : "88%",
+                  height: isDesktop ? "100%" : "88%",
                   display: "flex",
                   flexDirection: "column",
                   overflowY: "auto",
@@ -75,7 +84,7 @@ const Cart = ({ isOpenCart, setIsOpenCart }) => {
                   />
                 </div>
 
-                <div>
+                <div className="productsContent">
                   {choiceItems.map((el) => (
                     <div key={el.id} className="cartInfoContainer">
                       <img src={el.image} alt="app" className="cartImages" />

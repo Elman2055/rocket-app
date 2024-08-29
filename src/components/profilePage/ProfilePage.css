@@ -11,7 +11,7 @@
 }
 
 .historyImage {
-  height: 223px;
+  height: 240px;
   width: 230px;
   margin-right: 10px;
 }
@@ -41,6 +41,7 @@
 
 .historyContainer {
   display: flex;
+  align-items: center;
 }
 
 .historyTitleContainer {
@@ -102,7 +103,14 @@
   justify-content: space-between;
 }
 
-.blockForm > input {
+.profileItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.profileItem > input {
   width: 20vw;
   outline: none;
   border: none;
@@ -111,8 +119,31 @@
   font-size: 15px;
 }
 
-.blockForm > input:focus {
+.profileItem > input:focus {
   border-bottom: 2px solid #000000;
+}
+
+.profileLabel {
+  position: absolute;
+  top: 0;
+  left: 3%;
+  pointer-events: none;
+}
+
+.profileItem > input:focus + .profileLabel,
+.profileItem > input:valid + .profileLabel {
+  top: -70%;
+  transition: top 0.3s ease;
+  font-size: 13px;
+}
+
+.profileLabelMail {
+  top: 32%;
+}
+
+.profileItem > input:focus + .profileLabelMail,
+.profileItem > input:valid + .profileLabelMail {
+  top: -15%;
 }
 
 .changePasswordBtn {
@@ -184,11 +215,42 @@
 
 @media (min-width: 1024px) and (max-width: 1050px) {
   .textStyle {
-    width: 400px;
+    width: auto;
+  }
+
+  .profileHistoryBtns {
+    width: 65%;
   }
 
   .historyImage {
-    height: 250px;
+    height: 290px;
+    width: 240px;
+  }
+}
+
+@media (min-width: 1050px) and (max-width: 1208px) {
+  .historyImage {
+    height: 290px;
+    width: 250px;
+  }
+
+  .profileHistoryBtns {
+    width: 65%;
+  }
+
+  .textStyle {
+    width: auto;
+  }
+}
+
+@media (min-width: 1208px) and (max-width: 1286px) {
+  .historyImage {
+    height: 270px;
+    width: 250px;
+  }
+
+  .profileHistoryBtns {
+    width: 57%;
   }
 }
 
@@ -214,9 +276,18 @@
     height: auto;
   }
 
-  .blockForm > input {
+  .profileItem > input {
     width: auto;
     margin-bottom: 30px;
+  }
+
+  .profileItem > input:focus + .profileLabel,
+  .profileItem > input:valid + .profileLabel {
+    top: -30%;
+  }
+
+  .profileLabel {
+    left: 2%;
   }
 
   .saveChangesContainer {
@@ -257,7 +328,7 @@
 
   .historyImage {
     height: auto;
-    width: auto;
+    width: 100%;
   }
 
   .historyInfoTitle {
@@ -274,6 +345,7 @@
 @media (min-width: 600px) and (max-width: 775px) {
   .historyContainer {
     flex-direction: column;
+    align-items: baseline;
   }
 
   .historyTitleContainer {
@@ -298,6 +370,7 @@
   }
 
   .profileHistoryBtnsMobile {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
@@ -317,5 +390,19 @@
   .downloadBtnApkMobile {
     background-color: #efefef;
     color: #1a1a1a;
+  }
+}
+
+@media (min-width: 775px) and (max-width: 1024px) {
+  .mobileHistoryContainer {
+    align-items: center;
+  }
+
+  .downTitleProfile {
+    font-size: 20px;
+  }
+
+  .profileHistoryBtns {
+    width: 56%;
   }
 }

@@ -1,12 +1,31 @@
+import { useEffect, useState } from "react";
 import Categories from "../../components/categories/Categories";
-import { useAppSelector } from "../../store";
+import Loader from "../../components/loader/Loader";
+import RocketApi from "../../services/rocketApi";
 
 const CategoriesContainer = () => {
-  const {
-    products: { products, carousel },
-  } = useAppSelector((state) => state);
+  const [products, setProducts] = useState([]);
+  const [carousel, setCarousel] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  return <Categories items={products} carouselItems={carousel} />;
+  const getProducts = async () => {
+    setLoading(true);
+    const response = await RocketApi.getProducts("");
+    setProducts(response);
+    setCarousel(response);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  return (
+    <>
+      <Loader isOpen={loading} />
+      <Categories items={products} carouselItems={carousel} />
+    </>
+  );
 };
 
 export default CategoriesContainer;

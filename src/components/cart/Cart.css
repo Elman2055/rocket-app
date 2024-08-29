@@ -38,6 +38,10 @@
   width: 152px;
 }
 
+.productsContent::-webkit-scrollbar {
+  display: none;
+}
+
 .priceDeleteContainer {
   display: flex;
   justify-content: space-between;
@@ -55,6 +59,7 @@
 }
 
 .buyContainer {
+  width: 100%;
   height: 130px;
   background-color: #1a1a1a;
 }
@@ -78,6 +83,13 @@
   padding: 7px 15px;
   background-color: #efefef;
   color: #1a1a1a;
+}
+
+@media (min-width: 1024px) and (max-width: 1400px) {
+  .productsContent {
+    height: 77%;
+    overflow-x: auto;
+  }
 }
 
 @media (min-width: 500px) and (max-width: 1024px) {

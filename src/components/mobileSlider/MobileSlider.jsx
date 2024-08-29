@@ -93,7 +93,7 @@ const CustomSlider = ({ images }) => {
         {images.map((image, index) => (
           <div key={index} className="slide">
             <img
-              src={image}
+              src={`https://approcket.kz/api/products/previewImage/${image}`}
               alt={`Slide ${index + 1}`}
               className="slide-image"
             />

@@ -14,29 +14,40 @@ const Catalog = ({ items, title }) => {
         est
       </p>
       <div className="catalogInfo">
-        {items.map((el) => (
-          <Link key={el.id} to={`/product/${el.id}`} className="catalogCards">
-            <div>
-            <img src={el.image} alt="app" className="catalogImage" />
-            <h4>{el.title}</h4>
-            <div style={el.beforePrice && { display: "flex" }}>
-              <p
-                style={{
-                  marginRight: "10px",
-                  color: "gray",
-                  textDecoration: "line-through",
-                }}
-              >
-                {el.beforePrice}
-              </p>
-              <p>{el.price}</p>
-            </div>
-            </div>
-            {!isDesktop && (
-              <button className="addBasketCategor">Добавить в корзину</button>
-            )}
-          </Link>
-        ))}
+        {items.length > 0 &&
+          items.map((el) => (
+            <Link
+              key={el.product_id}
+              to={`/product/${el.product_id}`}
+              className="catalogCards"
+            >
+              <div>
+                <img
+                  src={`https://approcket.kz/api/products/previewImage/${el.image_preview_one}`}
+                  alt="app"
+                  className="catalogImage"
+                />
+                <h4>{el.title}</h4>
+                <div style={el.old_price && { display: "flex" }}>
+                  {el.old_price && (
+                    <p
+                      style={{
+                        marginRight: "10px",
+                        color: "gray",
+                        textDecoration: "line-through",
+                      }}
+                    >
+                      {`${el.old_price} ₸`}
+                    </p>
+                  )}
+                  <p>{el.price} ₸</p>
+                </div>
+              </div>
+              {!isDesktop && (
+                <button className="addBasketCategor">Добавить в корзину</button>
+              )}
+            </Link>
+          ))}
       </div>
       <div className="lazyLoadBtn">
         <button>Загрузить больше</button>

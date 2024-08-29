@@ -5,7 +5,12 @@ import useDesktop from "../hooks/useDesktop";
 import { Link } from "react-router-dom";
 import "./ForgotPassword.css";
 
-const ForgotPassword = () => {
+const ForgotPassword = ({
+  email,
+  setEmail,
+  changePassword,
+  setChangePassword,
+}) => {
   const isDesktop = useDesktop();
   const [sendLink, setSendLink] = useState(false);
 
@@ -25,9 +30,11 @@ const ForgotPassword = () => {
             <>
               <ReactCodeInput
                 fields={4}
-                fieldWidth={isDesktop ? 105 : 50}  
-                fieldHeight={isDesktop ? 40 : 40}  
-                placeholder={Array(4).fill("_________")}  
+                fieldWidth={isDesktop ? 105 : 50}
+                fieldHeight={isDesktop ? 40 : 40}
+                placeholder={Array(4).fill("_________")}
+                value={changePassword}
+                onChange={(value) => setChangePassword(value)}
                 className="codeInput"
               />
 
@@ -35,7 +42,12 @@ const ForgotPassword = () => {
             </>
           ) : (
             <>
-              <input type="text" placeholder="Адрес электронной почты*" />
+              <input
+                type="text"
+                placeholder="Адрес электронной почты*"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
 
               <button className="passwordBtn" onClick={() => setSendLink(true)}>
                 Отправить ссылку для сброса пароля

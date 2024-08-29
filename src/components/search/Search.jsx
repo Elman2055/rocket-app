@@ -4,11 +4,11 @@ import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
-import { useAppSelector } from "../../store";
 import useDesktop from "../hooks/useDesktop";
 import searchImage from "../../../public/search.png";
 import closeImage from "../../../public/closeImage.png";
 import { Box, InputAdornment } from "@mui/material";
+import RocketApi from "../../services/rocketApi";
 
 const Overlay = styled("div")({
   position: "fixed",
@@ -166,16 +166,26 @@ export default function SearchWithProductList({
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState("");
   const [open, setOpen] = useState(true);
-
-  const {
-    products: { products },
-  } = useAppSelector((state) => state);
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     if (isOpenSearch) {
       setOpen(true);
     }
   }, [isOpenSearch]);
+
+  const fetchSearchResults = async () => {
+    if (inputValue.trim()) {
+      const response = await RocketApi.getSearch({ inputValue });
+      console.log(response);
+
+      setSearchResults(response.items);
+    }
+  };
+
+  useEffect(() => {
+    fetchSearchResults();
+  }, [inputValue]);
 
   return (
     <>
@@ -198,8 +208,8 @@ export default function SearchWithProductList({
               open={open}
               onOpen={() => setOpen(true)}
               onClose={() => setOpen(false)}
-              options={products}
-              getOptionLabel={(option) => option.title}
+              options={searchResults}
+              getOptionLabel={(option) => option.category}
               inputValue={inputValue}
               onInputChange={(event, newInputValue) => {
                 setInputValue(newInputValue);
@@ -232,14 +242,17 @@ export default function SearchWithProductList({
               renderOption={(props, option) => (
                 <Box
                   {...props}
-                  key={option.id}
+                  key={option.product_id}
                   onClick={() => {
-                    navigate({ pathname: `/product/${option.id}` });
+                    navigate({ pathname: `/product/${option.product_id}` });
                     setIsOpenSearch(false);
                   }}
                 >
                   <ProductListItem>
-                    <ProductImage src={option.image} alt={option.title} />
+                    <ProductImage
+                      src={`https://approcket.kz/api/products/previewImage/${option.image_preview_one}`}
+                      alt={option.title}
+                    />
                     <ProductInfo>
                       <h3>{option.title}</h3>
                       <Box
@@ -247,11 +260,11 @@ export default function SearchWithProductList({
                         justifyContent="space-between"
                         width="150px"
                       >
-                        {option.beforePrice && (
-                          <BeforePrice>{option.beforePrice}</BeforePrice>
+                        {option.old_price && (
+                          <BeforePrice>{option.old_price}</BeforePrice>
                         )}
                         <Price
-                          style={option.beforePrice ? { marginTop: "5px" } : {}}
+                          style={option.old_price ? { marginTop: "5px" } : {}}
                         >
                           {option.price}
                         </Price>

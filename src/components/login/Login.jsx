@@ -1,14 +1,9 @@
 import { Link } from "react-router-dom";
 import rightOwnImage from "../../../public/rightOwnImage.png";
 import useDesktop from "../hooks/useDesktop";
-import { useAppDispatch } from "../../store";
-import { useNavigate } from "react-router-dom";
-import { setIsAuthUser } from "../../store/products.slice";
 import "./Login.css";
 
-const Login = () => {
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+const Login = ({ email, setEmail, password, setPassword, onSubmit, error }) => {
   const isDesktop = useDesktop();
 
   return (
@@ -22,20 +17,33 @@ const Login = () => {
         <div className="loginUserInfo">
           <h2>Вход</h2>
           <p>Введите, пожалуйста, ваш адрес электронной почты и пароль</p>
-          <input type="text" placeholder="Почта" />
-          <input type="text" placeholder="Пароль" />
-          <Link to={"/password"} className="forgotPasswordLink">
-            <span>Забыли пароль?</span>
-          </Link>
-          <button
-            className="loginBtn"
-            onClick={() => {
-              dispatch(setIsAuthUser(true));
-              navigate({ pathname: "/profile" });
-            }}
-          >
-            Войти
-          </button>
+          <form onSubmit={onSubmit}>
+            <div className="loginItem">
+              <input
+                type="text"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <label className="loginLabel">Почта</label>
+            </div>
+            <div className="loginItem">
+              <input
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <label className="loginLabel">Пароль</label>
+            </div>
+            {error && <p className="errorText">{error}</p>}  
+            <Link to={"/password"} className="forgotPasswordLink">
+              <span>Забыли пароль?</span>
+            </Link>
+            <button className="loginBtn" type="submit">
+              Войти
+            </button>
+          </form>
           <div>
             <h2>Еще не зарегистрировались?</h2>
             <Link to={"/register"}>

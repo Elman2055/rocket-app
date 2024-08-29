@@ -4,13 +4,13 @@ import likeImage from "../../../public/like.png";
 import searchImage from "../../../public/search.png";
 import shopImage from "../../../public/shop.png";
 import SearchWithSuggestions from "../search/Search";
-import user from "../../../public/user.png";
+import userImage from "../../../public/user.png";
 import closeImage from "../../../public/closeImage.png";
 import { useAppDispatch } from "../../store";
 import { setIsEdit } from "../../store/products.slice";
-import { useAppSelector } from "../../store";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../authContext/AuthContext";
 import useDesktop from "../hooks/useDesktop";
 import Cart from "../cart/Cart";
 import "./ToolBar.css";
@@ -19,18 +19,23 @@ const ToolBar = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isDesktop = useDesktop();
+  const { user, userData, logout } = useAuth();
 
   const [isOpenSearch, setIsOpenSearch] = useState(false);
   const [isOpenCart, setIsOpenCart] = useState(false);
-
-  const {
-    products: { isAuthUser },
-  } = useAppSelector((state) => state);
-
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleClick = () => {
+    if (!user) {
+      navigate("/login");
+    } else {
+      setIsOpenCart(true);
+      setIsOpen(false);
+    }
   };
 
   return (
@@ -59,43 +64,66 @@ const ToolBar = () => {
               </NavLink>
 
               <div className="rightBlock">
-                <div className={`imageRightBlock ${isAuthUser && "user"}`}>
-                  <NavLink to={"/favourites"}>
+                <div className={`imageRightBlock ${user && "user"}`}>
+                  <NavLink to={user ? "/favourites" : "/login"}>
                     <img src={likeImage} alt="likeImage" />
                   </NavLink>
                   <NavLink onClick={() => setIsOpenSearch(true)}>
                     <img src={searchImage} alt="searchImage" />
                   </NavLink>
-                  <NavLink onClick={() => setIsOpenCart(true)}>
+                  <div
+                    onClick={() => handleClick()}
+                    style={{ cursor: "pointer" }}
+                  >
                     <img src={shopImage} alt="shopImage" />
-                  </NavLink>
-                  {isAuthUser && (
-                    <NavLink to={"/profile"}>
-                      <div className="userPosition">
-                        <img src={user} alt="user" className="userImage" />
-                        <div className="profileCard">
-                          <div className="profileCardContent">
-                            <p className="profileGreeting">
-                              Здравствуйте, Александр
-                            </p>
-                            <div className="profileDivider"></div>
-                            <ul className="profileOptions">
-                              <li onClick={() => dispatch(setIsEdit(true))}>
-                                Редактировать профиль
-                              </li>
-                              <li onClick={() => dispatch(setIsEdit(false))}>
-                                Мои заказы
-                              </li>
-                              <li>Избранное</li>
-                              <li>Выйти</li>
-                            </ul>
-                          </div>
+                  </div>
+                  {user && (
+                    <div className="userPosition">
+                      <img
+                        src={userImage}
+                        alt="user"
+                        style={{ cursor: "pointer" }}
+                        className="userImage"
+                        onClick={() => navigate({ pathname: "/profile" })}
+                      />
+                      <div className="profileCard">
+                        <div className="profileCardContent">
+                          <p className="profileGreeting">
+                            Здравствуйте, {userData.name}
+                          </p>
+                          <div className="profileDivider"></div>
+                          <ul className="profileOptions">
+                            <li
+                              onClick={() => {
+                                dispatch(setIsEdit(true));
+                                navigate({ pathname: "/profile" });
+                              }}
+                            >
+                              Редактировать профиль
+                            </li>
+                            <li
+                              onClick={() => {
+                                dispatch(setIsEdit(false));
+                                navigate({ pathname: "/profile" });
+                              }}
+                            >
+                              Мои заказы
+                            </li>
+                            <li
+                              onClick={() =>
+                                navigate({ pathname: "/favourites" })
+                              }
+                            >
+                              Избранное
+                            </li>
+                            <li onClick={logout}>Выйти</li>
+                          </ul>
                         </div>
                       </div>
-                    </NavLink>
+                    </div>
                   )}
                 </div>
-                {!isAuthUser && (
+                {!user && (
                   <>
                     <NavLink to={"/login"}>
                       <button className="layotBtnProd">Войти</button>
@@ -118,7 +146,7 @@ const ToolBar = () => {
                   style={{ paddingTop: "14%" }}
                   onClick={() => {
                     navigate({
-                      pathname: `${isAuthUser ? "/profile" : "/login"}`,
+                      pathname: `${user ? "/profile" : "/login"}`,
                     });
                     setIsOpen(false);
                   }}
@@ -206,20 +234,18 @@ const ToolBar = () => {
 
                 <div className="blockHeaerMobile">
                   <NavLink
-                    to={`${isAuthUser ? "/profile" : "/login"}`}
+                    to={`${user ? "/profile" : "/login"}`}
                     onClick={() => setIsOpen(false)}
                   >
-                    <img src={user} alt="user" className="userImage" />
+                    <img src={userImage} alt="user" className="userImage" />
                   </NavLink>
 
-                  <NavLink
-                    onClick={() => {
-                      setIsOpenCart(true);
-                      setIsOpen(false);
-                    }}
+                  <div
+                    onClick={() => handleClick()}
+                    style={{ cursor: "pointer" }}
                   >
                     <img src={shopImage} alt="shopImage" />
-                  </NavLink>
+                  </div>
                 </div>
               </div>
             </div>

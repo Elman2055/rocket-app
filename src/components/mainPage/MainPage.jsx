@@ -1,7 +1,5 @@
 import RunningLine from "../ui/runningLine/RunningLine";
 import choiceLike from "../../../public/choiceLike.png";
-import leftOwnImage from "../../../public/leftOwnImage.png";
-import rightOwnImage from "../../../public/rightOwnImage.png";
 import saleMainImage from "../../../public/saleMainImage.png";
 import saleImageMobile from "../../../public/saleImageMobile.png";
 import Carousel from "../ui/carousel/Carousel";
@@ -10,7 +8,13 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./MainPage.css";
 
-const MainPage = ({ choiceItems, carouseItems, hintItems }) => {
+const MainPage = ({
+  choiceItems,
+  carouseItems,
+  hintItems,
+  firstInfoBlock,
+  secondInfoBlock,
+}) => {
   const navigate = useNavigate();
   const isDesktop = useDesktop();
 
@@ -19,12 +23,12 @@ const MainPage = ({ choiceItems, carouseItems, hintItems }) => {
       <div className="background">
         <p>Ваши любимые приложения здесь</p>
         <div className="mainBackgroundBtns">
-          <button onClick={() => navigate({ pathname: "/catalog/4" })}>
+          <button onClick={() => navigate({ pathname: "/catalog/Финансовые" })}>
             Утилиты
           </button>
           <button
             className="playBtnBackground"
-            onClick={() => navigate({ pathname: "/catalog/3" })}
+            onClick={() => navigate({ pathname: "/catalog/Для детей" })}
           >
             Игры
           </button>
@@ -43,41 +47,48 @@ const MainPage = ({ choiceItems, carouseItems, hintItems }) => {
         </div>
         <p className="choiceTitle">Отличный выбор для всех</p>
         <div className="choiceApp">
-          {choiceItems.map((el) => (
-            <Link
-              key={el.id}
-              to={`/product/${el.id}`}
-              className="definiteApp"
-              style={{
-                textDecoration: "none",
-                cursor: "pointer",
-              }}
-            >
-              <img src={el.image} alt="App" className="appBackground" />
-              <img src={choiceLike} alt="choiceLike" className="choiceLike" />
-              <button className="basketBtn">Добавить в корзину</button>
-              <h4>{el.title}</h4>
-              <div style={el.beforePrice && { display: "flex" }}>
-                <p
-                  style={{
-                    marginRight: "10px",
-                    color: "gray",
-                    textDecoration: "line-through",
-                  }}
-                >
-                  {el.beforePrice}
-                </p>
-                <p>{el.price}</p>
-              </div>
-              {!isDesktop && (
-                <>
-                  <button className="addBasketMobile">
-                    Добавить в корзину
-                  </button>
-                </>
-              )}
-            </Link>
-          ))}
+          {choiceItems.length > 0 &&
+            choiceItems.map((el) => (
+              <Link
+                key={el.product_id}
+                to={`/product/${el.product_id}`}
+                className="definiteApp"
+                style={{
+                  textDecoration: "none",
+                  cursor: "pointer",
+                }}
+              >
+                <img
+                  src={`https://approcket.kz/api/products/previewImage/${el.image_preview_one}`}
+                  alt="App"
+                  className="appBackground"
+                />
+                <img src={choiceLike} alt="choiceLike" className="choiceLike" />
+                <button className="basketBtn">Добавить в корзину</button>
+                <h4>{el.title}</h4>
+                <div style={el.old_price && { display: "flex" }}>
+                  {el.old_price && (
+                    <p
+                      style={{
+                        marginRight: "10px",
+                        color: "gray",
+                        textDecoration: "line-through",
+                      }}
+                    >
+                      {`${el.old_price} ₸`}
+                    </p>
+                  )}
+                  <p>{el.price} ₸</p>
+                </div>
+                {!isDesktop && (
+                  <>
+                    <button className="addBasketMobile">
+                      Добавить в корзину
+                    </button>
+                  </>
+                )}
+              </Link>
+            ))}
         </div>
         {isDesktop && (
           <div className="searchAll">
@@ -95,66 +106,85 @@ const MainPage = ({ choiceItems, carouseItems, hintItems }) => {
       <div className="mainPageContainer">
         <h2>Приложение, которое стоит попробовать</h2>
         <div className="hint">
-          {hintItems.map((el) => (
-            <Link
-              key={el.id}
-              to={`/product/${el.id}`}
-              style={{
-                textDecoration: "none",
-                cursor: "pointer",
-                marginBottom: "20px",
-              }}
-            >
-              <img src={el.image} alt="Hint" className="hintImage" />
-              <p>{el.title} &#8594;</p>
-            </Link>
-          ))}
+          {hintItems.length > 0 &&
+            hintItems.map((el) => (
+              <Link
+                key={el.product_id}
+                to={`/product/${el.product_id}`}
+                style={{
+                  textDecoration: "none",
+                  cursor: "pointer",
+                  marginBottom: "20px",
+                }}
+              >
+                <img
+                  src={`https://approcket.kz/api/products/previewImage/${el.image_preview_one}`}
+                  alt="Hint"
+                  className="hintImage"
+                />
+                <p>{el.title} &#8594;</p>
+              </Link>
+            ))}
         </div>
         {isDesktop ? (
-          <Carousel items={carouseItems} title="Самая востребованная утилита" />
+          <>
+            {carouseItems.length > 0 && (
+              <Carousel
+                items={carouseItems}
+                title="Самая востребованная утилита"
+              />
+            )}
+          </>
         ) : (
           <>
             <h2 style={{ fontSize: "19px" }}>Самая востребованная утилита</h2>
             <div className="choiceApp">
-              {choiceItems.map((el) => (
-                <Link
-                  key={el.id}
-                  to={`/product/${el.id}`}
-                  className="definiteApp"
-                  style={{
-                    textDecoration: "none",
-                    cursor: "pointer",
-                  }}
-                >
-                  <img src={el.image} alt="App" className="appBackground" />
-                  <img
-                    src={choiceLike}
-                    alt="choiceLike"
-                    className="choiceLike"
-                  />
-                  <button className="basketBtn">Добавить в корзину</button>
-                  <h4>{el.title}</h4>
-                  <div style={el.beforePrice && { display: "flex" }}>
-                    <p
-                      style={{
-                        marginRight: "10px",
-                        color: "gray",
-                        textDecoration: "line-through",
-                      }}
-                    >
-                      {el.beforePrice}
-                    </p>
-                    <p>{el.price}</p>
-                  </div>
-                  {!isDesktop && (
-                    <>
-                      <button className="addBasketMobile">
-                        Добавить в корзину
-                      </button>
-                    </>
-                  )}
-                </Link>
-              ))}
+              {carouseItems.length > 0 &&
+                carouseItems.map((el) => (
+                  <Link
+                    key={el.product_id}
+                    to={`/product/${el.product_id}`}
+                    className="definiteApp"
+                    style={{
+                      textDecoration: "none",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <img
+                      src={`https://approcket.kz/api/products/previewImage/${el.image_preview_one}`}
+                      alt="App"
+                      className="appBackground"
+                    />
+                    <img
+                      src={choiceLike}
+                      alt="choiceLike"
+                      className="choiceLike"
+                    />
+                    <button className="basketBtn">Добавить в корзину</button>
+                    <h4>{el.title}</h4>
+                    <div style={el.old_price && { display: "flex" }}>
+                      {el.old_price && (
+                        <p
+                          style={{
+                            marginRight: "10px",
+                            color: "gray",
+                            textDecoration: "line-through",
+                          }}
+                        >
+                          {`${el.old_price} ₸`}
+                        </p>
+                      )}
+                      <p>{el.price}₸</p>
+                    </div>
+                    {!isDesktop && (
+                      <>
+                        <button className="addBasketMobile">
+                          Добавить в корзину
+                        </button>
+                      </>
+                    )}
+                  </Link>
+                ))}
             </div>
           </>
         )}
@@ -238,48 +268,62 @@ const MainPage = ({ choiceItems, carouseItems, hintItems }) => {
           </div>
         </div>
 
-        <div className="ownBlock">
-          <img src={leftOwnImage} alt="leftOwnImage" className="ownImage" />
-          <div
-            style={{
-              width: `${isDesktop ? "50%" : "100%"}`,
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <div className="ownTitle">
-              <h2>Lorem ipsum dolor sit amet</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur. Quis ridiculus fringilla
-                vel sem nisi nunc fermentum risus. Posuere id in imperdiet odio
-                sagittis eget est. Arcu tellus diam a morbi. Ut etiam non ornare
-                lorem consectetur ipsum.
-              </p>
-              <button className="ownBtn">Подробнее</button>
+        {firstInfoBlock.map((el) => (
+          <div key={el.product_id} className="ownBlock">
+            <img
+              src={`https://approcket.kz/api/products/previewImage/${el.image_preview_one}`}
+              alt="leftOwnImage"
+              className="ownImage"
+              onClick={() => navigate(`product/${el.product_id}`)}
+            />
+            <div
+              style={{
+                width: `${isDesktop ? "50%" : "100%"}`,
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <div className="ownTitle">
+                <h2>{el.title}</h2>
+                <p>{el.description}</p>
+                <button
+                  className="ownBtn"
+                  onClick={() => navigate(`product/${el.product_id}`)}
+                >
+                  Подробнее
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="ownBlock ownBlockReverse">
-          <div
-            style={{
-              width: `${isDesktop ? "50%" : "100%"}`,
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <div className="ownTitle">
-              <h2>Lorem ipsum dolor sit amet</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur. Quis ridiculus fringilla
-                vel sem nisi nunc fermentum risus. Posuere id in imperdiet odio
-                sagittis eget est. Arcu tellus diam a morbi. Ut etiam non ornare
-                lorem consectetur ipsum.
-              </p>
-              <button className="ownBtn">Подробнее</button>
+        ))}
+        {secondInfoBlock.map((el) => (
+          <div key={el.product_id} className="ownBlock ownBlockReverse">
+            <div
+              style={{
+                width: `${isDesktop ? "50%" : "100%"}`,
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <div className="ownTitle">
+                <h2>{el.title}</h2>
+                <p>{el.description}</p>
+                <button
+                  className="ownBtn"
+                  onClick={() => navigate(`product/${el.product_id}`)}
+                >
+                  Подробнее
+                </button>
+              </div>
             </div>
+            <img
+              src={`https://approcket.kz/api/products/previewImage/${el.image_preview_one}`}
+              alt="rightOwnImage"
+              className="ownImage"
+              onClick={() => navigate(`product/${el.product_id}`)}
+            />
           </div>
-          <img src={rightOwnImage} alt="rightOwnImage" className="ownImage" />
-        </div>
+        ))}
       </div>
     </div>
   );

@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./components/authContext/AuthContext";
 import Layout from "./components/layout/Layout";
-import MainPageContainer from "./containers/mainPageContainer/mainPageContainer";
+import MainPageContainer from "./containers/mainPageContainer/MainPageContainer";
 import ProductPageContainer from "./containers/productPageContainer/ProductPageContainer";
 import ProfilePageContainer from "./containers/profilePageContainer/ProfilePageContainer";
 import CategoriesContainer from "./containers/categoriesContainer/CategoriesContainer";
@@ -24,32 +25,37 @@ import { store } from "./store";
 const App = () => {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<MainPageContainer />} />
-            <Route path="product/:id" element={<ProductPageContainer />} />
-            <Route path="profile" element={<ProfilePageContainer />} />
-            <Route path="categories" element={<CategoriesContainer />} />
-            <Route path="catalog/:id" element={<CatalogContainer />} />
-            <Route path="answers" element={<AnswersContainer />} />
-            <Route path="contacts" element={<ContactsContainer />} />
-            <Route path="about" element={<AboutContainer />} />
-            <Route path="login" element={<LoginContainer />} />
-            <Route path="register" element={<RegisterContainer />} />
-            <Route path="password" element={<ForgotPasswordContainer />} />
-            <Route path="favourites" element={<FavouritesContainer />} />
-          </Route>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<MainPageContainer />} />
+              <Route path="product/:id" element={<ProductPageContainer />} />
+              <Route path="profile" element={<ProfilePageContainer />} />
+              <Route path="categories" element={<CategoriesContainer />} />
+              <Route path="catalog/:id" element={<CatalogContainer />} />
+              <Route path="answers" element={<AnswersContainer />} />
+              <Route path="contacts" element={<ContactsContainer />} />
+              <Route path="about" element={<AboutContainer />} />
+              <Route path="login" element={<LoginContainer />} />
+              <Route path="register" element={<RegisterContainer />} />
+              <Route path="password" element={<ForgotPasswordContainer />} />
+              <Route path="favourites" element={<FavouritesContainer />} />
+            </Route>
 
-          <Route path="lg-admin" element={<AdminLoginContainer />} />
+            <Route path="lg-admin" element={<AdminLoginContainer />} />
 
-          <Route path="/admin" element={<AdminLayot />}>
-            <Route path="categories" element={<AdminCategoriesContainer />} />
-            <Route path="products" element={<AdminProductsContainer />} />
-            <Route path="password" element={<ChangePasswordAdminContainer />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+            <Route path="/admin" element={<AdminLayot />}>
+              <Route path="categories" element={<AdminCategoriesContainer />} />
+              <Route path="products" element={<AdminProductsContainer />} />
+              <Route
+                path="password"
+                element={<ChangePasswordAdminContainer />}
+              />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </Provider>
   );
 };

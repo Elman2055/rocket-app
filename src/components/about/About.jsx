@@ -1,7 +1,7 @@
 import rightOwnImage from "../../../public/rightOwnImage.png";
 import "./About.css";
 
-const About = () => {
+const About = ({ firstBlock, secondBlock }) => {
   return (
     <>
       <div className="aboutBg">

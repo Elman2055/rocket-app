@@ -1,27 +1,34 @@
 import Catalog from "../../components/catalog/Catalog";
-import { useAppSelector } from "../../store";
+import Loader from "../../components/loader/Loader";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import RocketApi from "../../services/rocketApi";
 
 const CatalogContainer = () => {
   const [title, setTitle] = useState();
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
-  const {
-    products: { products, categories },
-  } = useAppSelector((state) => state);
-
-  const getTitle = () => {
-    const filteredTitle = products.filter((el) => el.id === Number(id));
-    setTitle(filteredTitle[0].category);
+  const getCategoryProducts = async () => {
+    setLoading(true);
+    const response = await RocketApi.getProducts(id);
+    setProducts(response);
+    setTitle(response[0].category);
+    setLoading(false);
   };
 
   useEffect(() => {
-    getTitle();
+    getCategoryProducts();
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [id]);
+  }, []);
 
-  return <Catalog items={categories} title={title} />;
+  return (
+    <>
+      <Loader isOpen={loading} />
+      <Catalog items={products} title={title} />
+    </>
+  );
 };
 
 export default CatalogContainer;

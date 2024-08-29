@@ -3,7 +3,7 @@ import logo from "../../../public/logoFooter.png";
 import { useNavigate } from "react-router-dom";
 import "./AdminLogin.css";
 
-const AdminLogin = () => {
+const AdminLogin = ({ login, setLogin, password, setPassword }) => {
   const navigate = useNavigate();
 
   return (
@@ -23,12 +23,20 @@ const AdminLogin = () => {
         </div>
         <div className="inputsLgAdmin">
           <h4>Логин</h4>
-          <input type="text" />
+          <input
+            type="text"
+            value={login}
+            onChange={(e) => setLogin(e.target.value)}
+          />
         </div>
 
         <div className="inputsLgAdmin">
           <h4>Пароль</h4>
-          <input type="text" />
+          <input
+            type="text"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
         <button
           className="lgAdminBtn"

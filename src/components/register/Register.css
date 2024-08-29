@@ -21,20 +21,26 @@
   margin-right: 4%;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+}
+
 .registerUserInfo > p {
   margin: 10px 0px 0px 0px;
 }
 
-.registerUserInfo > input {
+form > div > input {
+  width: 100%;
   border: none;
   border-bottom: 2px solid #8f8f8f;
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 17px;
   outline: none;
   padding-left: 10px;
 }
 
-.registerUserInfo > input:focus {
+form > div > input:focus {
   border-bottom: 2px solid #1a1a1a;
 }
 
@@ -47,13 +53,27 @@
   font-size: 14px;
 }
 
+.errorText {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.errorInput {
+  border: 1px solid red;
+}
+
+.inputWrapper {
+  margin-bottom: 15px;
+}
+
 .registerBtn {
   cursor: pointer;
   border: none;
   padding: 10px 15px;
   background-color: #1a1a1a;
   color: #efefef;
-  margin: 50px 0px 50px 0px;
+  margin: 20px 0px 50px 0px;
 }
 
 .canLoginBtn {

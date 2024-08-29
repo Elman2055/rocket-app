@@ -7,6 +7,7 @@ import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 import { Box } from "@mui/material";
+import RocketApi from "../../../services/rocketApi";
 
 const CustomTextField = styled(TextField)({
   "& .MuiOutlinedInput-root": {
@@ -84,6 +85,10 @@ export default function ModalForm({ open, setOpen }) {
     input2: "",
     input3: "",
   });
+  const [errorMessages, setErrorMessages] = useState({
+    oldPasswordError: "",
+    newPasswordError: "",
+  });
 
   const handleClose = () => {
     setOpen(false);
@@ -94,6 +99,37 @@ export default function ModalForm({ open, setOpen }) {
       ...inputValues,
       [e.target.name]: e.target.value,
     });
+    setErrorMessages({
+      ...errorMessages,
+      oldPasswordError: "",
+      newPasswordError: "",
+    });
+  };
+
+  const getNewPassword = async () => {
+    if (inputValues.input2 !== inputValues.input3) {
+      setErrorMessages((prev) => ({
+        ...prev,
+        newPasswordError: "Пароли не совпадают!",
+      }));
+    } else {
+      try {
+        const oldPassword = inputValues.input1;
+        const newPassword = inputValues.input2;
+        const response = await RocketApi.getNewPassword({
+          oldPassword,
+          newPassword,
+        });
+        setOpen(false);
+      } catch (error) {
+        if (error.response && error.response.data) {
+          setErrorMessages((prev) => ({
+            ...prev,
+            oldPasswordError: `${error.response.data.message}!`,
+          }));
+        }
+      }
+    }
   };
 
   return (
@@ -126,6 +162,8 @@ export default function ModalForm({ open, setOpen }) {
               margin="normal"
               value={inputValues.input1}
               onChange={handleChange}
+              error={Boolean(errorMessages.oldPasswordError)}
+              helperText={errorMessages.oldPasswordError}
             />
             <CustomTextField
               name="input2"
@@ -142,10 +180,12 @@ export default function ModalForm({ open, setOpen }) {
               margin="normal"
               value={inputValues.input3}
               onChange={handleChange}
+              error={Boolean(errorMessages.newPasswordError)}
+              helperText={errorMessages.newPasswordError}
             />
           </DialogContentStyled>
           <DialogActions>
-            <button style={buttonStyled} onClick={handleClose}>
+            <button style={buttonStyled} onClick={getNewPassword}>
               Сохранить
             </button>
           </DialogActions>

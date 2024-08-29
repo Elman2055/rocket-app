@@ -4,7 +4,7 @@
 }
 
 .loginImage {
-  width: 52%;
+  width: 50%;
 }
 
 .loginBlock {
@@ -24,7 +24,27 @@
   margin: 10px 0px 0px 0px;
 }
 
-.loginUserInfo > input {
+.loginItem {
+  width: 100%;
+  position: relative;
+}
+
+.loginLabel {
+  position: absolute;
+  top: 50%;
+  left: 2%;
+  pointer-events: none;
+}
+
+.loginItem > input:focus + .loginLabel,
+.loginItem > input:valid + .loginLabel {
+  top: 20%;
+  transition: top 0.3s ease;
+  font-size: 13px;
+}
+
+.loginItem > input {
+  width: 100%;
   border: none;
   border-bottom: 2px solid #8f8f8f;
   margin-top: 30px;
@@ -33,7 +53,7 @@
   padding-left: 10px;
 }
 
-.loginUserInfo > input:focus {
+.loginItem > input:focus {
   border-bottom: 2px solid #1a1a1a;
 }
 
@@ -65,6 +85,10 @@
 }
 
 @media (min-width: 1024px) and (max-width: 1286px) {
+  .loginImage {
+    width: 52%;
+  }
+
   .loginBlock {
     width: 100%;
     display: flex;
@@ -78,6 +102,10 @@
 }
 
 @media (min-width: 260px) and (max-width: 1024px) {
+  .loginImage {
+    width: 52%;
+  }
+
   .loginBlock {
     width: 100%;
     display: flex;

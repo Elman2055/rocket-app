@@ -6,6 +6,7 @@ import "./Carousel.css";
 
 const Carousel = ({ items, title }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+
   const itemsPerPage = 3;
   const totalSlides = Math.ceil(items.length / itemsPerPage);
   const sliderRef = useRef(null);
@@ -88,8 +89,8 @@ const Carousel = ({ items, title }) => {
       <Slider ref={sliderRef} {...settings}>
         {items.map((item) => (
           <Link
-            key={item.id}
-            to={`/product/${item.id}`}
+            key={item.product_id}
+            to={`/product/${item.product_id}`}
             style={{
               textDecoration: "none",
               padding: "10px",
@@ -97,13 +98,13 @@ const Carousel = ({ items, title }) => {
             }}
           >
             <img
-              src={item.image}
+              src={`https://approcket.kz/api/products/previewImage/${item.image_preview_one}`}
               alt={item.title}
-              style={{ height: "80%", width: "25vw", cursor: "pointer" }}
+              style={{ height: "40vh", width: "80%", cursor: "pointer" }}
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             />
             <h3>{item.title}</h3>
-            <p>{item.price}</p>
+            <p>{item.price} ₸</p>
           </Link>
         ))}
       </Slider>

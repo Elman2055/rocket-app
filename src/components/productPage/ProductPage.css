@@ -10,12 +10,12 @@
 }
 
 .productImageContainer {
-  height: 490px;
+  height: 470px;
   display: flex;
 }
 
 .productImage {
-  width: 33vw;
+  width: 29vw;
 }
 
 .smallimages {

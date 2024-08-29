@@ -33,7 +33,7 @@
   flex-direction: column;
 }
 
-.contactInpBlock > input {
+.contactInpBlock > div > input {
   padding-left: 15px;
 }
 
@@ -42,20 +42,63 @@
   justify-content: space-between;
 }
 
+.formItem {
+  position: relative;
+  width: 50%;
+}
+
+.formItemDown {
+  width: 99%;
+}
+
+.contactLabel {
+  position: absolute;
+  top: 25%;
+  left: 16px;
+  pointer-events: none;
+}
+
+.contactLabelCall {
+  position: absolute;
+  top: 35%;
+}
+
+.contactLabelCommit {
+  position: absolute;
+  top: 15%;
+}
+
 .contactInp {
-  height: 40px;
-  width: 48%;
+  height: 50px;
+  width: 98%;
   padding-left: 15px;
 }
 
 .phoneInp {
-  height: 45px;
+  width: 100%;
+  height: 50px;
   margin: 15px 0px 15px 0px;
 }
 
 .commitInp {
+  width: 100%;
   height: 130px;
-  padding-bottom: 16%;
+  padding-bottom: 11%;
+}
+
+.formItem > input:focus + .contactLabel,
+.formItem > input:valid + .contactLabel {
+  top: 0;
+  transition: top 0.3s ease;
+  font-size: 13px;
+}
+
+.formItem > input:focus + .contactLabelCall {
+  top: 19%;
+}
+
+.formItem > input:focus + .contactLabelCommit {
+  top: 5%;
 }
 
 .sendBtnContainer {
@@ -90,6 +133,10 @@
     display: flex;
   }
 
+  .contactInpBlock {
+    width: 100%;
+  }
+
   .contactsBlock {
     display: flex;
     flex-direction: column;
@@ -107,6 +154,14 @@
     flex-direction: column;
   }
 
+  .commitInp {
+    padding-bottom: 20%;
+  }
+
+  .formItem > input:focus + .contactLabelCommit {
+    top: 5%;
+  }
+
   .contactsBlock {
     display: flex;
     flex-direction: column;
@@ -122,6 +177,10 @@
   }
 
   .contactInpBlock {
+    width: 100%;
+  }
+
+  .formItem {
     width: 100%;
   }
 
