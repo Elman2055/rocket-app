@@ -19,6 +19,7 @@ const FavouritesContainer = () => {
 
   useEffect(() => {
     getFavouritesProducts();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   const filteredProducts = products.filter((el) => el.id !== 9 && el.id !== 10);

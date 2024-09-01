@@ -167,6 +167,7 @@ export default function SearchWithProductList({
   const [inputValue, setInputValue] = useState("");
   const [open, setOpen] = useState(true);
   const [searchResults, setSearchResults] = useState([]);
+  const [searchInfo, setSearchInfo] = useState(false);
 
   useEffect(() => {
     if (isOpenSearch) {
@@ -177,8 +178,7 @@ export default function SearchWithProductList({
   const fetchSearchResults = async () => {
     if (inputValue.trim()) {
       const response = await RocketApi.getSearch({ inputValue });
-      console.log(response);
-
+      setSearchInfo(response.success);
       setSearchResults(response.items);
     }
   };
@@ -208,7 +208,7 @@ export default function SearchWithProductList({
               open={open}
               onOpen={() => setOpen(true)}
               onClose={() => setOpen(false)}
-              options={searchResults}
+              options={searchInfo ? searchResults : []}
               getOptionLabel={(option) => option.category}
               inputValue={inputValue}
               onInputChange={(event, newInputValue) => {

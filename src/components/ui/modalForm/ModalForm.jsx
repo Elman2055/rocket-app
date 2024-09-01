@@ -1,17 +1,20 @@
 import React, { useState } from "react";
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
-import DialogActions from "@mui/material/DialogActions";
-import TextField from "@mui/material/TextField";
-import IconButton from "@mui/material/IconButton";
-import { styled } from "@mui/material/styles";
-import { Box } from "@mui/material";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  IconButton,
+  Box,
+  styled,
+} from "@mui/material";
+import Loader from "../../loader/Loader";
 import RocketApi from "../../../services/rocketApi";
 
 const CustomTextField = styled(TextField)({
   "& .MuiOutlinedInput-root": {
-    borderRadius: "0",
+    borderRadius: 0,
     borderBottom: "1px solid gray",
     "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
       borderBottom: "2px solid black",
@@ -36,11 +39,6 @@ const CustomTextField = styled(TextField)({
   width: "100%",
 });
 
-const Container = styled(Box)({
-  width: "85%",
-  margin: "25px auto",
-});
-
 const DialogStyled = styled(Dialog)({
   "& .MuiDialog-paper": {
     overflowX: "hidden",
@@ -49,30 +47,25 @@ const DialogStyled = styled(Dialog)({
 
 const DialogTitleStyled = styled(DialogTitle)(({ theme }) => ({
   padding: "16px 24px",
-  "& h2": {
-    margin: "0",
+  "& h2, & p": {
+    margin: 0,
   },
-  "& p": {
-    fontSize: "15px",
-    margin: "0",
-  },
-  [theme.breakpoints.between("xs", "sm")]: {
-    padding: "0",
+  [theme.breakpoints.down("sm")]: {
+    padding: 0,
   },
 }));
 
 const DialogContentStyled = styled(DialogContent)(({ theme }) => ({
   padding: "20px 24px",
-  [theme.breakpoints.between("xs", "sm")]: {
-    padding: "0",
+  [theme.breakpoints.down("sm")]: {
+    padding: 0,
   },
 }));
 
 const buttonStyled = {
   cursor: "pointer",
   width: "94%",
-  margin: "0 auto",
-  marginTop: "2%",
+  margin: "2% auto 0",
   border: "none",
   padding: "9px 15px",
   backgroundColor: "#1A1A1A",
@@ -85,57 +78,72 @@ export default function ModalForm({ open, setOpen }) {
     input2: "",
     input3: "",
   });
-  const [errorMessages, setErrorMessages] = useState({
+  const [errors, setErrors] = useState({
     oldPasswordError: "",
     newPasswordError: "",
   });
+  const [loading, setLoading] = useState(false);
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const handleClose = () => setOpen(false);
 
   const handleChange = (e) => {
-    setInputValues({
-      ...inputValues,
-      [e.target.name]: e.target.value,
-    });
-    setErrorMessages({
-      ...errorMessages,
+    const { name, value } = e.target;
+    setInputValues((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({
+      ...prev,
       oldPasswordError: "",
       newPasswordError: "",
-    });
+    }));
   };
 
-  const getNewPassword = async () => {
-    if (inputValues.input2 !== inputValues.input3) {
-      setErrorMessages((prev) => ({
+  const validatePasswords = () => {
+    const { input2, input3 } = inputValues;
+    if (input2.trim() !== input3.trim()) {
+      setErrors((prev) => ({
         ...prev,
         newPasswordError: "Пароли не совпадают!",
       }));
-    } else {
-      try {
-        const oldPassword = inputValues.input1;
-        const newPassword = inputValues.input2;
-        const response = await RocketApi.getNewPassword({
-          oldPassword,
-          newPassword,
-        });
-        setOpen(false);
-      } catch (error) {
-        if (error.response && error.response.data) {
-          setErrorMessages((prev) => ({
-            ...prev,
-            oldPasswordError: `${error.response.data.message}!`,
-          }));
-        }
+      return false;
+    }
+    if (!input2.trim() || !input3.trim()) {
+      setErrors((prev) => ({
+        ...prev,
+        newPasswordError: "Пароль должен содержать значение!",
+      }));
+      return false;
+    }
+    return true;
+  };
+
+  const getNewPassword = async () => {
+    if (!validatePasswords()) return;
+
+    setLoading(true);
+    try {
+      const { input1, input2 } = inputValues;
+      await RocketApi.getNewPassword({
+        oldPassword: input1,
+        newPassword: input2,
+      });
+      setInputValues({ input1: "", input2: "", input3: "" });
+      setOpen(false);
+    } catch (error) {
+      if (error.response?.data) {
+        setErrors((prev) => ({
+          ...prev,
+          oldPasswordError: `${error.response.data.message}!`,
+        }));
       }
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div>
+    <>
+      <Loader isOpen={loading} />
       <DialogStyled open={open} onClose={handleClose}>
-        <Container>
+        <Box width="85%" m="25px auto">
           <DialogTitleStyled>
             <h2>Смена пароля</h2>
             <p>
@@ -147,12 +155,8 @@ export default function ModalForm({ open, setOpen }) {
               color="inherit"
               onClick={handleClose}
               aria-label="close"
-              sx={{
-                position: "absolute",
-                right: 8,
-                top: 8,
-              }}
-            ></IconButton>
+              sx={{ position: "absolute", right: 8, top: 8 }}
+            />
           </DialogTitleStyled>
           <DialogContentStyled>
             <CustomTextField
@@ -162,8 +166,8 @@ export default function ModalForm({ open, setOpen }) {
               margin="normal"
               value={inputValues.input1}
               onChange={handleChange}
-              error={Boolean(errorMessages.oldPasswordError)}
-              helperText={errorMessages.oldPasswordError}
+              error={Boolean(errors.oldPasswordError)}
+              helperText={errors.oldPasswordError}
             />
             <CustomTextField
               name="input2"
@@ -180,8 +184,8 @@ export default function ModalForm({ open, setOpen }) {
               margin="normal"
               value={inputValues.input3}
               onChange={handleChange}
-              error={Boolean(errorMessages.newPasswordError)}
-              helperText={errorMessages.newPasswordError}
+              error={Boolean(errors.newPasswordError)}
+              helperText={errors.newPasswordError}
             />
           </DialogContentStyled>
           <DialogActions>
@@ -189,8 +193,8 @@ export default function ModalForm({ open, setOpen }) {
               Сохранить
             </button>
           </DialogActions>
-        </Container>
+        </Box>
       </DialogStyled>
-    </div>
+    </>
   );
 }

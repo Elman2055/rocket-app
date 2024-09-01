@@ -1,5 +1,5 @@
 .backgroundProfile {
-  height: 320px;
+  height: 46vh;
   background: no-repeat center/100% 100% url(../../../public/promoProfile.png);
   color: white;
   display: flex;

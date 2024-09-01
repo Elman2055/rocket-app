@@ -16,8 +16,8 @@
 }
 
 .categoryImage {
-  height: 250px;
   width: 100%;
+  aspect-ratio: 8 / 9;
 }
 
 .categoryTitle {

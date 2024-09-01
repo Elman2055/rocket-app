@@ -5,7 +5,8 @@ import axios from "axios";
 
 const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }) => { 
+  const navigate = useNavigate();
   const [user, setUser] = useState(false);
   const [userData, setUserData] = useState({
     name: "",

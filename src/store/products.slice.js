@@ -85,146 +85,6 @@ const initialState = {
       price: "343 000 ₸",
     },
   ],
-
-  carousel: [
-    { id: 4, image: journey, title: "Путешественник Элит", price: "500 200 ₸" },
-    { id: 2, image: calendar, title: "Премиум Календарь", price: "250 500 ₸" },
-    {
-      id: 1,
-      image: bancking,
-      title: "Элитный Планировщик",
-      price: "300 500 ₸",
-    },
-    { id: 3, image: fitnes, title: "Фитнес Профи", price: "400 500 ₸" },
-    { id: 4, image: journey, title: "Путешественник Элит", price: "500 200 ₸" },
-    { id: 2, image: calendar, title: "Премиум Календарь", price: "250 500 ₸" },
-    {
-      id: 1,
-      image: bancking,
-      title: "Элитный Планировщик",
-      price: "300 500 ₸",
-    },
-    { id: 3, image: fitnes, title: "Фитнес Профи", price: "400 500 ₸" },
-    { id: 4, image: journey, title: "Путешественник Элит", price: "500 200 ₸" },
-    { id: 2, image: calendar, title: "Премиум Календарь", price: "250 500 ₸" },
-    {
-      id: 1,
-      image: bancking,
-      title: "Элитный Планировщик",
-      price: "300 500 ₸",
-    },
-    { id: 3, image: fitnes, title: "Фитнес Профи", price: "400 500 ₸" },
-  ],
-
-  categories: [
-    {
-      id: 4,
-      image: journey,
-      title: "Путешественник Элит",
-      beforePrice: "350 500 ₸",
-      price: "500 200 ₸",
-    },
-    {
-      id: 1,
-      image: bancking,
-      title: "Элитный Планировщик",
-      price: "300 500 ₸",
-    },
-    { id: 3, image: fitnes, title: "Фитнес Профи", price: "400 500 ₸" },
-    {
-      id: 2,
-      image: calendar,
-      title: "Премиум Календарь",
-      beforePrice: "350 500 ₸",
-      price: "250 500 ₸",
-    },
-
-    {
-      id: 2,
-      image: calendar,
-      title: "Премиум Календарь",
-      beforePrice: "350 500 ₸",
-      price: "250 500 ₸",
-    },
-    {
-      id: 1,
-      image: bancking,
-      title: "Элитный Планировщик",
-      price: "300 500 ₸",
-    },
-    {
-      id: 4,
-      image: journey,
-      title: "Путешественник Элит",
-      beforePrice: "350 500 ₸",
-      price: "500 200 ₸",
-    },
-    { id: 3, image: fitnes, title: "Фитнес Профи", price: "400 500 ₸" },
-    {
-      id: 2,
-      image: calendar,
-      title: "Премиум Календарь",
-      beforePrice: "350 500 ₸",
-      price: "250 500 ₸",
-    },
-    {
-      id: 1,
-      image: bancking,
-      title: "Элитный Планировщик",
-      price: "300 500 ₸",
-    },
-    {
-      id: 4,
-      image: journey,
-      title: "Путешественник Элит",
-      beforePrice: "350 500 ₸",
-      price: "500 200 ₸",
-    },
-    { id: 3, image: fitnes, title: "Фитнес Профи", price: "400 500 ₸" },
-    {
-      id: 4,
-      image: journey,
-      title: "Путешественник Элит",
-      beforePrice: "350 500 ₸",
-      price: "500 200 ₸",
-    },
-    {
-      id: 2,
-      image: calendar,
-      title: "Премиум Календарь",
-      beforePrice: "350 500 ₸",
-      price: "250 500 ₸",
-    },
-    {
-      id: 1,
-      image: bancking,
-      title: "Элитный Планировщик",
-      price: "300 500 ₸",
-    },
-    { id: 3, image: fitnes, title: "Фитнес Профи", price: "400 500 ₸" },
-    {
-      id: 1,
-      image: bancking,
-      title: "Элитный Планировщик",
-      price: "300 500 ₸",
-    },
-    { id: 3, image: fitnes, title: "Фитнес Профи", price: "400 500 ₸" },
-    {
-      id: 4,
-      image: journey,
-      title: "Путешественник Элит",
-      beforePrice: "350 500 ₸",
-      price: "500 200 ₸",
-    },
-    {
-      id: 2,
-      image: calendar,
-      title: "Премиум Календарь",
-      beforePrice: "350 500 ₸",
-      price: "250 500 ₸",
-    },
-  ],
-  isAuthUser: false,
   isEdit: false,
 };
 
@@ -232,13 +92,10 @@ export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    setIsAuthUser(state, action) {
-      state.isAuthUser = action.payload;
-    },
     setIsEdit(state, action) {
       state.isEdit = action.payload;
     },
   },
 });
 
-export const { setIsAuthUser, setIsEdit } = productsSlice.actions;
+export const { setIsEdit } = productsSlice.actions;

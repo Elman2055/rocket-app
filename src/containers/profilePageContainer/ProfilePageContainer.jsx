@@ -5,13 +5,11 @@ import journey from "../../../public/journeyApp.png";
 import ProfilePage from "../../components/profilePage/ProfilePage";
 import { useAuth } from "../../components/authContext/AuthContext";
 import { useAppSelector } from "../../store";
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Loader from "../../components/loader/Loader";
 import RocketApi from "../../services/rocketApi";
 
 const ProfilePageContainer = () => {
-  const navigate = useNavigate();
   const { userData, logout } = useAuth();
 
   const [name, setName] = useState(userData.name);
@@ -77,6 +75,8 @@ const ProfilePageContainer = () => {
         email,
         phone,
       });
+      console.log(response);
+
       setLoading(false);
     } else {
       setLoading(false);

@@ -65,7 +65,7 @@
   width: 94%;
   position: absolute;
   left: 3%;
-  bottom: 22%;
+  bottom: 17%;
   background-color: #efefef;
   color: white;
   border: none;
@@ -84,14 +84,13 @@
 }
 
 .definiteApp {
-  height: 50vh;
   line-height: 22px;
   position: relative;
 }
 
 .appBackground {
-  height: 80%;
   width: 19vw;
+  aspect-ratio: 8 / 9;
 }
 
 .appBackground:hover ~ .basketBtn {
@@ -138,12 +137,12 @@
 .hint {
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
+  margin: 30px 0 10% 0;
 }
 
 .hintImage {
-  height: 65%;
   width: 25.5vw;
+  aspect-ratio: 9 / 9;
 }
 
 .titleWeAdd {
@@ -172,8 +171,8 @@
 
 .ownImage {
   cursor: pointer;
-  height: 64vh;
   width: 39.6vw;
+  aspect-ratio: 5/5;
 }
 
 .ownTitle {
@@ -214,6 +213,8 @@
 
 @media (min-width: 260px) and (max-width: 1024px) {
   .background {
+    height: auto;
+    aspect-ratio: 14/9;
     background: no-repeat center/100% 100% url(../../../public/mobileMainBg.png);
   }
 
@@ -254,7 +255,6 @@
   }
 
   .appBackground {
-    height: 216px;
     width: 210px;
     margin-right: 10px;
   }
@@ -311,6 +311,7 @@
 
   .ownImage {
     width: 100%;
+    aspect-ratio: 4/5;
   }
 
   .ownBtn {
@@ -328,8 +329,20 @@
     align-items: center;
   }
 
+  .ownImage {
+    width: 60%;
+  }
+
   .hintImage {
-    height: 400px;
     width: 300px;
+    aspect-ratio: 8 / 9;
+  }
+}
+
+@media (max-width: 550px) {
+  .background {
+    height: auto;
+    aspect-ratio: 8/9;
+    background: no-repeat center/100% 100% url(../../../public/mobileMainBg.png);
   }
 }

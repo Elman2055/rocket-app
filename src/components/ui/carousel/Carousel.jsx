@@ -100,7 +100,7 @@ const Carousel = ({ items, title }) => {
             <img
               src={`https://approcket.kz/api/products/previewImage/${item.image_preview_one}`}
               alt={item.title}
-              style={{ height: "40vh", width: "80%", cursor: "pointer" }}
+              style={{ aspectRatio: "8/9", width: "80%", cursor: "pointer" }}
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             />
             <h3>{item.title}</h3>

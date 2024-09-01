@@ -20,6 +20,7 @@
 .slide-image {
   width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 
 .navigation-dots {
@@ -41,4 +42,10 @@
 
 .dot.active {
   background: black;
+}
+
+@media only screen and (max-width: 420px) {
+  .slide-image {
+    object-fit: fill;
+  }
 }

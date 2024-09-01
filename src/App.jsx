@@ -25,8 +25,8 @@ import { store } from "./store";
 const App = () => {
   return (
     <Provider store={store}>
-      <AuthProvider>
-        <BrowserRouter>
+      <BrowserRouter>
+        <AuthProvider>
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<MainPageContainer />} />
@@ -54,8 +54,8 @@ const App = () => {
               />
             </Route>
           </Routes>
-        </BrowserRouter>
-      </AuthProvider>
+        </AuthProvider>
+      </BrowserRouter>
     </Provider>
   );
 };

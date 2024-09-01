@@ -92,7 +92,9 @@ const MainPage = ({
         </div>
         {isDesktop && (
           <div className="searchAll">
-            <button className="searchAppBtn">Смотреть все</button>
+            <Link to={"catalog/all"}>
+              <button className="searchAppBtn">Смотреть все</button>
+            </Link>
           </div>
         )}
       </div>

@@ -1,5 +1,5 @@
 .aboutBg {
-  height: 600px;
+  height: 70vh;
   background: no-repeat center/100% 100%
     url(../../../public/aboutBackground.png);
   display: flex;
@@ -44,7 +44,7 @@
 }
 
 .aboutDownBg {
-  height: 600px;
+  height: 70vh;
   background: no-repeat center/100% 100%
     url(../../../public/aboutDownBackground.png);
   display: flex;

@@ -12,9 +12,9 @@ const CatalogContainer = () => {
 
   const getCategoryProducts = async () => {
     setLoading(true);
-    const response = await RocketApi.getProducts(id);
+    const response = await RocketApi.getProducts(id === "all" ? "" : id);
+    setTitle(id === "all" ? "" : response[0].category);
     setProducts(response);
-    setTitle(response[0].category);
     setLoading(false);
   };
 

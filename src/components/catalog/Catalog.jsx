@@ -8,11 +8,11 @@ const Catalog = ({ items, title }) => {
   return (
     <div className="catlogContainer">
       <h2 style={{ margin: "60px 0px 10px 0px" }}>{title}</h2>
-      <p style={{ width: `${isDesktop ? "530px" : "auto"}` }}>
+      {/* <p style={{ width: `${isDesktop ? "530px" : "auto"}` }}>
         Lorem ipsum dolor sit amet consectetur. Quis ridiculus fringilla vel sem
         nisi nunc fermentum risus. Posuere id in imperdiet odio sagittis eget
         est
-      </p>
+      </p> */}
       <div className="catalogInfo">
         {items.length > 0 &&
           items.map((el) => (

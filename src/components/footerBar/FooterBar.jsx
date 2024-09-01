@@ -112,38 +112,10 @@ export const FooterBar = () => {
               >
                 Категории
               </p>
-              <p
-                onClick={() => {
-                  navigate({ pathname: "/catalog/3" });
-                  window.scrollTo({ top: 0 });
-                }}
-              >
-                Игры
-              </p>
-              <p
-                onClick={() => {
-                  navigate({ pathname: "/catalog/4" });
-                  window.scrollTo({ top: 0 });
-                }}
-              >
-                Утилиты
-              </p>
-              <p
-                onClick={() => {
-                  navigate({ pathname: "/catalog/2" });
-                  window.scrollTo({ top: 0 });
-                }}
-              >
-                Образование
-              </p>
-              <p
-                onClick={() => {
-                  navigate({ pathname: "/catalog/8" });
-                  window.scrollTo({ top: 0 });
-                }}
-              >
-                Финансы
-              </p>
+              <p>Игры</p>
+              <p>Утилиты</p>
+              <p>Образование</p>
+              <p>Финансы</p>
             </div>
             <p>Публичная Оферта</p>
           </div>
@@ -217,10 +189,10 @@ export const FooterBar = () => {
                 </p>
                 {openSections.categories &&
                   renderDropdown([
-                    { label: "Игры", path: "/catalog/3" },
-                    { label: "Утилиты", path: "/catalog/4" },
-                    { label: "Образование", path: "/catalog/2" },
-                    { label: "Финансы", path: "/catalog/8" },
+                    { label: "Игры" },
+                    { label: "Утилиты" },
+                    { label: "Образование" },
+                    { label: "Финансы" },
                   ])}
               </div>
             </div>
