@@ -111,10 +111,10 @@ const ProfilePage = ({
                           onChange={(e) => setName(e.target.value)}
                           required
                         />
+                        <label className="profileLabel">Имя</label>
                         {errors.name && (
                           <p className="errorText">{errors.name}</p>
                         )}
-                        <label className="profileLabel">Имя</label>
                       </div>
 
                       <div className="profileItem">
@@ -140,10 +140,10 @@ const ProfilePage = ({
                           onChange={(e) => setLastName(e.target.value)}
                           required
                         />
+                        <label className="profileLabel">Фамилия</label>
                         {errors.lastName && (
                           <p className="errorText">{errors.lastName}</p>
                         )}
-                        <label className="profileLabel">Фамилия</label>
                       </div>
                       <div className="profileItem">
                         <input
@@ -153,12 +153,12 @@ const ProfilePage = ({
                           onChange={(e) => setEmail(e.target.value)}
                           required
                         />
-                        {errors.email && (
-                          <p className="errorText">{errors.email}</p>
-                        )}
                         <label className="profileLabel profileLabelMail">
                           Почта
                         </label>
+                        {errors.email && (
+                          <p className="errorText">{errors.email}</p>
+                        )}
                       </div>
 
                       <div>

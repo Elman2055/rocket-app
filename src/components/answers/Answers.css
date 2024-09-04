@@ -12,6 +12,11 @@
   justify-content: space-between;
 }
 
+.answersNavigation a {
+  text-decoration: none;
+  color: gray;
+}
+
 .leftBlockTitle {
   margin: 5px 0px 20px 0px;
 }

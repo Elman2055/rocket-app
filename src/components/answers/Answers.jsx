@@ -21,8 +21,22 @@ const Answers = () => {
           <div className="answersNavigation">
             <h3 className="activeNav">Популярные вопросы &#8594;</h3>
             <h3>Проблемы с заказом</h3>
-            <h3>Оплата, акции и подарочные сертификаты</h3>
-            <h3>Возврат, возмещение</h3>
+            <h3>
+              <a
+                href="https://approcket.kz/api/user/documents/payment-terms.pdf"
+                target="_blank"
+              >
+                Оплата, акции и подарочные сертификаты
+              </a>
+            </h3>
+            <h3>
+              <a
+                href="https://approcket.kz/api/user/documents/return-policy.pdf"
+                target="_blank"
+              >
+                Возврат, возмещение
+              </a>
+            </h3>
           </div>
         ) : (
           <></>

@@ -53,9 +53,9 @@ const ProfilePageContainer = () => {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!name) newErrors.name = "Имя не может быть пустым";
-    if (!lastName) newErrors.lastName = "Фамилия не может быть пустой";
-    if (!email) {
+    if (!name.trim()) newErrors.name = "Имя не может быть пустым";
+    if (!lastName.trim()) newErrors.lastName = "Фамилия не может быть пустой";
+    if (!email.trim()) {
       newErrors.email = "Почта не может быть пустой";
     } else if (!/\S+@\S+\.\S+/.test(email)) {
       newErrors.email = "Неправильный формат почты";

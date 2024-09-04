@@ -109,13 +109,8 @@ const Cart = ({ isOpenCart, setIsOpenCart }) => {
                             className="cartImages"
                           />
                           <div className="cartCardsContent">
-                            <h3>Lorem ipsum dolor sit amet consectetur.</h3>
-                            <p style={{ fontSize: "14px" }}>
-                              Lorem ipsum dolor sit amet consectetur. Eget nec
-                              nam eleifend lectus luctus eu aenean in. Tincidunt
-                              vulputate porta tristique lectus felis ...Читать
-                              далее
-                            </p>
+                            <h3>{el.title}</h3>
+                            <p style={{ fontSize: "14px" }}>{el.description}</p>
                             <div className="priceDeleteContainer">
                               <div style={el.old_price && { display: "flex" }}>
                                 {el.old_price && (
