@@ -11,7 +11,6 @@ const FavouritesContainer = () => {
     setLoading(true);
     const response = await RocketApi.getFavourites();
     setProducts(response.items);
-    console.log(response.items);
     setLoading(false);
   };
 
@@ -25,6 +24,8 @@ const FavouritesContainer = () => {
   const onAddCartProduct = async (id) => {
     setLoading(true);
     await RocketApi.getAddCartProducts({ id });
+    const cartUpdatedEvent = new CustomEvent("cartUpdated");
+    window.dispatchEvent(cartUpdatedEvent);
     setLoading(false);
   };
 
