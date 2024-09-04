@@ -73,8 +73,8 @@ const MobileFooterBar = ({ handleToggle, openSections, renderDropdown }) => {
           {openSections.contacts && (
             <>
               <div className="contactsMobile">
-                <p>+7 (495) 123-45-67</p>
-                <p>info@example.com</p>
+                <p>+7 (701) 772-11-62</p>
+                <p>diss_r@mail.ru</p>
                 <p>Telegram</p>
                 <p>Instagram</p>
               </div>

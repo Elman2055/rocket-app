@@ -157,8 +157,8 @@ export const FooterBar = () => {
           <div className="footerColumn">
             <div className="footerTitle">
               <p>Контакты</p>
-              <p>+7 (495) 123-45-67</p>
-              <p>info@example.com</p>
+              <p> +7 (701) 772-11-62</p>
+              <p>diss_r@mail.ru</p>
               <p>Telegram</p>
               <p>Instagram</p>
             </div>
