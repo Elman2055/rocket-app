@@ -5,7 +5,7 @@ import axios from "axios";
 
 const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => { 
+export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState(false);
   const [userData, setUserData] = useState({
@@ -79,7 +79,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, userData, login, logout }}>
+    <AuthContext.Provider
+      value={{ user, userData, login, logout, fetchUserData }}
+    >
       <Loader isOpen={loading} />
       {children}
     </AuthContext.Provider>

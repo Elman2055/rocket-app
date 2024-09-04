@@ -2,18 +2,29 @@ import { useEffect, useState } from "react";
 import Favourites from "../../components/favourites/Favourites";
 import RocketApi from "../../services/rocketApi";
 import Loader from "../../components/loader/Loader";
-import { useAppSelector } from "../../store";
 
 const FavouritesContainer = () => {
-  const {
-    products: { products },
-  } = useAppSelector((state) => state);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const getFavouritesProducts = async () => {
     setLoading(true);
     const response = await RocketApi.getFavourites();
-    console.log(response);
+    setProducts(response.items);
+    console.log(response.items);
+    setLoading(false);
+  };
+
+  const onDeleteFavourites = async (id) => {
+    setLoading(true);
+    await RocketApi.getAddFavourites({ id });
+    getFavouritesProducts();
+    setLoading(false);
+  };
+
+  const onAddCartProduct = async (id) => {
+    setLoading(true);
+    await RocketApi.getAddCartProducts({ id });
     setLoading(false);
   };
 
@@ -22,12 +33,14 @@ const FavouritesContainer = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
-  const filteredProducts = products.filter((el) => el.id !== 9 && el.id !== 10);
-
   return (
     <>
       <Loader isOpen={loading} />
-      <Favourites items={filteredProducts} />
+      <Favourites
+        items={products}
+        onDeleteFavourites={onDeleteFavourites}
+        onAddCartProduct={onAddCartProduct}
+      />
     </>
   );
 };

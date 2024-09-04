@@ -20,8 +20,8 @@
 }
 
 .favouritesImage {
-  height: 260px;
   width: 100%;
+  aspect-ratio: 9 / 9;
 }
 
 .favouritesLike {

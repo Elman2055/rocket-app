@@ -14,6 +14,7 @@ export const FooterBar = () => {
     main: false,
     categories: false,
     contacts: false,
+    requisites: false,
   });
 
   const handleToggle = (section) => {
@@ -99,7 +100,14 @@ export const FooterBar = () => {
                 Контакты
               </p>
             </div>
-            <p>Политика конфиденциальности</p>
+            <p>
+              <a
+                href="https://approcket.kz/api/user/documents/privacy-policy.pdf"
+                target="_blank"
+              >
+                Политика конфиденциальности
+              </a>
+            </p>
           </div>
 
           <div className="footerColumn">
@@ -117,14 +125,33 @@ export const FooterBar = () => {
               <p>Образование</p>
               <p>Финансы</p>
             </div>
-            <p>Публичная Оферта</p>
+            <p>
+              <a
+                href="https://approcket.kz/api/user/documents/public-offer.pdf"
+                target="_blank"
+              >
+                Публичная Оферта
+              </a>
+            </p>
           </div>
 
           <div className="fourColumn">
-            <p>Социальные сети</p>
-            <p>Покупки</p>
-            <p>Спорт</p>
-            <p>Бизнес</p>
+            <p>
+              Компания: <br /> TOO "Ar&Ad Group"
+            </p>
+            <p>
+              Руководитель: <br /> Рахматулаев Диас Дулатулы
+            </p>
+            <p>
+              Адрес: Казахстан, <br /> город Алматы, Алмалинский <br /> район,
+              улица Брусиловского, <br /> дом 167, кв. 1476
+            </p>
+            <p>БИН: 240840002698</p>
+            <p>
+              Расчетный счет: <br /> KZ6596502F0016417576
+            </p>
+            <p>Банк: АО "Kaspi Bank”</p>
+            <p>БИК: CASPKZKA</p>
           </div>
 
           <div className="footerColumn">
@@ -222,6 +249,43 @@ export const FooterBar = () => {
                       <p>info@example.com</p>
                       <p>Telegram</p>
                       <p>Instagram</p>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+
+            <div className="footerColumn">
+              <div className="footerTitle">
+                <p
+                  onClick={() => handleToggle("requisites")}
+                  className="navigationMobile"
+                >
+                  Реквизиты{" "}
+                  <img
+                    src={arrow}
+                    alt="arrow"
+                    style={{
+                      transform: openSections.requisites
+                        ? "rotate(180deg)"
+                        : "none",
+                      transition: "transform 0.3s ease",
+                    }}
+                  />
+                </p>
+                {openSections.requisites && (
+                  <>
+                    <div className="contactsMobile">
+                      <p>Компания: TOO "Ar&Ad Group</p>
+                      <p>Руководитель: Рахматулаев Диас Дулатулы</p>
+                      <p>
+                        Адрес: Казахстан, город Алматы, Алмалинский район, улица
+                        Брусиловского, дом 167, кв. 1476
+                      </p>
+                      <p>БИН 240840002698</p>
+                      <p>Расчетный счет: KZ6596502F0016417576</p>
+                      <p>Банк: АО "Kaspi Bank”</p>
+                      <p>БИК: CASPKZKA</p>
                     </div>
                   </>
                 )}

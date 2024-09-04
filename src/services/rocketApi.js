@@ -46,21 +46,24 @@ class RocketApi {
   };
 
   static getNewPassword = async ({ oldPassword, newPassword }) => {
-    const url = `${RocketApi.API_BASE_URL}/user/updatePassword`;
-    const response = await axios.post(
-      url,
-      {
-        oldPassword: oldPassword,
-        newPassword: newPassword,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${RocketApi.TOKEN}`,
+    try {
+      const url = `${RocketApi.API_BASE_URL}/user/updatePassword`;
+      const response = await axios.post(
+        url,
+        {
+          oldPassword: oldPassword,
+          newPassword: newPassword,
         },
-      }
-    );
-
-    return response.data;
+        {
+          headers: {
+            Authorization: `Bearer ${RocketApi.TOKEN}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   static getFavourites = async () => {
@@ -79,49 +82,79 @@ class RocketApi {
   };
 
   static getAddFavourites = async ({ id }) => {
-    const url = `${RocketApi.API_BASE_URL}/user/favourite/add`;
-    const response = await axios.post(
-      url,
-      { product_id: id },
-      {
-        headers: {
-          Authorization: `Bearer ${RocketApi.TOKEN}`,
-        },
-      }
-    );
-    return response.data;
+    try {
+      const url = `${RocketApi.API_BASE_URL}/user/favourite/add`;
+      const response = await axios.post(
+        url,
+        { product_id: id },
+        {
+          headers: {
+            Authorization: `Bearer ${RocketApi.TOKEN}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   static getCartProducts = async () => {
-    const url = `${RocketApi.API_BASE_URL}/user/cart`;
-    const response = await axios.get(url, {
-      headers: {
-        Authorization: `Bearer ${RocketApi.TOKEN}`,
-      },
-    });
-    return response.data;
-  };
-
-  static getAddCartProducts = async ({ id }) => {
-    const url = `${RocketApi.API_BASE_URL}/user/cart/add`;
-    const response = await axios.post(
-      url,
-      { product_id: id },
-      {
+    try {
+      const url = `${RocketApi.API_BASE_URL}/user/cart`;
+      const response = await axios.get(url, {
         headers: {
           Authorization: `Bearer ${RocketApi.TOKEN}`,
         },
-      }
-    );
-    return response.data;
+      });
+      return response.data;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  static getAddCartProducts = async ({ id }) => {
+    try {
+      const url = `${RocketApi.API_BASE_URL}/user/cart/add`;
+      const response = await axios.post(
+        url,
+        { product_id: id },
+        {
+          headers: {
+            Authorization: `Bearer ${RocketApi.TOKEN}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  static getDeleteCartProduct = async ({ id }) => {
+    try {
+      const url = `${RocketApi.API_BASE_URL}/user/cart/delete/${id}`;
+      const response = await axios.delete(url, {
+        headers: {
+          Authorization: `Bearer ${RocketApi.TOKEN}`,
+        },
+      });
+      return response.data;
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   static getSearch = async ({ inputValue }) => {
-    const url = `${RocketApi.API_BASE_URL}/products/search`;
-    const response = await axios.post(url, {
-      searchQuery: inputValue,
-    });
-    return response.data;
+    try {
+      const url = `${RocketApi.API_BASE_URL}/products/search`;
+      const response = await axios.post(url, {
+        searchQuery: inputValue,
+      });
+      return response.data;
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   static getProducts = async (category) => {

@@ -14,6 +14,8 @@ const MainPage = ({
   hintItems,
   firstInfoBlock,
   secondInfoBlock,
+  onSaveFavourites,
+  onAddCartProduct,
 }) => {
   const navigate = useNavigate();
   const isDesktop = useDesktop();
@@ -63,8 +65,18 @@ const MainPage = ({
                   alt="App"
                   className="appBackground"
                 />
-                <img src={choiceLike} alt="choiceLike" className="choiceLike" />
-                <button className="basketBtn">Добавить в корзину</button>
+                <img
+                  src={choiceLike}
+                  alt="choiceLike"
+                  className="choiceLike"
+                  onClick={() => onSaveFavourites(el.product_id)}
+                />
+                <button
+                  className="basketBtn"
+                  onClick={() => onAddCartProduct(el.product_id)}
+                >
+                  Добавить в корзину
+                </button>
                 <h4>{el.title}</h4>
                 <div style={el.old_price && { display: "flex" }}>
                   {el.old_price && (
@@ -157,12 +169,6 @@ const MainPage = ({
                       alt="App"
                       className="appBackground"
                     />
-                    <img
-                      src={choiceLike}
-                      alt="choiceLike"
-                      className="choiceLike"
-                    />
-                    <button className="basketBtn">Добавить в корзину</button>
                     <h4>{el.title}</h4>
                     <div style={el.old_price && { display: "flex" }}>
                       {el.old_price && (

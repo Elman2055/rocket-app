@@ -35,15 +35,15 @@ const ProductPageContainer = () => {
 
   const onSaveFavourites = async (id) => {
     setLoading(true);
-    const response = await RocketApi.getAddFavourites({ id });
-    console.log(response);
+    await RocketApi.getAddFavourites({ id });
     setLoading(false);
   };
 
   const onAddCartProduct = async (id) => {
     setLoading(true);
-    const response = await RocketApi.getAddCartProducts({ id });
-    console.log(response);
+    await RocketApi.getAddCartProducts({ id });
+    const cartUpdatedEvent = new CustomEvent("cartUpdated");
+    window.dispatchEvent(cartUpdatedEvent);
     setLoading(false);
   };
 

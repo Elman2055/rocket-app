@@ -10,7 +10,7 @@ import Loader from "../../components/loader/Loader";
 import RocketApi from "../../services/rocketApi";
 
 const ProfilePageContainer = () => {
-  const { userData, logout } = useAuth();
+  const { userData, logout, fetchUserData } = useAuth();
 
   const [name, setName] = useState(userData.name);
   const [lastName, setLastName] = useState(userData.surname);
@@ -69,13 +69,13 @@ const ProfilePageContainer = () => {
   const handleSave = async () => {
     if (validateForm()) {
       setLoading(true);
-      const response = await RocketApi.getEditProfile({
+      await RocketApi.getEditProfile({
         name,
         lastName,
         email,
         phone,
       });
-      console.log(response);
+      await fetchUserData(localStorage.getItem("auth_token"));
 
       setLoading(false);
     } else {

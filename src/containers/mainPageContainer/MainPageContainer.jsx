@@ -22,6 +22,20 @@ const MainPageContainer = () => {
     setLoading(false);
   };
 
+  const onSaveFavourites = async (id) => {
+    setLoading(true);
+    await RocketApi.getAddFavourites({ id });
+    setLoading(false);
+  };
+
+  const onAddCartProduct = async (id) => {
+    setLoading(true);
+    await RocketApi.getAddCartProducts({ id });
+    const cartUpdatedEvent = new CustomEvent("cartUpdated");
+    window.dispatchEvent(cartUpdatedEvent);
+    setLoading(false);
+  };
+
   useEffect(() => {
     getProducts();
   }, []);
@@ -35,6 +49,8 @@ const MainPageContainer = () => {
         hintItems={recommendation}
         firstInfoBlock={firstInfoBlock}
         secondInfoBlock={secondInfoBlock}
+        onSaveFavourites={onSaveFavourites}
+        onAddCartProduct={onAddCartProduct}
       />
     </div>
   );

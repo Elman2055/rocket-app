@@ -1,47 +1,60 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
 import useDesktop from "../hooks/useDesktop";
 import closeImage from "../../../public/closeImage.png";
-import bancking from "../../../public/banckingApp.png";
-import calendar from "../../../public/calendarApp.png";
-import fitnes from "../../../public/fitnesApp.png";
-import "./Cart.css";
+import Loader from "../loader/Loader";
 import RocketApi from "../../services/rocketApi";
+import "./Cart.css";
 
 const Cart = ({ isOpenCart, setIsOpenCart }) => {
   const isDesktop = useDesktop();
+  const [cartProducts, setCartProducts] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [loading, setLoading] = useState(false);
 
-  const getCartProducts = async () => {
-    const response = await RocketApi.getCartProducts();
+  const calculateTotalPrice = (products) => {
+    const total = products.reduce(
+      (sum, product) => sum + parseFloat(product.price),
+      0
+    );
+    setTotalPrice(total);
   };
 
-  const choiceItems = [
-    {
-      id: 1,
-      image: bancking,
-      title: "Элитный Планировщик",
-      price: "300 500 ₸",
-    },
-    {
-      id: 2,
-      image: calendar,
-      title: "Премиум Календарь",
-      price: "250 500 ₸",
-      beforePrice: "350 500 ₸",
-    },
-    { id: 3, image: fitnes, title: "Фитнес Профи", price: "400 500 ₸" },
-  ];
+  const getCartProducts = async () => {
+    setLoading(true);
+    const response = await RocketApi.getCartProducts();
+    setCartProducts(response.items);
+    if (response.items) calculateTotalPrice(response.items);
+    setLoading(false);
+  };
 
-  // useEffect(() => {
-  //   getCartProducts();
-  // }, []);
+  const getDeleteCartProduct = async (id) => {
+    setLoading(true);
+    await RocketApi.getDeleteCartProduct({ id });
+    getCartProducts();
+    setLoading(false);
+  };
+
+  const handleCartUpdated = () => {
+    getCartProducts();
+  };
+
+  useEffect(() => {
+    getCartProducts();
+
+    window.addEventListener("cartUpdated", handleCartUpdated);
+    return () => {
+      window.removeEventListener("cartUpdated", handleCartUpdated);
+    };
+  }, []);
 
   return (
     <>
       {isOpenCart && (
         <>
+          <Loader isOpen={loading} />
           <div
             className="cartWrapper"
             onClick={() => setIsOpenCart(false)}
@@ -74,7 +87,7 @@ const Cart = ({ isOpenCart, setIsOpenCart }) => {
                 <div className="cartTitle">
                   <div>
                     <h2>Ваша корзина</h2>
-                    <p>3 приложения</p>
+                    {cartProducts && <p>{cartProducts.length} приложения</p>}
                   </div>
                   <img
                     src={closeImage}
@@ -85,46 +98,71 @@ const Cart = ({ isOpenCart, setIsOpenCart }) => {
                 </div>
 
                 <div className="productsContent">
-                  {choiceItems.map((el) => (
-                    <div key={el.id} className="cartInfoContainer">
-                      <img src={el.image} alt="app" className="cartImages" />
-                      <div className="cartCardsContent">
-                        <h3>Lorem ipsum dolor sit amet consectetur.</h3>
-                        <p style={{ fontSize: "14px" }}>
-                          Lorem ipsum dolor sit amet consectetur. Eget nec nam
-                          eleifend lectus luctus eu aenean in. Tincidunt
-                          vulputate porta tristique lectus felis ...Читать далее
-                        </p>
-                        <div className="priceDeleteContainer">
-                          <div style={el.beforePrice && { display: "flex" }}>
-                            <p
-                              style={{
-                                marginRight: "10px",
-                                color: "gray",
-                                textDecoration: "line-through",
-                              }}
-                            >
-                              {el.beforePrice}
+                  {cartProducts ? (
+                    <>
+                      {" "}
+                      {cartProducts.map((el) => (
+                        <div key={el.product_id} className="cartInfoContainer">
+                          <img
+                            src={`https://approcket.kz/api/products/previewImage/${el.image_preview_one}`}
+                            alt="app"
+                            className="cartImages"
+                          />
+                          <div className="cartCardsContent">
+                            <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                            <p style={{ fontSize: "14px" }}>
+                              Lorem ipsum dolor sit amet consectetur. Eget nec
+                              nam eleifend lectus luctus eu aenean in. Tincidunt
+                              vulputate porta tristique lectus felis ...Читать
+                              далее
                             </p>
-                            <p>{el.price}</p>
+                            <div className="priceDeleteContainer">
+                              <div style={el.old_price && { display: "flex" }}>
+                                {el.old_price && (
+                                  <p
+                                    style={{
+                                      marginRight: "10px",
+                                      color: "gray",
+                                      textDecoration: "line-through",
+                                    }}
+                                  >
+                                    {el.old_price}₸
+                                  </p>
+                                )}
+                                <p>{el.price}₸</p>
+                              </div>
+                              <span
+                                className="deleteCartProduct"
+                                onClick={() =>
+                                  getDeleteCartProduct(el.product_id)
+                                }
+                              >
+                                Удалить
+                              </span>
+                            </div>
                           </div>
-                          <span className="deleteCartProduct">Удалить</span>
                         </div>
-                      </div>
-                    </div>
-                  ))}
+                      ))}{" "}
+                    </>
+                  ) : (
+                    <>
+                      <h2>Товаров в корзине нет</h2>
+                    </>
+                  )}
                 </div>
               </div>
 
-              <div className="buyContainer">
-                <div className="priceWrap">
-                  <h3>Итоговая цена</h3>
-                  <h3>1 220 400 ₸</h3>
+              {cartProducts && (
+                <div className="buyContainer">
+                  <div className="priceWrap">
+                    <h3>Итоговая цена</h3>
+                    <h3>{totalPrice} ₸</h3>
+                  </div>
+                  <div className="buyBtnWrap">
+                    <button>Совершить оплату</button>
+                  </div>
                 </div>
-                <div className="buyBtnWrap">
-                  <button>Совершить оплату</button>
-                </div>
-              </div>
+              )}
             </Drawer>
           </div>
         </>
